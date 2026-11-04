@@ -1,0 +1,322 @@
+[
+  {
+    "id": "cus_001",
+    "name": "Asha Rao",
+    "email": "asha.rao@clients.example",
+    "plan": "starter",
+    "region": "us-west-2",
+    "created_at": "2025-01-22T00:00:00"
+  },
+  {
+    "id": "cus_002",
+    "name": "Ben Calder",
+    "email": "ben.calder@clients.example",
+    "plan": "pro",
+    "region": "eu-west-1",
+    "created_at": "2025-01-29T00:00:00"
+  },
+  {
+    "id": "cus_003",
+    "name": "Chiara Voss",
+    "email": "chiara.voss@clients.example",
+    "plan": "pro",
+    "region": "ap-south-1",
+    "created_at": "2025-02-05T00:00:00"
+  },
+  {
+    "id": "cus_004",
+    "name": "Diego Santos",
+    "email": "diego.santos@clients.example",
+    "plan": "pro",
+    "region": "us-east-1",
+    "created_at": "2025-02-12T00:00:00"
+  },
+  {
+    "id": "cus_005",
+    "name": "Elena Park",
+    "email": "elena.park@clients.example",
+    "plan": "starter",
+    "region": "us-west-2",
+    "created_at": "2025-02-19T00:00:00"
+  },
+  {
+    "id": "cus_006",
+    "name": "Farid Khan",
+    "email": "farid.khan@clients.example",
+    "plan": "pro",
+    "region": "eu-west-1",
+    "created_at": "2025-02-26T00:00:00"
+  },
+  {
+    "id": "cus_007",
+    "name": "Greta Holm",
+    "email": "greta.holm@clients.example",
+    "plan": "starter",
+    "region": "ap-south-1",
+    "created_at": "2025-03-05T00:00:00"
+  },
+  {
+    "id": "cus_008",
+    "name": "Hiro Tanaka",
+    "email": "hiro.tanaka@clients.example",
+    "plan": "pro",
+    "region": "us-east-1",
+    "created_at": "2025-03-12T00:00:00"
+  },
+  {
+    "id": "cus_009",
+    "name": "Imani Okonkwo",
+    "email": "imani.okonkwo@clients.example",
+    "plan": "pro",
+    "region": "us-west-2",
+    "created_at": "2025-03-19T00:00:00"
+  },
+  {
+    "id": "cus_010",
+    "name": "Jonas Berg",
+    "email": "jonas.berg@clients.example",
+    "plan": "enterprise",
+    "region": "eu-west-1",
+    "created_at": "2025-03-26T00:00:00"
+  },
+  {
+    "id": "cus_011",
+    "name": "Kira Novak",
+    "email": "kira.novak@clients.example",
+    "plan": "starter",
+    "region": "ap-south-1",
+    "created_at": "2025-04-02T00:00:00"
+  },
+  {
+    "id": "cus_012",
+    "name": "Luis Ortega",
+    "email": "luis.ortega@clients.example",
+    "plan": "pro",
+    "region": "us-east-1",
+    "created_at": "2025-04-09T00:00:00"
+  },
+  {
+    "id": "cus_013",
+    "name": "Maya Singh",
+    "email": "maya.singh@clients.example",
+    "plan": "starter",
+    "region": "us-west-2",
+    "created_at": "2025-04-16T00:00:00"
+  },
+  {
+    "id": "cus_014",
+    "name": "Noah Keller",
+    "email": "noah.keller@clients.example",
+    "plan": "pro",
+    "region": "eu-west-1",
+    "created_at": "2025-04-23T00:00:00"
+  },
+  {
+    "id": "cus_015",
+    "name": "Olivia Chen",
+    "email": "olivia.chen@clients.example",
+    "plan": "pro",
+    "region": "ap-south-1",
+    "created_at": "2025-04-30T00:00:00"
+  },
+  {
+    "id": "cus_016",
+    "name": "Priya Nair",
+    "email": "priya.nair@clients.example",
+    "plan": "pro",
+    "region": "us-east-1",
+    "created_at": "2025-05-07T00:00:00"
+  },
+  {
+    "id": "cus_017",
+    "name": "Quinn Adler",
+    "email": "quinn.adler@clients.example",
+    "plan": "starter",
+    "region": "us-west-2",
+    "created_at": "2025-05-14T00:00:00"
+  },
+  {
+    "id": "cus_018",
+    "name": "Ravi Mehta",
+    "email": "ravi.mehta@clients.example",
+    "plan": "pro",
+    "region": "eu-west-1",
+    "created_at": "2025-05-21T00:00:00"
+  },
+  {
+    "id": "cus_019",
+    "name": "Sofia Lind",
+    "email": "sofia.lind@clients.example",
+    "plan": "starter",
+    "region": "ap-south-1",
+    "created_at": "2025-05-28T00:00:00"
+  },
+  {
+    "id": "cus_020",
+    "name": "Theo Marin",
+    "email": "theo.marin@clients.example",
+    "plan": "enterprise",
+    "region": "us-east-1",
+    "created_at": "2025-06-04T00:00:00"
+  },
+  {
+    "id": "cus_021",
+    "name": "Uma Desai",
+    "email": "uma.desai@clients.example",
+    "plan": "pro",
+    "region": "us-west-2",
+    "created_at": "2025-06-11T00:00:00"
+  },
+  {
+    "id": "cus_022",
+    "name": "Viktor Petrov",
+    "email": "viktor.petrov@clients.example",
+    "plan": "pro",
+    "region": "eu-west-1",
+    "created_at": "2025-06-18T00:00:00"
+  },
+  {
+    "id": "cus_023",
+    "name": "Willa Frost",
+    "email": "willa.frost@clients.example",
+    "plan": "starter",
+    "region": "ap-south-1",
+    "created_at": "2025-06-25T00:00:00"
+  },
+  {
+    "id": "cus_024",
+    "name": "Xander Cole",
+    "email": "xander.cole@clients.example",
+    "plan": "pro",
+    "region": "us-east-1",
+    "created_at": "2025-07-02T00:00:00"
+  },
+  {
+    "id": "cus_025",
+    "name": "Yara Haddad",
+    "email": "yara.haddad@clients.example",
+    "plan": "starter",
+    "region": "us-west-2",
+    "created_at": "2025-07-09T00:00:00"
+  },
+  {
+    "id": "cus_026",
+    "name": "Zane Brooks",
+    "email": "zane.brooks@clients.example",
+    "plan": "pro",
+    "region": "eu-west-1",
+    "created_at": "2025-07-16T00:00:00"
+  },
+  {
+    "id": "cus_027",
+    "name": "Amelia Cruz",
+    "email": "amelia.cruz@clients.example",
+    "plan": "pro",
+    "region": "ap-south-1",
+    "created_at": "2025-07-23T00:00:00"
+  },
+  {
+    "id": "cus_028",
+    "name": "Bodhi Sen",
+    "email": "bodhi.sen@clients.example",
+    "plan": "pro",
+    "region": "us-east-1",
+    "created_at": "2025-07-30T00:00:00"
+  },
+  {
+    "id": "cus_029",
+    "name": "Celine Dubois",
+    "email": "celine.dubois@clients.example",
+    "plan": "starter",
+    "region": "us-west-2",
+    "created_at": "2025-08-06T00:00:00"
+  },
+  {
+    "id": "cus_030",
+    "name": "Darius Webb",
+    "email": "darius.webb@clients.example",
+    "plan": "enterprise",
+    "region": "eu-west-1",
+    "created_at": "2025-08-13T00:00:00"
+  },
+  {
+    "id": "cus_031",
+    "name": "Eve Laurent",
+    "email": "eve.laurent@clients.example",
+    "plan": "starter",
+    "region": "ap-south-1",
+    "created_at": "2025-08-20T00:00:00"
+  },
+  {
+    "id": "cus_032",
+    "name": "Felix Ortiz",
+    "email": "felix.ortiz@clients.example",
+    "plan": "pro",
+    "region": "us-east-1",
+    "created_at": "2025-08-27T00:00:00"
+  },
+  {
+    "id": "cus_033",
+    "name": "Gia Patel",
+    "email": "gia.patel@clients.example",
+    "plan": "pro",
+    "region": "us-west-2",
+    "created_at": "2025-09-03T00:00:00"
+  },
+  {
+    "id": "cus_034",
+    "name": "Hugo Almeida",
+    "email": "hugo.almeida@clients.example",
+    "plan": "pro",
+    "region": "eu-west-1",
+    "created_at": "2025-09-10T00:00:00"
+  },
+  {
+    "id": "cus_035",
+    "name": "Isla Grant",
+    "email": "isla.grant@clients.example",
+    "plan": "starter",
+    "region": "ap-south-1",
+    "created_at": "2025-09-17T00:00:00"
+  },
+  {
+    "id": "cus_036",
+    "name": "Jules Moreau",
+    "email": "jules.moreau@clients.example",
+    "plan": "pro",
+    "region": "us-east-1",
+    "created_at": "2025-09-24T00:00:00"
+  },
+  {
+    "id": "cus_037",
+    "name": "Keiko Mori",
+    "email": "keiko.mori@clients.example",
+    "plan": "starter",
+    "region": "us-west-2",
+    "created_at": "2025-10-01T00:00:00"
+  },
+  {
+    "id": "cus_038",
+    "name": "Liam Byrne",
+    "email": "liam.byrne@clients.example",
+    "plan": "pro",
+    "region": "eu-west-1",
+    "created_at": "2025-10-08T00:00:00"
+  },
+  {
+    "id": "cus_039",
+    "name": "Mina Cho",
+    "email": "mina.cho@clients.example",
+    "plan": "pro",
+    "region": "ap-south-1",
+    "created_at": "2025-10-15T00:00:00"
+  },
+  {
+    "id": "cus_040",
+    "name": "Nico Alvarez",
+    "email": "nico.alvarez@clients.example",
+    "plan": "enterprise",
+    "region": "us-east-1",
+    "created_at": "2025-10-22T00:00:00"
+  }
+]

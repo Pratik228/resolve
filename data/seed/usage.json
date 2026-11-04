@@ -1,0 +1,2472 @@
+[
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-01",
+    "api_calls": 8010,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-02",
+    "api_calls": 8110,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-03",
+    "api_calls": 8210,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-04",
+    "api_calls": 8310,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-05",
+    "api_calls": 8410,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-06",
+    "api_calls": 8510,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-07",
+    "api_calls": 8610,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-08",
+    "api_calls": 8710,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-09",
+    "api_calls": 8810,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_001",
+    "date": "2026-10-10",
+    "api_calls": 8910,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-01",
+    "api_calls": 8020,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-02",
+    "api_calls": 8120,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-03",
+    "api_calls": 8220,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-04",
+    "api_calls": 8320,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-05",
+    "api_calls": 8420,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-06",
+    "api_calls": 8520,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-07",
+    "api_calls": 8620,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-08",
+    "api_calls": 8720,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-09",
+    "api_calls": 8820,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_002",
+    "date": "2026-10-10",
+    "api_calls": 8920,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-01",
+    "api_calls": 8030,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-02",
+    "api_calls": 8130,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-03",
+    "api_calls": 8230,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-04",
+    "api_calls": 8330,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-05",
+    "api_calls": 8430,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-06",
+    "api_calls": 8530,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-07",
+    "api_calls": 8630,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-08",
+    "api_calls": 8730,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-09",
+    "api_calls": 8830,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_003",
+    "date": "2026-10-10",
+    "api_calls": 8930,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-01",
+    "api_calls": 8040,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-02",
+    "api_calls": 8140,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-03",
+    "api_calls": 8240,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-04",
+    "api_calls": 8340,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-05",
+    "api_calls": 8440,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-06",
+    "api_calls": 8540,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-07",
+    "api_calls": 8640,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-08",
+    "api_calls": 8740,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-09",
+    "api_calls": 8840,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_004",
+    "date": "2026-10-10",
+    "api_calls": 8940,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-01",
+    "api_calls": 8050,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-02",
+    "api_calls": 8150,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-03",
+    "api_calls": 8250,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-04",
+    "api_calls": 8350,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-05",
+    "api_calls": 8450,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-06",
+    "api_calls": 8550,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-07",
+    "api_calls": 8650,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-08",
+    "api_calls": 8750,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-09",
+    "api_calls": 8850,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_005",
+    "date": "2026-10-10",
+    "api_calls": 8950,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-01",
+    "api_calls": 8060,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-02",
+    "api_calls": 8160,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-03",
+    "api_calls": 8260,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-04",
+    "api_calls": 8360,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-05",
+    "api_calls": 8460,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-06",
+    "api_calls": 8560,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-07",
+    "api_calls": 8660,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-08",
+    "api_calls": 8760,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-09",
+    "api_calls": 8860,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_006",
+    "date": "2026-10-10",
+    "api_calls": 8960,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-01",
+    "api_calls": 8070,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-02",
+    "api_calls": 8170,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-03",
+    "api_calls": 8270,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-04",
+    "api_calls": 8370,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-05",
+    "api_calls": 8470,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-06",
+    "api_calls": 8570,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-07",
+    "api_calls": 8670,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-08",
+    "api_calls": 8770,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-09",
+    "api_calls": 8870,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_007",
+    "date": "2026-10-10",
+    "api_calls": 8970,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-01",
+    "api_calls": 8080,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-02",
+    "api_calls": 8180,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-03",
+    "api_calls": 8280,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-04",
+    "api_calls": 8380,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-05",
+    "api_calls": 8480,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-06",
+    "api_calls": 8580,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-07",
+    "api_calls": 8680,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-08",
+    "api_calls": 8780,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-09",
+    "api_calls": 8880,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_008",
+    "date": "2026-10-10",
+    "api_calls": 8980,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-01",
+    "api_calls": 8090,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-02",
+    "api_calls": 8190,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-03",
+    "api_calls": 8290,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-04",
+    "api_calls": 8390,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-05",
+    "api_calls": 8490,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-06",
+    "api_calls": 8590,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-07",
+    "api_calls": 8690,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-08",
+    "api_calls": 8790,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-09",
+    "api_calls": 8890,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_009",
+    "date": "2026-10-10",
+    "api_calls": 8990,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-01",
+    "api_calls": 8100,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-02",
+    "api_calls": 8200,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-03",
+    "api_calls": 8300,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-04",
+    "api_calls": 8400,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-05",
+    "api_calls": 8500,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-06",
+    "api_calls": 8600,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-07",
+    "api_calls": 8700,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-08",
+    "api_calls": 8800,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-09",
+    "api_calls": 8900,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_010",
+    "date": "2026-10-10",
+    "api_calls": 9000,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-01",
+    "api_calls": 8110,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-02",
+    "api_calls": 8210,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-03",
+    "api_calls": 8310,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-04",
+    "api_calls": 8410,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-05",
+    "api_calls": 8510,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-06",
+    "api_calls": 8610,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-07",
+    "api_calls": 8710,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-08",
+    "api_calls": 8810,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-09",
+    "api_calls": 8910,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_011",
+    "date": "2026-10-10",
+    "api_calls": 9010,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-01",
+    "api_calls": 8120,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-02",
+    "api_calls": 8220,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-03",
+    "api_calls": 8320,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-04",
+    "api_calls": 8420,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-05",
+    "api_calls": 8520,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-06",
+    "api_calls": 8620,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-07",
+    "api_calls": 8720,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-08",
+    "api_calls": 8820,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-09",
+    "api_calls": 8920,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_012",
+    "date": "2026-10-10",
+    "api_calls": 9020,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-01",
+    "api_calls": 8130,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-02",
+    "api_calls": 8230,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-03",
+    "api_calls": 8330,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-04",
+    "api_calls": 8430,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-05",
+    "api_calls": 8530,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-06",
+    "api_calls": 8630,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-07",
+    "api_calls": 8730,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-08",
+    "api_calls": 8830,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-09",
+    "api_calls": 8930,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_013",
+    "date": "2026-10-10",
+    "api_calls": 9030,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-01",
+    "api_calls": 8140,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-02",
+    "api_calls": 8240,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-03",
+    "api_calls": 8340,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-04",
+    "api_calls": 8440,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-05",
+    "api_calls": 8540,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-06",
+    "api_calls": 8640,
+    "errors_by_code": {
+      "NW-4031": 47
+    }
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-07",
+    "api_calls": 8740,
+    "errors_by_code": {
+      "NW-4031": 48
+    }
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-08",
+    "api_calls": 8840,
+    "errors_by_code": {
+      "NW-4031": 49
+    }
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-09",
+    "api_calls": 8940,
+    "errors_by_code": {
+      "NW-4031": 50
+    }
+  },
+  {
+    "customer_id": "cus_014",
+    "date": "2026-10-10",
+    "api_calls": 9040,
+    "errors_by_code": {
+      "NW-4031": 51
+    }
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-01",
+    "api_calls": 8150,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-02",
+    "api_calls": 8250,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-03",
+    "api_calls": 8350,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-04",
+    "api_calls": 8450,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-05",
+    "api_calls": 8550,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-06",
+    "api_calls": 8650,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-07",
+    "api_calls": 8750,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-08",
+    "api_calls": 8850,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-09",
+    "api_calls": 8950,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_015",
+    "date": "2026-10-10",
+    "api_calls": 9050,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-01",
+    "api_calls": 8160,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-02",
+    "api_calls": 8260,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-03",
+    "api_calls": 8360,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-04",
+    "api_calls": 8460,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-05",
+    "api_calls": 8560,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-06",
+    "api_calls": 8660,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-07",
+    "api_calls": 8760,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-08",
+    "api_calls": 8860,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-09",
+    "api_calls": 8960,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_016",
+    "date": "2026-10-10",
+    "api_calls": 9060,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-01",
+    "api_calls": 8170,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-02",
+    "api_calls": 8270,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-03",
+    "api_calls": 8370,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-04",
+    "api_calls": 8470,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-05",
+    "api_calls": 8570,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-06",
+    "api_calls": 8670,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-07",
+    "api_calls": 8770,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-08",
+    "api_calls": 8870,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-09",
+    "api_calls": 8970,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_017",
+    "date": "2026-10-10",
+    "api_calls": 9070,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-01",
+    "api_calls": 8180,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-02",
+    "api_calls": 8280,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-03",
+    "api_calls": 8380,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-04",
+    "api_calls": 8480,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-05",
+    "api_calls": 8580,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-06",
+    "api_calls": 8680,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-07",
+    "api_calls": 8780,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-08",
+    "api_calls": 8880,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-09",
+    "api_calls": 8980,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_018",
+    "date": "2026-10-10",
+    "api_calls": 9080,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-01",
+    "api_calls": 8190,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-02",
+    "api_calls": 8290,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-03",
+    "api_calls": 8390,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-04",
+    "api_calls": 8490,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-05",
+    "api_calls": 8590,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-06",
+    "api_calls": 8690,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-07",
+    "api_calls": 8790,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-08",
+    "api_calls": 8890,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-09",
+    "api_calls": 8990,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_019",
+    "date": "2026-10-10",
+    "api_calls": 9090,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-01",
+    "api_calls": 8200,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-02",
+    "api_calls": 8300,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-03",
+    "api_calls": 8400,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-04",
+    "api_calls": 8500,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-05",
+    "api_calls": 8600,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-06",
+    "api_calls": 8700,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-07",
+    "api_calls": 8800,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-08",
+    "api_calls": 8900,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-09",
+    "api_calls": 9000,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_020",
+    "date": "2026-10-10",
+    "api_calls": 9100,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-01",
+    "api_calls": 8210,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-02",
+    "api_calls": 8310,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-03",
+    "api_calls": 8410,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-04",
+    "api_calls": 8510,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-05",
+    "api_calls": 8610,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-06",
+    "api_calls": 8710,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-07",
+    "api_calls": 8810,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-08",
+    "api_calls": 8910,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-09",
+    "api_calls": 9010,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_021",
+    "date": "2026-10-10",
+    "api_calls": 9110,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-01",
+    "api_calls": 8220,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-02",
+    "api_calls": 8320,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-03",
+    "api_calls": 8420,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-04",
+    "api_calls": 8520,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-05",
+    "api_calls": 8620,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-06",
+    "api_calls": 8720,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-07",
+    "api_calls": 8820,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-08",
+    "api_calls": 8920,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-09",
+    "api_calls": 9020,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_022",
+    "date": "2026-10-10",
+    "api_calls": 9120,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-01",
+    "api_calls": 8230,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-02",
+    "api_calls": 8330,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-03",
+    "api_calls": 8430,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-04",
+    "api_calls": 8530,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-05",
+    "api_calls": 8630,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-06",
+    "api_calls": 8730,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-07",
+    "api_calls": 8830,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-08",
+    "api_calls": 8930,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-09",
+    "api_calls": 9030,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_023",
+    "date": "2026-10-10",
+    "api_calls": 9130,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-01",
+    "api_calls": 8240,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-02",
+    "api_calls": 8340,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-03",
+    "api_calls": 8440,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-04",
+    "api_calls": 8540,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-05",
+    "api_calls": 8640,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-06",
+    "api_calls": 8740,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-07",
+    "api_calls": 8840,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-08",
+    "api_calls": 8940,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-09",
+    "api_calls": 9040,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_024",
+    "date": "2026-10-10",
+    "api_calls": 9140,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-01",
+    "api_calls": 8250,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-02",
+    "api_calls": 8350,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-03",
+    "api_calls": 8450,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-04",
+    "api_calls": 8550,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-05",
+    "api_calls": 8650,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-06",
+    "api_calls": 8750,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-07",
+    "api_calls": 8850,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-08",
+    "api_calls": 8950,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-09",
+    "api_calls": 9050,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_025",
+    "date": "2026-10-10",
+    "api_calls": 9150,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-01",
+    "api_calls": 8260,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-02",
+    "api_calls": 8360,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-03",
+    "api_calls": 8460,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-04",
+    "api_calls": 8560,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-05",
+    "api_calls": 8660,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-06",
+    "api_calls": 8760,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-07",
+    "api_calls": 8860,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-08",
+    "api_calls": 8960,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-09",
+    "api_calls": 9060,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_026",
+    "date": "2026-10-10",
+    "api_calls": 9160,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-01",
+    "api_calls": 8270,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-02",
+    "api_calls": 8370,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-03",
+    "api_calls": 8470,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-04",
+    "api_calls": 8570,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-05",
+    "api_calls": 8670,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-06",
+    "api_calls": 8770,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-07",
+    "api_calls": 8870,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-08",
+    "api_calls": 8970,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-09",
+    "api_calls": 9070,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_027",
+    "date": "2026-10-10",
+    "api_calls": 9170,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-01",
+    "api_calls": 8280,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-02",
+    "api_calls": 8380,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-03",
+    "api_calls": 8480,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-04",
+    "api_calls": 8580,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-05",
+    "api_calls": 8680,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-06",
+    "api_calls": 8780,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-07",
+    "api_calls": 8880,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-08",
+    "api_calls": 8980,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-09",
+    "api_calls": 9080,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_028",
+    "date": "2026-10-10",
+    "api_calls": 9180,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-01",
+    "api_calls": 8290,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-02",
+    "api_calls": 8390,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-03",
+    "api_calls": 8490,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-04",
+    "api_calls": 8590,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-05",
+    "api_calls": 8690,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-06",
+    "api_calls": 8790,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-07",
+    "api_calls": 8890,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-08",
+    "api_calls": 8990,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-09",
+    "api_calls": 9090,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_029",
+    "date": "2026-10-10",
+    "api_calls": 9190,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-01",
+    "api_calls": 8300,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-02",
+    "api_calls": 8400,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-03",
+    "api_calls": 8500,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-04",
+    "api_calls": 8600,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-05",
+    "api_calls": 8700,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-06",
+    "api_calls": 8800,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-07",
+    "api_calls": 8900,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-08",
+    "api_calls": 9000,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-09",
+    "api_calls": 9100,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_030",
+    "date": "2026-10-10",
+    "api_calls": 9200,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-01",
+    "api_calls": 8310,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-02",
+    "api_calls": 8410,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-03",
+    "api_calls": 8510,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-04",
+    "api_calls": 8610,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-05",
+    "api_calls": 8710,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-06",
+    "api_calls": 8810,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-07",
+    "api_calls": 8910,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-08",
+    "api_calls": 9010,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-09",
+    "api_calls": 9110,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_031",
+    "date": "2026-10-10",
+    "api_calls": 9210,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-01",
+    "api_calls": 8320,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-02",
+    "api_calls": 8420,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-03",
+    "api_calls": 8520,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-04",
+    "api_calls": 8620,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-05",
+    "api_calls": 8720,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-06",
+    "api_calls": 8820,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-07",
+    "api_calls": 8920,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-08",
+    "api_calls": 9020,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-09",
+    "api_calls": 9120,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_032",
+    "date": "2026-10-10",
+    "api_calls": 9220,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-01",
+    "api_calls": 8330,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-02",
+    "api_calls": 8430,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-03",
+    "api_calls": 8530,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-04",
+    "api_calls": 8630,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-05",
+    "api_calls": 8730,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-06",
+    "api_calls": 8830,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-07",
+    "api_calls": 8930,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-08",
+    "api_calls": 9030,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-09",
+    "api_calls": 9130,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_033",
+    "date": "2026-10-10",
+    "api_calls": 9230,
+    "errors_by_code": {
+      "NW-4032": 3
+    }
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-01",
+    "api_calls": 8340,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-02",
+    "api_calls": 8440,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-03",
+    "api_calls": 8540,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-04",
+    "api_calls": 8640,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-05",
+    "api_calls": 8740,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-06",
+    "api_calls": 8840,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-07",
+    "api_calls": 8940,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-08",
+    "api_calls": 9040,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-09",
+    "api_calls": 9140,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_034",
+    "date": "2026-10-10",
+    "api_calls": 9240,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-01",
+    "api_calls": 8350,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-02",
+    "api_calls": 8450,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-03",
+    "api_calls": 8550,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-04",
+    "api_calls": 8650,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-05",
+    "api_calls": 8750,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-06",
+    "api_calls": 8850,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-07",
+    "api_calls": 8950,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-08",
+    "api_calls": 9050,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-09",
+    "api_calls": 9150,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_035",
+    "date": "2026-10-10",
+    "api_calls": 9250,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-01",
+    "api_calls": 8360,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-02",
+    "api_calls": 8460,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-03",
+    "api_calls": 8560,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-04",
+    "api_calls": 8660,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-05",
+    "api_calls": 8760,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-06",
+    "api_calls": 8860,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-07",
+    "api_calls": 8960,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-08",
+    "api_calls": 9060,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-09",
+    "api_calls": 9160,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_036",
+    "date": "2026-10-10",
+    "api_calls": 9260,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-01",
+    "api_calls": 8370,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-02",
+    "api_calls": 8470,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-03",
+    "api_calls": 8570,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-04",
+    "api_calls": 8670,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-05",
+    "api_calls": 8770,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-06",
+    "api_calls": 8870,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-07",
+    "api_calls": 8970,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-08",
+    "api_calls": 9070,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-09",
+    "api_calls": 9170,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_037",
+    "date": "2026-10-10",
+    "api_calls": 9270,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-01",
+    "api_calls": 8380,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-02",
+    "api_calls": 8480,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-03",
+    "api_calls": 8580,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-04",
+    "api_calls": 8680,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-05",
+    "api_calls": 8780,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-06",
+    "api_calls": 8880,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-07",
+    "api_calls": 8980,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-08",
+    "api_calls": 9080,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-09",
+    "api_calls": 9180,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_038",
+    "date": "2026-10-10",
+    "api_calls": 9280,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-01",
+    "api_calls": 8390,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-02",
+    "api_calls": 8490,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-03",
+    "api_calls": 8590,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-04",
+    "api_calls": 8690,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-05",
+    "api_calls": 8790,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-06",
+    "api_calls": 8890,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-07",
+    "api_calls": 8990,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-08",
+    "api_calls": 9090,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-09",
+    "api_calls": 9190,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_039",
+    "date": "2026-10-10",
+    "api_calls": 9290,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-01",
+    "api_calls": 8400,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-02",
+    "api_calls": 8500,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-03",
+    "api_calls": 8600,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-04",
+    "api_calls": 8700,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-05",
+    "api_calls": 8800,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-06",
+    "api_calls": 8900,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-07",
+    "api_calls": 9000,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-08",
+    "api_calls": 9100,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-09",
+    "api_calls": 9200,
+    "errors_by_code": {}
+  },
+  {
+    "customer_id": "cus_040",
+    "date": "2026-10-10",
+    "api_calls": 9300,
+    "errors_by_code": {}
+  }
+]

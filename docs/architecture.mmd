@@ -1,0 +1,30 @@
+flowchart TB
+  subgraph web [Next.js]
+    Inbox --> Trace
+    Inbox --> Approvals
+    Inbox --> Evals
+  end
+  subgraph api [FastAPI]
+    POST[POST /tickets]
+    SSE[GET /tickets/id/stream]
+    AP[POST /approvals/id]
+  end
+  subgraph graph [11-node graph]
+    redact --> scan[injection_scan]
+    scan --> classify
+    classify --> plan
+    plan --> retrieve
+    plan --> tools
+    retrieve --> policy[policy_gate]
+    tools --> policy
+    policy --> draft --> validate --> approval --> finalize
+  end
+  subgraph data [Facts]
+    PG[(Postgres / SQLite)]
+    KB[(Hybrid index)]
+  end
+  web --> api --> graph
+  tools --> PG
+  retrieve --> KB
+  policy --> PY[engine.py]
+  finalize --> PG

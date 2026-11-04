@@ -1,0 +1,1496 @@
+[
+  {
+    "id": "inv_001_0",
+    "customer_id": "cus_001",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-02T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_001_1",
+    "customer_id": "cus_001",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-01T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_001_2",
+    "customer_id": "cus_001",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-01T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_001_3",
+    "customer_id": "cus_001",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-31T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_002_0",
+    "customer_id": "cus_002",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-03T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_002_1",
+    "customer_id": "cus_002",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-02T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_002_2",
+    "customer_id": "cus_002",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-02T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_002_3",
+    "customer_id": "cus_002",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-01T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_002_4",
+    "customer_id": "cus_002",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-31T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_003_0",
+    "customer_id": "cus_003",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-04T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_003_1",
+    "customer_id": "cus_003",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-03T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_003_2",
+    "customer_id": "cus_003",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-03T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_004_0",
+    "customer_id": "cus_004",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-05T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_004_1",
+    "customer_id": "cus_004",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-04T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_004_2",
+    "customer_id": "cus_004",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-04T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_004_3",
+    "customer_id": "cus_004",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-03T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_005_0",
+    "customer_id": "cus_005",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-06T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_005_1",
+    "customer_id": "cus_005",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-05T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_005_2",
+    "customer_id": "cus_005",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-05T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_005_3",
+    "customer_id": "cus_005",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-04T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_005_4",
+    "customer_id": "cus_005",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-09-03T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_006_0",
+    "customer_id": "cus_006",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-07T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_006_1",
+    "customer_id": "cus_006",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-06T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_006_2",
+    "customer_id": "cus_006",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-06T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_007_0",
+    "customer_id": "cus_007",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-08T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_007_1",
+    "customer_id": "cus_007",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-07T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_007_2",
+    "customer_id": "cus_007",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-07T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_007_3",
+    "customer_id": "cus_007",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-06T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_008_0",
+    "customer_id": "cus_008",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-09T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_008_1",
+    "customer_id": "cus_008",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-08T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_008_2",
+    "customer_id": "cus_008",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-08T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_008_3",
+    "customer_id": "cus_008",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-07T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_008_4",
+    "customer_id": "cus_008",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-09-06T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_009_0",
+    "customer_id": "cus_009",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-10T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_009_1",
+    "customer_id": "cus_009",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-09T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_009_2",
+    "customer_id": "cus_009",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-09T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_010_0",
+    "customer_id": "cus_010",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-05-11T00:00:00",
+    "description": "enterprise monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_010_1",
+    "customer_id": "cus_010",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-06-10T00:00:00",
+    "description": "enterprise monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_010_2",
+    "customer_id": "cus_010",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-07-10T00:00:00",
+    "description": "enterprise monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_010_3",
+    "customer_id": "cus_010",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-08-09T00:00:00",
+    "description": "enterprise monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_011_0",
+    "customer_id": "cus_011",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-12T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_011_1",
+    "customer_id": "cus_011",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-11T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_011_2",
+    "customer_id": "cus_011",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-11T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_011_3",
+    "customer_id": "cus_011",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-10T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_011_4",
+    "customer_id": "cus_011",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-09-09T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_012_0",
+    "customer_id": "cus_012",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-13T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_012_1",
+    "customer_id": "cus_012",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-12T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_012_2",
+    "customer_id": "cus_012",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-12T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_013_0",
+    "customer_id": "cus_013",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-14T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_013_1",
+    "customer_id": "cus_013",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-13T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_013_2",
+    "customer_id": "cus_013",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-13T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_013_3",
+    "customer_id": "cus_013",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-12T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_014_0",
+    "customer_id": "cus_014",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-15T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_014_1",
+    "customer_id": "cus_014",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-14T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_014_2",
+    "customer_id": "cus_014",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-14T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_014_3",
+    "customer_id": "cus_014",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-13T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_014_4",
+    "customer_id": "cus_014",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-09-12T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_015_0",
+    "customer_id": "cus_015",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-16T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_015_1",
+    "customer_id": "cus_015",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-15T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_015_2",
+    "customer_id": "cus_015",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-15T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_016_0",
+    "customer_id": "cus_016",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-17T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_016_1",
+    "customer_id": "cus_016",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-16T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_016_2",
+    "customer_id": "cus_016",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-16T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_016_3",
+    "customer_id": "cus_016",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-15T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_017_0",
+    "customer_id": "cus_017",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-18T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_017_1",
+    "customer_id": "cus_017",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-17T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_017_2",
+    "customer_id": "cus_017",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-17T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_017_3",
+    "customer_id": "cus_017",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-16T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_017_4",
+    "customer_id": "cus_017",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-09-15T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_018_0",
+    "customer_id": "cus_018",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-19T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_018_1",
+    "customer_id": "cus_018",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-18T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_018_2",
+    "customer_id": "cus_018",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-18T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_019_0",
+    "customer_id": "cus_019",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-20T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_019_1",
+    "customer_id": "cus_019",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-19T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_019_2",
+    "customer_id": "cus_019",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-19T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_019_3",
+    "customer_id": "cus_019",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-18T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_020_0",
+    "customer_id": "cus_020",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-05-21T00:00:00",
+    "description": "enterprise annual fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_020_1",
+    "customer_id": "cus_020",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-06-20T00:00:00",
+    "description": "enterprise annual fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_020_2",
+    "customer_id": "cus_020",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-07-20T00:00:00",
+    "description": "enterprise annual fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_020_3",
+    "customer_id": "cus_020",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-08-19T00:00:00",
+    "description": "enterprise annual fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_020_4",
+    "customer_id": "cus_020",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-09-18T00:00:00",
+    "description": "enterprise annual fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_021_0",
+    "customer_id": "cus_021",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-22T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_021_1",
+    "customer_id": "cus_021",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-21T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_021_2",
+    "customer_id": "cus_021",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-21T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_022_0",
+    "customer_id": "cus_022",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-23T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_022_1",
+    "customer_id": "cus_022",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-22T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_022_2",
+    "customer_id": "cus_022",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-22T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_022_3",
+    "customer_id": "cus_022",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-21T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_023_0",
+    "customer_id": "cus_023",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-24T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_023_1",
+    "customer_id": "cus_023",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-23T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_023_2",
+    "customer_id": "cus_023",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-23T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_023_3",
+    "customer_id": "cus_023",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-22T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_023_4",
+    "customer_id": "cus_023",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-09-21T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_024_0",
+    "customer_id": "cus_024",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-25T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_024_1",
+    "customer_id": "cus_024",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-24T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_024_2",
+    "customer_id": "cus_024",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-24T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_025_0",
+    "customer_id": "cus_025",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-26T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_025_1",
+    "customer_id": "cus_025",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-25T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_025_2",
+    "customer_id": "cus_025",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-25T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_025_3",
+    "customer_id": "cus_025",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-24T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_026_0",
+    "customer_id": "cus_026",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-27T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_026_1",
+    "customer_id": "cus_026",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-26T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_026_2",
+    "customer_id": "cus_026",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-26T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_026_3",
+    "customer_id": "cus_026",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-25T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_026_4",
+    "customer_id": "cus_026",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-09-24T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_027_0",
+    "customer_id": "cus_027",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-28T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_027_1",
+    "customer_id": "cus_027",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-27T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_027_2",
+    "customer_id": "cus_027",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-27T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_028_0",
+    "customer_id": "cus_028",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-05-29T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_028_1",
+    "customer_id": "cus_028",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-28T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_028_2",
+    "customer_id": "cus_028",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-28T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_028_3",
+    "customer_id": "cus_028",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-27T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_029_0",
+    "customer_id": "cus_029",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-05-30T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_029_1",
+    "customer_id": "cus_029",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-29T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_029_2",
+    "customer_id": "cus_029",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-29T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_029_3",
+    "customer_id": "cus_029",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-28T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_029_4",
+    "customer_id": "cus_029",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-09-27T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_030_0",
+    "customer_id": "cus_030",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-05-31T00:00:00",
+    "description": "enterprise monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_030_1",
+    "customer_id": "cus_030",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-06-30T00:00:00",
+    "description": "enterprise monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_030_2",
+    "customer_id": "cus_030",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-07-30T00:00:00",
+    "description": "enterprise monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_031_0",
+    "customer_id": "cus_031",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-01T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_031_1",
+    "customer_id": "cus_031",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-01T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_031_2",
+    "customer_id": "cus_031",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-31T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_031_3",
+    "customer_id": "cus_031",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-30T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_032_0",
+    "customer_id": "cus_032",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-02T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_032_1",
+    "customer_id": "cus_032",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-02T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_032_2",
+    "customer_id": "cus_032",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-01T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_032_3",
+    "customer_id": "cus_032",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-31T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_032_4",
+    "customer_id": "cus_032",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-09-30T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_033_0",
+    "customer_id": "cus_033",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-03T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_033_1",
+    "customer_id": "cus_033",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-03T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_033_2",
+    "customer_id": "cus_033",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-02T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_034_0",
+    "customer_id": "cus_034",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-04T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_034_1",
+    "customer_id": "cus_034",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-04T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_034_2",
+    "customer_id": "cus_034",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-03T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_034_3",
+    "customer_id": "cus_034",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-09-02T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_035_0",
+    "customer_id": "cus_035",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-05T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_035_1",
+    "customer_id": "cus_035",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-05T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_035_2",
+    "customer_id": "cus_035",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-04T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_035_3",
+    "customer_id": "cus_035",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-09-03T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_035_4",
+    "customer_id": "cus_035",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-10-03T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_036_0",
+    "customer_id": "cus_036",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-06T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_036_1",
+    "customer_id": "cus_036",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-06T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_036_2",
+    "customer_id": "cus_036",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-05T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_037_0",
+    "customer_id": "cus_037",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-06-07T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_037_1",
+    "customer_id": "cus_037",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-07-07T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_037_2",
+    "customer_id": "cus_037",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-08-06T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_037_3",
+    "customer_id": "cus_037",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-09-05T00:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_038_0",
+    "customer_id": "cus_038",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-08T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_038_1",
+    "customer_id": "cus_038",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-08T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_038_2",
+    "customer_id": "cus_038",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-07T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_038_3",
+    "customer_id": "cus_038",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-09-06T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_038_4",
+    "customer_id": "cus_038",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-10-06T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_039_0",
+    "customer_id": "cus_039",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-06-09T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_039_1",
+    "customer_id": "cus_039",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-07-09T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_039_2",
+    "customer_id": "cus_039",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-08-08T00:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_040_0",
+    "customer_id": "cus_040",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-06-10T00:00:00",
+    "description": "enterprise annual fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_040_1",
+    "customer_id": "cus_040",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-07-10T00:00:00",
+    "description": "enterprise annual fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_040_2",
+    "customer_id": "cus_040",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-08-09T00:00:00",
+    "description": "enterprise annual fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_040_3",
+    "customer_id": "cus_040",
+    "amount_usd": 299.0,
+    "status": "paid",
+    "issued_at": "2026-09-08T00:00:00",
+    "description": "enterprise annual fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_dup_014_a",
+    "customer_id": "cus_014",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-10-03T09:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_dup_014_b",
+    "customer_id": "cus_014",
+    "amount_usd": 49.0,
+    "status": "paid",
+    "issued_at": "2026-10-03T09:00:00",
+    "description": "pro monthly fee",
+    "duplicate_of": "inv_dup_014_a"
+  },
+  {
+    "id": "inv_dup_022_a",
+    "customer_id": "cus_022",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-09-12T11:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_dup_022_b",
+    "customer_id": "cus_022",
+    "amount_usd": 29.0,
+    "status": "paid",
+    "issued_at": "2026-09-12T11:00:00",
+    "description": "starter monthly fee",
+    "duplicate_of": "inv_dup_022_a"
+  },
+  {
+    "id": "inv_dup_008_a",
+    "customer_id": "cus_008",
+    "amount_usd": 900.0,
+    "status": "paid",
+    "issued_at": "2026-10-01T16:00:00",
+    "description": "professional services",
+    "duplicate_of": null
+  },
+  {
+    "id": "inv_dup_008_b",
+    "customer_id": "cus_008",
+    "amount_usd": 900.0,
+    "status": "paid",
+    "issued_at": "2026-10-01T16:00:00",
+    "description": "professional services",
+    "duplicate_of": "inv_dup_008_a"
+  }
+]

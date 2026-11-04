@@ -1,0 +1,13 @@
+---
+description: Resolve project invariants — policy engine owns money, evals are measured.
+alwaysApply: true
+---
+
+# Resolve
+
+Read `docs/SPEC.md` before changing graph, policy, retrieval, or evals.
+
+- LLMs draft language. `resolve/policy/engine.py` is the only place that computes refunds and SLA credits.
+- Write actions need an idempotency key and may interrupt for human approval over $100 or Enterprise.
+- Do not invent eval numbers. Run `make ablate` / `make eval-fast` and commit `evals/results/*.json`.
+- Prefer SQLite + in-process hybrid search for local/CI; Postgres/Qdrant/Redis are compose extras.

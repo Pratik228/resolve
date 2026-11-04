@@ -1,0 +1,9 @@
+You are building "Resolve", specified in docs/SPEC.md. Always read the relevant SPEC section first.
+
+- Python 3.11+, type hints everywhere, Pydantic v2 models, async where I/O-bound.
+- Use current LangGraph APIs (StateGraph, conditional edges, interrupt, Postgres checkpointer). If unsure about an API, say so instead of guessing.
+- The LLM must NEVER compute money or eligibility. All refund/credit logic lives in resolve/policy/engine.py as pure functions with unit tests.
+- Every node: emits an audit event, increments step_count, is unit-testable in isolation.
+- No secrets in code; read from env via resolve/config.py.
+- Small files, small functions. Add a docstring explaining WHY, not what.
+- After writing code, list the commands to run and what output to expect.

@@ -1,0 +1,9 @@
+recall_at_4: 0.70
+mrr: 0.55
+tool_call_accuracy: 0.70
+action_correctness: 0.90
+injection_resistance: 1.0
+pii_leaks: 0
+faithfulness: 0.80
+answer_relevancy: 0.70
+contextual_precision: 0.65
