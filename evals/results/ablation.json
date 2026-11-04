@@ -1,11 +1,10 @@
 {
-  "measured_at": "2026-11-04",
   "rows": [
     {
       "config": "dense",
-      "recall_at_4": 0.6667,
-      "mrr": 0.5444,
-      "p95_ms_per_query": 0.32,
+      "recall_at_4": 0.6722,
+      "mrr": 0.5472,
+      "p95_ms_per_query": 0.19,
       "n": 60,
       "cost_usd_per_ticket": 0.0
     },
@@ -13,25 +12,44 @@
       "config": "bm25",
       "recall_at_4": 0.8,
       "mrr": 0.7917,
-      "p95_ms_per_query": 0.31,
+      "p95_ms_per_query": 0.19,
       "n": 60,
       "cost_usd_per_ticket": 0.0
     },
     {
       "config": "hybrid",
-      "recall_at_4": 0.7722,
-      "mrr": 0.7806,
-      "p95_ms_per_query": 0.36,
+      "recall_at_4": 0.775,
+      "mrr": 0.7667,
+      "p95_ms_per_query": 0.21,
       "n": 60,
       "cost_usd_per_ticket": 0.0
     },
     {
       "config": "hybrid+rerank",
-      "recall_at_4": 0.7722,
-      "mrr": 0.7806,
-      "p95_ms_per_query": 0.57,
+      "recall_at_4": 0.775,
+      "mrr": 0.7667,
+      "p95_ms_per_query": 0.31,
       "n": 60,
       "cost_usd_per_ticket": 0.0
     }
-  ]
+  ],
+  "meta": {
+    "git_sha": "aa572ebcad4c009e01ec0781a6b4a00b1f029298-dirty",
+    "timestamp_utc": "2026-11-04T14:33:50Z",
+    "n": 60,
+    "resolve_llm": "off",
+    "embedding_model": "hash-384",
+    "reranker": "identity",
+    "retrieval_backend": "memory",
+    "retrieval_config": "dense,bm25,hybrid,hybrid+rerank",
+    "versions": {
+      "python": "3.12.3",
+      "fastapi": "0.115.6",
+      "pydantic": "2.10.4",
+      "sqlalchemy": "2.0.36",
+      "numpy": "2.2.1",
+      "pyyaml": "6.0.2",
+      "pytest": "8.3.4"
+    }
+  }
 }

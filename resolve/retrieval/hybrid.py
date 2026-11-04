@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import math
 import re
 from collections import Counter, defaultdict
@@ -20,10 +21,11 @@ def tokenize(text: str) -> list[str]:
 
 
 def dense_embed(text: str) -> np.ndarray:
-    """Deterministic hashed embedding so ingest works offline. Swap for fastembed in prod."""
+    """Stable hashed embedding (md5). Python's `hash()` is per-process salted and cannot snapshot."""
     vec = np.zeros(DIM, dtype=np.float32)
     for tok in tokenize(text):
-        vec[hash(tok) % DIM] += 1.0
+        h = int(hashlib.md5(tok.encode("utf-8")).hexdigest(), 16)
+        vec[h % DIM] += 1.0
     n = np.linalg.norm(vec)
     return vec / n if n else vec
 

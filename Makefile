@@ -1,4 +1,4 @@
-.PHONY: up down seed ingest eval eval-fast ablate api web test policy install
+.PHONY: up down seed ingest eval eval-fast ablate api web test policy install snapshot report
 
 up:
 	docker compose up -d postgres qdrant redis
@@ -20,22 +20,28 @@ ingest:
 	python -m resolve.retrieval.ingest
 
 eval:
-	pytest evals/ -q
+	PYTHONHASHSEED=0 pytest evals/ -q
 
 eval-fast:
-	pytest evals/ -m fast -q
+	PYTHONHASHSEED=0 pytest evals/ -m fast -q
 
 ablate:
-	python -m evals.ablation
+	PYTHONHASHSEED=0 python -m evals.ablation
+
+snapshot:
+	PYTHONHASHSEED=0 python -m evals.snapshot
+
+report:
+	python scripts/make_report.py
+
+test:
+	PYTHONHASHSEED=0 pytest tests/ -q
 
 api:
 	PYTHONPATH=. uvicorn apps.api.main:app --reload --port 8000
 
 web:
 	cd apps/web && npm install && npm run dev -- --port 3001
-
-test:
-	pytest tests/ evals/test_policy.py -q
 
 policy:
 	pytest tests/test_policy_engine.py -q

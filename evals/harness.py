@@ -5,10 +5,11 @@ from pathlib import Path
 
 import yaml
 
+from evals.meta import write_results
 from resolve.config import get_settings
 from resolve.db.seed import seed
 from resolve.graph.runner import run_ticket
-from resolve.retrieval.ingest import ingest, load_index
+from resolve.retrieval.ingest import ingest
 
 
 def load_golden() -> list[dict]:
@@ -87,8 +88,7 @@ def summarize(rows: list[dict]) -> dict:
         "rows": rows,
     }
     dest = get_settings().evals_dir / "results" / "latest.json"
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_text(json.dumps(summary, indent=2, default=str))
+    write_results(dest, summary, n=len(rows), retrieval_config="agent-fast")
     return summary
 
 

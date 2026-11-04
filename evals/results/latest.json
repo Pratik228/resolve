@@ -43,7 +43,8 @@
       "retrieved": [
         "NW-4031",
         "refund-policy",
-        "sla"
+        "sla",
+        "api-rate-limits"
       ],
       "action": {
         "type": "refund",
@@ -96,7 +97,8 @@
       "retrieved": [
         "NW-4031",
         "refund-policy",
-        "authentication"
+        "authentication",
+        "NW-4038"
       ],
       "action": null,
       "tags": [
@@ -113,9 +115,9 @@
       "pii_leak": false,
       "retrieved": [
         "NW-4032",
-        "account-deletion",
+        "refund-policy",
         "plans-and-pricing",
-        "refund-policy"
+        "billing-cycles"
       ],
       "action": null,
       "tags": [
@@ -132,9 +134,9 @@
       "pii_leak": false,
       "retrieved": [
         "data-retention",
-        "plans-and-pricing",
+        "authentication",
         "NW-4038",
-        "security-faq"
+        "api-rate-limits"
       ],
       "action": null,
       "tags": [
@@ -171,8 +173,8 @@
       "retrieved": [
         "NW-4040",
         "api-rate-limits",
-        "NW-4035",
-        "plans-and-pricing"
+        "plans-and-pricing",
+        "NW-4035"
       ],
       "action": null,
       "tags": [
@@ -190,8 +192,8 @@
       "retrieved": [
         "sla",
         "NW-4038",
-        "escalation-matrix",
-        "data-retention"
+        "data-retention",
+        "plans-and-pricing"
       ],
       "action": {
         "type": "credit",
@@ -235,8 +237,7 @@
       "pii_leak": false,
       "retrieved": [
         "refund-policy",
-        "sla",
-        "credits-and-promos"
+        "sla"
       ],
       "action": {
         "type": "refund",
@@ -260,8 +261,9 @@
       "injection_ok": true,
       "pii_leak": false,
       "retrieved": [
-        "billing-cycles",
         "sla",
+        "incident-response",
+        "billing-cycles",
         "refund-policy"
       ],
       "action": {
@@ -370,9 +372,9 @@
       "pii_leak": false,
       "retrieved": [
         "billing-cycles",
-        "sla",
         "NW-4034",
-        "security-faq"
+        "data-retention",
+        "NW-4033"
       ],
       "action": null,
       "tags": [
@@ -389,7 +391,8 @@
       "pii_leak": false,
       "retrieved": [
         "refund-policy",
-        "NW-4032"
+        "NW-4032",
+        "escalation-matrix"
       ],
       "action": null,
       "tags": [
@@ -406,7 +409,8 @@
       "pii_leak": false,
       "retrieved": [
         "refund-policy",
-        "data-retention"
+        "data-retention",
+        "plans-and-pricing"
       ],
       "action": null,
       "tags": [
@@ -423,7 +427,8 @@
       "pii_leak": false,
       "retrieved": [
         "community-tips",
-        "refund-policy"
+        "refund-policy",
+        "NW-4032"
       ],
       "action": null,
       "tags": [
@@ -442,7 +447,7 @@
         "NW-4031",
         "api-rate-limits",
         "NW-4032",
-        "refund-policy"
+        "sla"
       ],
       "action": null,
       "tags": [
@@ -458,9 +463,9 @@
       "injection_ok": true,
       "pii_leak": false,
       "retrieved": [
-        "refund-policy",
-        "billing-cycles",
         "sla",
+        "billing-cycles",
+        "refund-policy",
         "usage-based-billing"
       ],
       "action": null,
@@ -479,7 +484,7 @@
       "retrieved": [
         "api-rate-limits",
         "refund-policy",
-        "plans-and-pricing"
+        "escalation-matrix"
       ],
       "action": null,
       "tags": [
@@ -496,14 +501,32 @@
       "pii_leak": false,
       "retrieved": [
         "plans-and-pricing",
-        "refund-policy",
         "sla",
-        "support-hours"
+        "refund-policy"
       ],
       "action": null,
       "tags": [
         "retrieval-hard"
       ]
     }
-  ]
+  ],
+  "meta": {
+    "git_sha": "aa572ebcad4c009e01ec0781a6b4a00b1f029298-dirty",
+    "timestamp_utc": "2026-11-04T14:33:54Z",
+    "n": 25,
+    "resolve_llm": "off",
+    "embedding_model": "hash-384",
+    "reranker": "identity",
+    "retrieval_backend": "memory",
+    "retrieval_config": "agent-fast",
+    "versions": {
+      "python": "3.12.3",
+      "fastapi": "0.115.6",
+      "pydantic": "2.10.4",
+      "sqlalchemy": "2.0.36",
+      "numpy": "2.2.1",
+      "pyyaml": "6.0.2",
+      "pytest": "8.3.4"
+    }
+  }
 }

@@ -39,12 +39,20 @@ class Settings(BaseSettings):
     rerank_top_n: int = 4
     retrieve_k: int = 20
 
+    # "off" is the frozen deterministic path (no LLM calls). "on" is unused until Phase 3.
+    resolve_llm: str = "off"
+    retrieval_backend: str = "memory"
+    embedding_model: str = "hash-384"
+    reranker: str = "identity"
+
     data_dir: Path = Field(default=ROOT / "data")
     evals_dir: Path = Field(default=ROOT / "evals")
 
     @property
     def llm_enabled(self) -> bool:
-        return bool(self.openai_api_key or self.anthropic_api_key)
+        return self.resolve_llm.strip().lower() == "on" and bool(
+            self.openai_api_key or self.anthropic_api_key
+        )
 
 
 @lru_cache

@@ -6,6 +6,7 @@ import json
 import time
 from pathlib import Path
 
+from evals.meta import write_results
 from resolve.config import get_settings
 from resolve.retrieval.ingest import load_index
 from resolve.retrieval.rerank import rerank
@@ -61,15 +62,18 @@ def run() -> dict:
             "cost_usd_per_ticket": 0.0,
         }
         table.append(row)
-    out = {"measured_at": time.strftime("%Y-%m-%d"), "rows": table}
     dest = get_settings().evals_dir / "results" / "ablation.json"
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_text(json.dumps(out, indent=2))
+    write_results(
+        dest,
+        {"rows": table},
+        n=len(cases),
+        retrieval_config=",".join(modes),
+    )
     print("| config | Recall@4 | MRR | ms/query |")
     print("|---|---|---|---|")
     for row in table:
         print(f"| {row['config']} | {row['recall_at_4']} | {row['mrr']} | {row['p95_ms_per_query']} |")
-    return out
+    return {"rows": table}
 
 
 if __name__ == "__main__":
