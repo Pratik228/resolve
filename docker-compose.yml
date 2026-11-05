@@ -3,10 +3,10 @@ services:
     image: postgres:16-alpine
     environment:
       POSTGRES_USER: resolve
-      POSTGRES_PASSWORD: resolve
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
       POSTGRES_DB: resolve
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - resolve_pg:/var/lib/postgresql/data
     healthcheck:
@@ -18,8 +18,8 @@ services:
   qdrant:
     image: qdrant/qdrant:v1.12.5
     ports:
-      - "6333:6333"
-      - "6334:6334"
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
     volumes:
       - resolve_qdrant:/qdrant/storage
     healthcheck:
@@ -31,7 +31,7 @@ services:
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
     volumes:
       - resolve_redis:/data
     healthcheck:
@@ -45,13 +45,13 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      DATABASE_URL: postgresql+psycopg://resolve:resolve@postgres:5432/resolve
-      CHECKPOINT_DATABASE_URL: postgresql://resolve:resolve@postgres:5432/resolve
+      DATABASE_URL: postgresql+psycopg://resolve:${POSTGRES_PASSWORD}@postgres:5432/resolve
+      CHECKPOINT_DATABASE_URL: postgresql://resolve:${POSTGRES_PASSWORD}@postgres:5432/resolve
       REDIS_URL: redis://redis:6379/0
       QDRANT_URL: http://qdrant:6333
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     depends_on:
       postgres:
         condition: service_healthy
@@ -72,7 +72,7 @@ services:
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:8000
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     volumes:
       - ./apps/web:/app
     depends_on:
