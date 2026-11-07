@@ -38,10 +38,10 @@ test:
 	PYTHONHASHSEED=0 pytest tests/ -q
 
 api:
-	PYTHONPATH=. uvicorn apps.api.main:app --reload --port 8000
+	PYTHONPATH=. uvicorn apps.api.main:app --reload --host 127.0.0.1 --port 8000
 
 web:
-	cd apps/web && npm install && npm run dev -- --port 3001
+	cd apps/web && npm install && npm run dev -- --hostname 127.0.0.1 --port 3000
 
 policy:
 	pytest tests/test_policy_engine.py -q

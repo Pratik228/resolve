@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import re
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any, Iterable
@@ -142,7 +143,43 @@ def refund_eligibility(
     return Decision(False, None, 0.0, False, ["refund-policy:ineligible"], "No eligible refund")
 
 
-def sla_credit(subscription: Any, incidents: Iterable[Any]) -> Decision:
+_MONTHS = {
+    name: i
+    for i, names in enumerate(
+        [
+            ("january", "jan"), ("february", "feb"), ("march", "mar"), ("april", "apr"),
+            ("may",), ("june", "jun"), ("july", "jul"), ("august", "aug"),
+            ("september", "sept", "sep"), ("october", "oct"), ("november", "nov"), ("december", "dec"),
+        ],
+        start=1,
+    )
+    for name in names
+}
+
+
+def mentioned_month(text: str) -> int | None:
+    """First calendar month named in the ticket. Lowercase "may" is a verb, not May."""
+    for match in re.finditer(r"[A-Za-z]+", text):
+        word = match.group(0)
+        month = _MONTHS.get(word.lower())
+        if month is None or (word == "may"):
+            continue
+        return month
+    return None
+
+
+def _incident_month(inc: Any) -> tuple[int, int] | None:
+    started = getattr(inc, "started_at", None)
+    if not started:
+        return None
+    if isinstance(started, str):
+        started = datetime.fromisoformat(started)
+    return (started.year, started.month)
+
+
+def sla_credit(subscription: Any, incidents: Iterable[Any], month: int | None = None) -> Decision:
+    """SLA is measured per calendar month. Credit only the month the customer asked about
+    (or the most recent month with an incident), never the worst incident on record."""
     plan = subscription.plan
     rules = SLA_TABLE[plan]
     fee = float(subscription.monthly_fee_usd)
@@ -153,6 +190,20 @@ def sla_credit(subscription: Any, incidents: Iterable[Any]) -> Decision:
     ]
     if not relevant:
         return Decision(False, None, 0.0, False, ["sla:no-incident"], "No incident affected this plan")
+
+    dated = [(m, inc) for inc in relevant if (m := _incident_month(inc)) is not None]
+    if dated:
+        if month is not None:
+            in_month = [(m, inc) for m, inc in dated if m[1] == month]
+            if not in_month:
+                return Decision(
+                    False, None, 0.0, False, ["sla:no-incident-in-month"],
+                    f"No incident affected the {plan} plan in month {month}",
+                )
+            target = max(m for m, _ in in_month)
+        else:
+            target = max(m for m, _ in dated)
+        relevant = [inc for m, inc in dated if m == target]
 
     uptime = min(float(inc.uptime_pct) for inc in relevant)
     below = rules["target"] - uptime
@@ -186,5 +237,5 @@ def decide(
     if refund.allowed:
         return refund
     if ticket_category in {"sla"} or "credit" in ticket_text.lower() or "uptime" in ticket_text.lower() or "incident" in ticket_text.lower():
-        return sla_credit(subscription, incidents)
+        return sla_credit(subscription, incidents, month=mentioned_month(ticket_text))
     return refund

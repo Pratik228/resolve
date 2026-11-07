@@ -1,15 +1,16 @@
 {
   "meta": {
-    "git_sha": "aa572ebcad4c009e01ec0781a6b4a00b1f029298-dirty",
-    "timestamp_utc": "2026-11-04T14:33:49Z",
+    "git_sha": "0f7c0e35207931a35008d43fad6447edf812804e-dirty",
+    "timestamp_utc": "2026-11-07T15:48:12Z",
     "n": 60,
     "resolve_llm": "off",
     "embedding_model": "hash-384",
     "reranker": "identity",
     "retrieval_backend": "memory",
+    "query_rewrite": "off",
     "retrieval_config": "snapshot",
     "versions": {
-      "python": "3.12.3",
+      "python": "3.11.14",
       "fastapi": "0.115.6",
       "pydantic": "2.10.4",
       "sqlalchemy": "2.0.36",
@@ -259,7 +260,7 @@
       ],
       "action": {
         "type": "credit",
-        "amount_usd": 14.7,
+        "amount_usd": 9.8,
         "needs_approval": false,
         "rule_ids": [
           "sla:credit"
@@ -272,7 +273,7 @@
         "data-retention",
         "plans-and-pricing"
       ],
-      "reply_sha256": "62d0b95b1f4ad078e0fbb8ede03072195838629c126ecb4880555f90e1eb9c72"
+      "reply_sha256": "64c4c8ed2e9f44dd74fd1155cfc114b536a7e38311f00875de45589a8a4d8214"
     },
     {
       "id": "bill-cycles",
@@ -393,7 +394,7 @@
       ],
       "action": {
         "type": "credit",
-        "amount_usd": 14.7,
+        "amount_usd": 9.8,
         "needs_approval": false,
         "rule_ids": [
           "sla:credit"
@@ -406,7 +407,7 @@
         "billing-cycles",
         "refund-policy"
       ],
-      "reply_sha256": "6ee8cc1fffd2a2a62a73ecf59195d16e76957ded7b29300c361cb6f8b77a813e"
+      "reply_sha256": "d3ab20608ab4c7ca6345604a3a26ad8eee0e6ce364b668335ec9179b9cbc724a"
     },
     {
       "id": "multi-starter-inc",
@@ -432,7 +433,7 @@
         "usage-based-billing",
         "incident-response"
       ],
-      "reply_sha256": "f600cf14e03cf1f0904b752f4c0075252174fa4269053cae717c16cce8f5b8b3"
+      "reply_sha256": "34217506679f8e015bd7d9a1432758a0031be24f3089fdc5bbf832c7fba2d6c1"
     },
     {
       "id": "multi-4031-cap",
@@ -482,7 +483,7 @@
         "webhooks",
         "incident-response"
       ],
-      "reply_sha256": "42a2a6616b59ee703252ceaeb505ba98b38aedee37fb3cf0298b6891bef03a48"
+      "reply_sha256": "929c8c47a7ef8a9c3274b88c835ad3005ee28b1a2a40c0428ca305ce516f19de"
     },
     {
       "id": "multi-ent-scim",
@@ -893,7 +894,7 @@
       ],
       "action": {
         "type": "credit",
-        "amount_usd": 14.7,
+        "amount_usd": 9.8,
         "needs_approval": false,
         "rule_ids": [
           "sla:credit"
@@ -906,7 +907,7 @@
         "NW-4034",
         "NW-4040"
       ],
-      "reply_sha256": "c899942f285c7038cc92ee0af69081fa81b6b1d99abcce78ae27bdb4ff6162ee"
+      "reply_sha256": "72aad2c147414e4e0725a0344b2e977834ed097f14951d43f73613ad78840b3a"
     },
     {
       "id": "ret-4040-paraphrase",

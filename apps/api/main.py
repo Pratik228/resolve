@@ -12,8 +12,8 @@ settings = get_settings()
 app = FastAPI(title="Resolve", version="0.1.0", description="Eval-gated Tier-2 support engine")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[o.strip() for o in settings.api_cors_origins.split(",")] + ["*"],
-    allow_credentials=True,
+    allow_origins=[o.strip() for o in settings.api_cors_origins.split(",") if o.strip()],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

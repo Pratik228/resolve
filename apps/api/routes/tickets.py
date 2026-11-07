@@ -15,12 +15,13 @@ router = APIRouter()
 class TicketIn(BaseModel):
     text: str
     customer_id: str | None = "cus_014"
-    auto_approve: bool = False
+    # No auto_approve here on purpose: the public API must never let a caller skip the
+    # human approval step. Only the offline eval harness calls run_ticket(auto_approve=True).
 
 
 @router.post("/tickets")
 def create_ticket(body: TicketIn):
-    state = run_ticket(body.text, body.customer_id, auto_approve=body.auto_approve)
+    state = run_ticket(body.text, body.customer_id, auto_approve=False)
     return {
         "id": state["ticket_id"],
         "status": state["status"],

@@ -124,3 +124,43 @@ def test_idempotency_stable():
     a = idempotency_key("tkt_1", "refund", 49)
     b = idempotency_key("tkt_1", "refund", 49.0)
     assert a == b
+
+
+def _dated(plans, uptime, started):
+    return SimpleNamespace(affected_plans=plans, uptime_pct=uptime, started_at=started)
+
+
+def test_sla_credit_uses_requested_month_not_worst_incident():
+    # Regression: a Pro customer asking about September (99.7%) was credited for the
+    # August auth brownout (99.4%) because the engine took the worst incident on record.
+    _, s = cust()
+    inc = [
+        _dated("pro,enterprise", 99.7, "2026-09-02T04:00:00"),
+        _dated("starter,pro,enterprise", 99.4, "2026-08-14T01:00:00"),
+    ]
+    assert abs(sla_credit(s, inc, month=9).amount_usd - 9.8) < 0.01
+    assert abs(sla_credit(s, inc, month=8).amount_usd - 14.7) < 0.01
+
+
+def test_sla_credit_defaults_to_latest_month():
+    _, s = cust()
+    inc = [
+        _dated("pro", 99.6, "2026-07-01T00:00:00"),
+        _dated("pro,enterprise", 99.7, "2026-09-02T04:00:00"),
+    ]
+    assert abs(sla_credit(s, inc).amount_usd - 9.8) < 0.01
+
+
+def test_sla_credit_month_without_incident():
+    _, s = cust()
+    inc = [_dated("pro,enterprise", 99.7, "2026-09-02T04:00:00")]
+    d = sla_credit(s, inc, month=10)
+    assert not d.allowed and d.rule_ids == ["sla:no-incident-in-month"]
+
+
+def test_mentioned_month():
+    from resolve.policy.engine import mentioned_month
+
+    assert mentioned_month("Pro uptime was 99.7% in September.") == 9
+    assert mentioned_month("Starter incident on Oct 20") == 10
+    assert mentioned_month("you may refund me") is None
