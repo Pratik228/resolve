@@ -510,8 +510,8 @@
     }
   ],
   "meta": {
-    "git_sha": "4d651eff3fea4536ed42d6bb99b4c799c0b7e345-dirty",
-    "timestamp_utc": "2026-11-07T16:22:14Z",
+    "git_sha": "870f1b0fea8a3b6455500c3820215d006a8ce060-dirty",
+    "timestamp_utc": "2026-11-07T16:26:27Z",
     "n": 25,
     "resolve_llm": "off",
     "embedding_model": "bge-small",
