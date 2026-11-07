@@ -1,4 +1,9 @@
-"""In-process hybrid search (dense hash + BM25 + RRF). Qdrant is optional."""
+"""In-process hybrid search (dense + BM25 + weighted RRF). Qdrant is optional.
+
+Dense vectors come from a pluggable embedder:
+- ``hash-384``  md5 feature hashing. Deterministic, no download; the CI baseline.
+- ``bge-small`` BAAI/bge-small-en-v1.5 via fastembed (ONNX on CPU, ~70 MB, no key).
+"""
 
 from __future__ import annotations
 
@@ -30,19 +35,86 @@ def dense_embed(text: str) -> np.ndarray:
     return vec / n if n else vec
 
 
-def rrf(rank_lists: list[list[str]], k: int = 60) -> list[tuple[str, float]]:
+def rrf(
+    rank_lists: list[list[str]], k: int = 60, weights: list[float] | None = None
+) -> list[tuple[str, float]]:
+    """Reciprocal rank fusion. ``weights`` lets a strong sparse signal outvote a weak dense one."""
+    weights = weights or [1.0] * len(rank_lists)
     scores: dict[str, float] = defaultdict(float)
-    for ranks in rank_lists:
+    for ranks, w in zip(rank_lists, weights, strict=True):
         for rank, cid in enumerate(ranks, start=1):
-            scores[cid] += 1.0 / (k + rank)
+            scores[cid] += w / (k + rank)
     return sorted(scores.items(), key=lambda x: x[1], reverse=True)
 
 
+class HashEmbedder:
+    name = "hash-384"
+
+    def embed_docs(self, texts: list[str]) -> np.ndarray:
+        return np.stack([dense_embed(t) for t in texts]) if texts else np.zeros((0, DIM), np.float32)
+
+    def embed_query(self, text: str) -> np.ndarray:
+        return dense_embed(text)
+
+
+class FastEmbedder:
+    """bge-small-en-v1.5. Queries get bge's retrieval instruction via ``query_embed``."""
+
+    MODELS = {"bge-small": "BAAI/bge-small-en-v1.5"}
+
+    def __init__(self, name: str):
+        from fastembed import TextEmbedding
+
+        self.name = name
+        self._model = TextEmbedding(self.MODELS[name])
+        self._qcache: dict[str, np.ndarray] = {}
+
+    def embed_docs(self, texts: list[str]) -> np.ndarray:
+        vecs = np.array(list(self._model.passage_embed(texts)), dtype=np.float32)
+        return vecs / np.linalg.norm(vecs, axis=1, keepdims=True)
+
+    def embed_query(self, text: str) -> np.ndarray:
+        if text not in self._qcache:
+            v = np.array(next(iter(self._model.query_embed(text))), dtype=np.float32)
+            self._qcache[text] = v / (np.linalg.norm(v) or 1.0)
+        return self._qcache[text]
+
+
+_EMBEDDERS: dict[str, object] = {}
+
+
+def get_embedder(name: str):
+    if name not in _EMBEDDERS:
+        _EMBEDDERS[name] = HashEmbedder() if name == "hash-384" else FastEmbedder(name)
+    return _EMBEDDERS[name]
+
+
+def _cached_vectors(embedder, texts: list[str]) -> np.ndarray:
+    """Doc vectors are cached on disk keyed by model + corpus hash so restarts don't re-embed."""
+    if embedder.name == "hash-384":
+        return embedder.embed_docs(texts)
+    from resolve.config import get_settings
+
+    digest = hashlib.sha256(("\x00".join(texts) + embedder.name).encode()).hexdigest()[:16]
+    path = get_settings().data_dir / "index" / f"vectors-{embedder.name}-{digest}.npy"
+    if path.exists():
+        return np.load(path)
+    vecs = embedder.embed_docs(texts)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    np.save(path, vecs)
+    return vecs
+
+
 class HybridIndex:
-    def __init__(self, chunks: list[Chunk]):
+    def __init__(self, chunks: list[Chunk], embedding_model: str | None = None, bm25_weight: float | None = None):
+        from resolve.config import get_settings
+
+        settings = get_settings()
+        self.embedder = get_embedder(embedding_model or settings.embedding_model)
+        self.bm25_weight = settings.hybrid_bm25_weight if bm25_weight is None else bm25_weight
         self.chunks = {c.chunk_id: c for c in chunks}
         self._docs = list(chunks)
-        self._vectors = np.stack([dense_embed(c.text) for c in self._docs]) if self._docs else np.zeros((0, DIM))
+        self._vectors = _cached_vectors(self.embedder, [c.text for c in self._docs])
         df: Counter[str] = Counter()
         self._tf: list[Counter[str]] = []
         for c in self._docs:
@@ -66,8 +138,8 @@ class HybridIndex:
         elif mode == "bm25":
             order = bm25_ranks
         else:
-            # Hash embeddings are coarse; duplicate BM25 ranks so exact tokens keep the lead.
-            fused = rrf([bm25_ranks, bm25_ranks, dense_ranks])
+            # Exact tokens (NW-4031) are BM25's job; bm25_weight lets sparse outvote a weak dense model.
+            fused = rrf([bm25_ranks, dense_ranks], weights=[self.bm25_weight, 1.0])
             order = [cid for cid, _ in fused]
         hits = []
         qlow = query.lower()
@@ -81,7 +153,7 @@ class HybridIndex:
         return hits
 
     def _dense_ranks(self, query: str, allowed: list[int]) -> list[str]:
-        q = dense_embed(query)
+        q = self.embedder.embed_query(query)
         sub = self._vectors[allowed]
         if len(sub) == 0:
             return []

@@ -11,7 +11,7 @@ down:
 
 install:
 	python -m venv .venv
-	. .venv/bin/activate && pip install -e ".[dev]"
+	. .venv/bin/activate && pip install -e ".[dev,retrieve]"
 
 seed:
 	python -m resolve.db.seed

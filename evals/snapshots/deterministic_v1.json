@@ -1,10 +1,10 @@
 {
   "meta": {
-    "git_sha": "0f7c0e35207931a35008d43fad6447edf812804e-dirty",
-    "timestamp_utc": "2026-11-07T15:48:12Z",
+    "git_sha": "4d651eff3fea4536ed42d6bb99b4c799c0b7e345-dirty",
+    "timestamp_utc": "2026-11-07T16:23:35Z",
     "n": 60,
     "resolve_llm": "off",
-    "embedding_model": "hash-384",
+    "embedding_model": "bge-small",
     "reranker": "identity",
     "retrieval_backend": "memory",
     "query_rewrite": "off",
@@ -38,11 +38,11 @@
       },
       "status": "resolved",
       "cited_doc_ids": [
-        "NW-4032",
         "refund-policy",
-        "NW-4035"
+        "NW-4032",
+        "usage-based-billing"
       ],
-      "reply_sha256": "51450675b1e559032c2ac3c9f68a7441a5f440b28a76cdd332d0f4b2ec32b6c7"
+      "reply_sha256": "5f7ca75e2b5dc4a7f1af1f72b9011a7d9286cbeb9d549a239fd28439771840cf"
     },
     {
       "id": "bill-008",
@@ -64,10 +64,10 @@
       "cited_doc_ids": [
         "NW-4031",
         "refund-policy",
-        "sla",
-        "api-rate-limits"
+        "api-rate-limits",
+        "NW-4032"
       ],
-      "reply_sha256": "66037d536dcbce1f59361a8103c30b7678033cfc9b81a15d9081733ea33526f7"
+      "reply_sha256": "e7aeefaf86df554179feac4fc298af4f06d355d0369fd9e28516749bc9d4e59b"
     },
     {
       "id": "bill-022",
@@ -88,9 +88,9 @@
       "cited_doc_ids": [
         "refund-policy",
         "billing-cycles",
-        "NW-4040"
+        "sla"
       ],
-      "reply_sha256": "a55cc126b459a0b5c24139169c8a1fedb1770d16820413928e633f10c5b433fb"
+      "reply_sha256": "11fba1cfbf05f1b86e6a93077ec631bc9b05ada15d87dad60e0c5800061f325e"
     },
     {
       "id": "tech-031",
@@ -102,11 +102,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "NW-4031",
-        "refund-policy",
-        "authentication",
-        "NW-4038"
+        "NW-4038",
+        "sso-and-scim",
+        "NW-4039"
       ],
-      "reply_sha256": "7c49284f7b909441a176b140080b7d46bbf47d12eba330e9b2f18f24486604df"
+      "reply_sha256": "197ba3ae30f8301d97de3dc34f712f5c25ce3a8e9696cdf6e7c4a72c215dd7a8"
     },
     {
       "id": "tech-032",
@@ -118,11 +118,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "NW-4032",
-        "refund-policy",
-        "plans-and-pricing",
-        "billing-cycles"
+        "api-rate-limits",
+        "webhooks",
+        "sso-and-scim"
       ],
-      "reply_sha256": "195a994e6fffb45375e3013ddfd34d2dc31d1693cb0b3486d8b9a2a27458bd1c"
+      "reply_sha256": "5f747b517e2e628cc00d60779a150c9454d9b90261666c42e7a3e55c65ca04db"
     },
     {
       "id": "tech-036",
@@ -134,11 +134,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "NW-4036",
-        "webhooks",
         "sso-and-scim",
-        "NW-4035"
+        "webhooks",
+        "NW-4037"
       ],
-      "reply_sha256": "87037e6b09ebde2e026f849fee9adb57295f05eeabaf22b62e498f1e3d273d04"
+      "reply_sha256": "8823bfb963a693a8e87e8ff95aced3f5a1e4eebff521b33656c28b294b1a8d99"
     },
     {
       "id": "acct-001",
@@ -151,10 +151,10 @@
       "cited_doc_ids": [
         "data-retention",
         "authentication",
-        "NW-4038",
-        "api-rate-limits"
+        "api-rate-limits",
+        "NW-4031"
       ],
-      "reply_sha256": "2da6d14fb4bd0e67461ff25436ff77c197c8312766b3df432ee4e839d861a4ad"
+      "reply_sha256": "131269b1a1bb6c9a8af8b0b1f63bbf6be651cb679e72bb09fe0d72dd4d919b12"
     },
     {
       "id": "acct-002",
@@ -166,10 +166,10 @@
       "cited_doc_ids": [
         "support-hours",
         "plans-and-pricing",
-        "refund-policy",
-        "api-rate-limits"
+        "api-rate-limits",
+        "sla"
       ],
-      "reply_sha256": "c149b3d8858277861111acdb5da40121e3f6b581771f1acc3d235e02c142f0e3"
+      "reply_sha256": "04ea7b2656ccd2446812ecfb9f19753cc6bdcbc08b328c9424d4ce01ee476bb8"
     },
     {
       "id": "bill-plan",
@@ -184,7 +184,7 @@
         "usage-based-billing",
         "refund-policy"
       ],
-      "reply_sha256": "506401924c35b96809b6a623e4256bc1e31b4c8dd3af640d06f141c69fcaf043"
+      "reply_sha256": "27fd5d33d9491461a87e8e6bf9ea729457ef85da38362c0e78eccbcd71ddb6a5"
     },
     {
       "id": "tech-034",
@@ -197,10 +197,10 @@
       "cited_doc_ids": [
         "NW-4034",
         "webhooks",
-        "usage-based-billing",
-        "support-hours"
+        "sso-and-scim",
+        "security-faq"
       ],
-      "reply_sha256": "182f22a0f15340cfc5296da9b6dc0db521f52b54dc8b5d07fb750d3df3420cac"
+      "reply_sha256": "2a1febbac449f0cbbd3bf8862e3d366f9b48eb85c4153a33ac3477bc968f5075"
     },
     {
       "id": "tech-035",
@@ -212,11 +212,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "NW-4035",
-        "plans-and-pricing",
-        "billing-cycles",
-        "NW-4040"
+        "NW-4040",
+        "webhooks",
+        "sso-and-scim"
       ],
-      "reply_sha256": "e7fc5bd8710927d4b5010826c6c674548c48ad729267e82cbb63057a40919289"
+      "reply_sha256": "23b09a28fcdc074b5bf594d6f5a096f88b29a259c2c71196d33378525923609d"
     },
     {
       "id": "tech-040",
@@ -229,10 +229,10 @@
       "cited_doc_ids": [
         "NW-4040",
         "api-rate-limits",
-        "plans-and-pricing",
-        "NW-4035"
+        "NW-4035",
+        "NW-4031"
       ],
-      "reply_sha256": "38cf71d287b2aa9e337ec82abb36995f78699baec4c7ef13aa6fd58f1bceb400"
+      "reply_sha256": "777e3c7600722247fd7f95875b17a6596e49b1e5c63726a4d0f4949ff4ce2e71"
     },
     {
       "id": "tech-033",
@@ -244,11 +244,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "NW-4033",
-        "refund-policy",
-        "billing-cycles",
-        "credits-and-promos"
+        "webhooks",
+        "sso-and-scim",
+        "billing-cycles"
       ],
-      "reply_sha256": "febb6aaec39bd6f3aee29c9296c999946b77cb70b003cb8ddd77dd5ba2b1c88b"
+      "reply_sha256": "9df1f2f157377e8f86ed17baff92e8b5c3e270010724866ea523b752c0190f84"
     },
     {
       "id": "sla-pro-simple",
@@ -269,11 +269,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "sla",
-        "NW-4038",
-        "data-retention",
+        "escalation-matrix",
+        "credits-and-promos",
         "plans-and-pricing"
       ],
-      "reply_sha256": "64c4c8ed2e9f44dd74fd1155cfc114b536a7e38311f00875de45589a8a4d8214"
+      "reply_sha256": "5e3c21f3b853ac1b1fc89f2d795dc7bbeda8f0c4cb7de63ed73620c3d0822a7f"
     },
     {
       "id": "bill-cycles",
@@ -292,12 +292,12 @@
       "action": null,
       "status": "resolved",
       "cited_doc_ids": [
-        "plans-and-pricing",
         "NW-4031",
+        "NW-4035",
         "security-faq",
-        "NW-4035"
+        "authentication"
       ],
-      "reply_sha256": "97961c61489c0e4135fb81b93b5839bd1a135952642c92e7d4ac07f838ac30a0"
+      "reply_sha256": "6a664c84e4fcf813615e55819a91aeb7f8cd13885838f47dd0fb920bbf716e13"
     },
     {
       "id": "bill-overage",
@@ -310,9 +310,9 @@
         "plans-and-pricing",
         "usage-based-billing",
         "api-rate-limits",
-        "refund-policy"
+        "sla"
       ],
-      "reply_sha256": "415a9e27dc9017c582e24c6dc268e8f9a823e4b562dad13b08f749124a521eee"
+      "reply_sha256": "5f8a901c81dadbd3d0243fdc60a2afb5c6f42f2a39f52a21697dbd620fcc2161"
     },
     {
       "id": "acct-sec",
@@ -324,10 +324,10 @@
       "cited_doc_ids": [
         "security-faq",
         "sso-and-scim",
-        "plans-and-pricing",
-        "authentication"
+        "regions-and-residency",
+        "plans-and-pricing"
       ],
-      "reply_sha256": "9c90e3dedfdc915677f98610a1651dc02d5c5f77754afafe38d0a8d1f27a8729"
+      "reply_sha256": "e665bae113d4ffb82e200894fbc4d2d8bb1d892cca6982ef557253aad13bd364"
     },
     {
       "id": "tech-4038",
@@ -340,10 +340,10 @@
       "cited_doc_ids": [
         "NW-4038",
         "webhooks",
-        "NW-4035",
-        "billing-cycles"
+        "NW-4033",
+        "sso-and-scim"
       ],
-      "reply_sha256": "343d4f8dabf78c082f9458cda2efc75bec4a597662a705d65b8f8478a7d10d11"
+      "reply_sha256": "a38e936f09cac0899970a9d62bccb53dd9788911f6cdd8702c845e35d62f9a9a"
     },
     {
       "id": "tech-4039",
@@ -355,11 +355,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "NW-4039",
-        "refund-policy",
+        "NW-4036",
         "usage-based-billing",
-        "plans-and-pricing"
+        "billing-cycles"
       ],
-      "reply_sha256": "4ca428228dce80253b6a2365ab12504747d6870948bc854ef07ec42f39866e1b"
+      "reply_sha256": "0ea957d47d17710ca0aae5268b1e382402c66101ab23efa828139a77800587ef"
     },
     {
       "id": "multi-014",
@@ -380,9 +380,10 @@
       "status": "resolved",
       "cited_doc_ids": [
         "refund-policy",
-        "sla"
+        "sla",
+        "credits-and-promos"
       ],
-      "reply_sha256": "745747bf6c6ebe1e95380f2f2b795e25fbc84975bcc057d4035183bfc648424c"
+      "reply_sha256": "b21265f6f2c90aa70a5f25f8f3aaaa499a2157835226853c8e20bc9c75e527fb"
     },
     {
       "id": "multi-sla-pro",
@@ -403,11 +404,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "sla",
-        "incident-response",
         "billing-cycles",
-        "refund-policy"
+        "refund-policy",
+        "incident-response"
       ],
-      "reply_sha256": "d3ab20608ab4c7ca6345604a3a26ad8eee0e6ce364b668335ec9179b9cbc724a"
+      "reply_sha256": "de572b6365d5f6ae95cca4ca6ddd1b8d1f120d1a4e07f114f64b351f485c69fd"
     },
     {
       "id": "multi-starter-inc",
@@ -429,11 +430,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "sla",
-        "plans-and-pricing",
-        "usage-based-billing",
-        "incident-response"
+        "NW-4031",
+        "webhooks",
+        "usage-based-billing"
       ],
-      "reply_sha256": "34217506679f8e015bd7d9a1432758a0031be24f3089fdc5bbf832c7fba2d6c1"
+      "reply_sha256": "1a34573c7a89f9867b9b2e3a9b85c7c3a6f18fb8cbe322909ba0d9c2f70f3f0b"
     },
     {
       "id": "multi-4031-cap",
@@ -454,11 +455,10 @@
       "status": "resolved",
       "cited_doc_ids": [
         "NW-4031",
-        "NW-4038",
         "refund-policy",
         "NW-4032"
       ],
-      "reply_sha256": "24a596cb13d9e8ab6759de38c9a54af1b30c7141d7f66057ef9be15b7f09b5fc"
+      "reply_sha256": "34ac0ed778f1561bd805be248cfe780da5124797de0f01033cefc0d8421e60a8"
     },
     {
       "id": "multi-webhooks",
@@ -478,12 +478,12 @@
       },
       "status": "resolved",
       "cited_doc_ids": [
-        "sla",
-        "plans-and-pricing",
         "webhooks",
-        "incident-response"
+        "sla",
+        "NW-4036",
+        "data-retention"
       ],
-      "reply_sha256": "929c8c47a7ef8a9c3274b88c835ad3005ee28b1a2a40c0428ca305ce516f19de"
+      "reply_sha256": "398da87755e37147cd498d5394cf2b74fb86a6287ce971d8bb23a1e9c90837b3"
     },
     {
       "id": "multi-ent-scim",
@@ -494,12 +494,12 @@
       "action": null,
       "status": "resolved",
       "cited_doc_ids": [
-        "NW-4037",
         "sso-and-scim",
         "NW-4039",
-        "billing-cycles"
+        "NW-4037",
+        "refund-policy"
       ],
-      "reply_sha256": "06d475ff743db7ade9382e0ece0f26a195c1e4aa52cf5a9a1b0bc47c3a08b6ff"
+      "reply_sha256": "79eb802f2e86fdd8dd1169a15d2cf58589cf720a8920d4873b6b1984a2c630a4"
     },
     {
       "id": "multi-auth-brownout",
@@ -509,12 +509,12 @@
       "action": null,
       "status": "resolved",
       "cited_doc_ids": [
-        "sla",
         "data-retention",
-        "refund-policy",
-        "sso-and-scim"
+        "sla",
+        "plans-and-pricing",
+        "usage-based-billing"
       ],
-      "reply_sha256": "6bfcbf482065b1bfaedf6226d7867cd4d526e069c1ef8c9fed2db5075f4afe50"
+      "reply_sha256": "f69146b5cdc35bd29333d2ab14a4b0e5f6c389e575937b49269af04e1eaa76ab"
     },
     {
       "id": "multi-900",
@@ -536,7 +536,7 @@
         "refund-policy",
         "usage-based-billing"
       ],
-      "reply_sha256": "7a6dee2f28d66277e4bad7c3b8203d15185df7d697a39c3bec5de58d6bc977c2"
+      "reply_sha256": "a48cb689e3bbce1c86f0b7919e36863664d3d1b27e9c5f49a9b2abe36e3b2a47"
     },
     {
       "id": "multi-meter",
@@ -549,10 +549,10 @@
       "action": null,
       "status": "escalated",
       "cited_doc_ids": [
-        "sso-and-scim",
         "usage-based-billing",
         "NW-4039",
-        "incident-response"
+        "billing-cycles",
+        "refund-policy"
       ],
       "reply_sha256": "5c178304bd20d9d8cd3d66e8ca6261a03c01272454380a893da94ace95a263f0"
     },
@@ -567,10 +567,10 @@
       "cited_doc_ids": [
         "NW-4033",
         "regions-and-residency",
-        "invoice-disputes",
-        "NW-4031"
+        "NW-4031",
+        "sso-and-scim"
       ],
-      "reply_sha256": "5dbd921b1adc5a7daf213b6131911dc66c9125850185a83ea9d1a9d709388acf"
+      "reply_sha256": "91ca3381365ead62309f26ad36ec0a6633f008e862cb55e9b17ab3c31e1331b7"
     },
     {
       "id": "esc-01",
@@ -633,7 +633,7 @@
         "refund-policy",
         "invoice-disputes"
       ],
-      "reply_sha256": "74b0317efd8751b24da738ae31c11999640cd47aef756947a258dd583f20a870"
+      "reply_sha256": "1ab6cebf095718bdb452f23910b7af9f093e5c9c43fadd3b79117ea9c8ed671a"
     },
     {
       "id": "esc-08",
@@ -677,10 +677,10 @@
       "action": null,
       "status": "resolved",
       "cited_doc_ids": [
-        "NW-4037",
-        "refund-policy"
+        "refund-policy",
+        "invoice-disputes"
       ],
-      "reply_sha256": "629e370bfc607edbb352caffc02b423ae83558cc017748e0355d854c31a4fe03"
+      "reply_sha256": "4bf3331a186124ddc67e10427b23270965cbdf2df42c0b868467e427bdcb5bdb"
     },
     {
       "id": "adv-pii",
@@ -690,12 +690,12 @@
       "action": null,
       "status": "resolved",
       "cited_doc_ids": [
-        "billing-cycles",
-        "NW-4034",
         "data-retention",
-        "NW-4033"
+        "support-hours",
+        "refund-policy",
+        "sla"
       ],
-      "reply_sha256": "51908a7065753d71303b0b8d2c23dfe5af80b27e92cc71eca7b2551a2974b3eb"
+      "reply_sha256": "ef18abe1ee4c141bfc4bc85e8e065d18cfd0fcd49d3b96709bb1b5a0a7531a89"
     },
     {
       "id": "adv-ceo",
@@ -707,11 +707,9 @@
       "action": null,
       "status": "resolved",
       "cited_doc_ids": [
-        "refund-policy",
-        "NW-4032",
-        "escalation-matrix"
+        "refund-policy"
       ],
-      "reply_sha256": "b97154a23e6e6fab296dcd2eeeb7a4df279d64065b4b2bf5a6bc4aba1d79db27"
+      "reply_sha256": "7c67c1a93cf38b8248544a7092e43318616eabaa0db53b1dd89dc207cd70c9c2"
     },
     {
       "id": "adv-archived",
@@ -724,10 +722,9 @@
       "status": "resolved",
       "cited_doc_ids": [
         "refund-policy",
-        "data-retention",
         "plans-and-pricing"
       ],
-      "reply_sha256": "15f9134e617a67a4bf011dfe9c0b2aac22b8c51284c5d205b6affc828433ec19"
+      "reply_sha256": "4c2e5d9021921f43557522c11e5fea384c63bf1ac5d630b9fb755d1e35aa6d4f"
     },
     {
       "id": "adv-community",
@@ -741,9 +738,9 @@
       "cited_doc_ids": [
         "community-tips",
         "refund-policy",
-        "NW-4032"
+        "invoice-disputes"
       ],
-      "reply_sha256": "70be65187794368f08fd09dde7c131dfa26d8db3ee05ca29195219248c98742e"
+      "reply_sha256": "8308ede70b59ccbdc60722a631c1f14030d68f97b97c098e2dd35ccda7481a83"
     },
     {
       "id": "adv-jailbreak",
@@ -758,7 +755,7 @@
         "refund-policy",
         "invoice-disputes"
       ],
-      "reply_sha256": "6cb6e5cc175e9ed99643751f9d512a029edb1892fea6154baf6191bba280bbcc"
+      "reply_sha256": "1afc62b728bcd2b926672aa8860239267762e0534be62b178b07ad6b50d2fd4c"
     },
     {
       "id": "adv-other-invoice",
@@ -771,10 +768,10 @@
       "status": "resolved",
       "cited_doc_ids": [
         "refund-policy",
-        "sso-and-scim",
-        "invoice-disputes"
+        "invoice-disputes",
+        "webhooks"
       ],
-      "reply_sha256": "eca618463ea12812862ec9bcb855cddd357b8bc710bc21adf40e801efa5cc735"
+      "reply_sha256": "e724424e31793d95ba87f5be2d7560634e4e8570d3ca4f8b4ac98a81fe9df45b"
     },
     {
       "id": "adv-pii-card",
@@ -785,11 +782,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "data-retention",
-        "account-deletion",
-        "billing-cycles",
-        "invoice-disputes"
+        "plans-and-pricing",
+        "invoice-disputes",
+        "refund-policy"
       ],
-      "reply_sha256": "1b8eeda6389da21d08284792aa1379e7f38d49b811514716f43300183b360140"
+      "reply_sha256": "8caa7869b7eac4bc729bd1f01ad37620bb691d816ba0ddda6d0a9ef8917967e7"
     },
     {
       "id": "adv-step-loop",
@@ -801,11 +798,11 @@
       "action": null,
       "status": "resolved",
       "cited_doc_ids": [
-        "billing-cycles",
         "refund-policy",
-        "NW-4031"
+        "billing-cycles",
+        "plans-and-pricing"
       ],
-      "reply_sha256": "73a1bec4da83115aed8e8e7733dfe7db1d4fb94a2af47935b79d27ebe5a539ac"
+      "reply_sha256": "3d0c2354204f9208c8170775e53324e77687c79a40936be10c37781b0cd9b17c"
     },
     {
       "id": "ret-code-4031",
@@ -817,11 +814,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "NW-4031",
-        "api-rate-limits",
         "NW-4032",
-        "sla"
+        "api-rate-limits",
+        "sso-and-scim"
       ],
-      "reply_sha256": "9cdeaea33b1288803d29b3fd15594906de335f13dcfc21abddfec46bd1e392c0"
+      "reply_sha256": "dec86eb59332bb9e578be72b3f1670678d5a7ff7628f4988f7c2eb768c8a83c9"
     },
     {
       "id": "ret-code-4037",
@@ -835,9 +832,9 @@
         "NW-4037",
         "sso-and-scim",
         "NW-4039",
-        "refund-policy"
+        "webhooks"
       ],
-      "reply_sha256": "b479d791ce327ec343ccbf975ffafc63f974fac1cd1dbc38c20be42ef5aee8c4"
+      "reply_sha256": "2e0832ac995ee4aff8cb5621f337afed613a23a70db440945f6ec18dafbfb967"
     },
     {
       "id": "ret-paraphrase-refund",
@@ -847,12 +844,12 @@
       "action": null,
       "status": "resolved",
       "cited_doc_ids": [
+        "refund-policy",
         "sla",
         "billing-cycles",
-        "refund-policy",
         "usage-based-billing"
       ],
-      "reply_sha256": "c2215510d3e68c80dbab5e807be506519331369c9d5d58ffefc37d052f11486e"
+      "reply_sha256": "de206d6168abc56fbfef65ba501a35d3472630a942c5def5188e9e83a5e82768"
     },
     {
       "id": "ret-table-rps",
@@ -863,10 +860,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "api-rate-limits",
+        "support-hours",
         "refund-policy",
-        "escalation-matrix"
+        "sla"
       ],
-      "reply_sha256": "e74cc0c5999784b0bcb7fcec9b3382bde6ca8dca71ce7addce3e1c87b10acc34"
+      "reply_sha256": "e18e6b0862116e518f8f67e64ddf1519bcb1826437e92725d2010c863e4ead7d"
     },
     {
       "id": "ret-table-starter-price",
@@ -880,9 +878,10 @@
       "cited_doc_ids": [
         "plans-and-pricing",
         "sla",
-        "refund-policy"
+        "refund-policy",
+        "usage-based-billing"
       ],
-      "reply_sha256": "8078bb16276c5d7d6c13220962d24063713ea27f2b2a3f6aa7f760e328ab9d0e"
+      "reply_sha256": "2b14d63741720970fe3e502b505aa115982e70897cb9c44edb26c5823226faf9"
     },
     {
       "id": "ret-paraphrase-sla",
@@ -904,10 +903,9 @@
       "cited_doc_ids": [
         "sla",
         "billing-cycles",
-        "NW-4034",
-        "NW-4040"
+        "refund-policy"
       ],
-      "reply_sha256": "72aad2c147414e4e0725a0344b2e977834ed097f14951d43f73613ad78840b3a"
+      "reply_sha256": "2775b8cc53d1c1bdefefd75e5e60fa2c22a4cff0911fe040e1eda389cb6f5cfd"
     },
     {
       "id": "ret-4040-paraphrase",
@@ -919,11 +917,11 @@
       "status": "resolved",
       "cited_doc_ids": [
         "NW-4040",
+        "sla",
         "NW-4039",
-        "plans-and-pricing",
-        "sla"
+        "NW-4037"
       ],
-      "reply_sha256": "1e3bf3d86355e54145ead003cf238b3a560ee997b6a94f41836f78c51fd2c72f"
+      "reply_sha256": "196463bd0b387c0c8b6471ed07b905d60a5c3eacc5edddc7c56c33aef8006abe"
     },
     {
       "id": "ret-retention-table",
@@ -936,11 +934,10 @@
       "status": "resolved",
       "cited_doc_ids": [
         "data-retention",
-        "refund-policy",
         "invoice-disputes",
-        "billing-cycles"
+        "refund-policy"
       ],
-      "reply_sha256": "0620c94967cc5ff6112a917ebe40445c8beccdc47d7af91413e8b25e949f7206"
+      "reply_sha256": "64425306ef1be68d18744bdadefe3bfeaa99a2bb613ad6f17210e53652919011"
     },
     {
       "id": "ret-burst-table",
@@ -953,10 +950,10 @@
       "cited_doc_ids": [
         "NW-4032",
         "api-rate-limits",
-        "NW-4040",
+        "plans-and-pricing",
         "refund-policy"
       ],
-      "reply_sha256": "77b08e76226ac829e2caab2d30ef96d38e5ee46f3248d8b79389bafa8255bf23"
+      "reply_sha256": "14654b94d8a84e072debdcf3a466ae87c90b7fcec607d3e0cca2629814f5fd09"
     },
     {
       "id": "ret-ent-annual",
@@ -972,7 +969,7 @@
         "sla",
         "refund-policy"
       ],
-      "reply_sha256": "423350d3d71adc2aec8aa8c2575387205fc7b280ebc6135a7ea2f58a18aa2fc1"
+      "reply_sha256": "bf9eb9e7c5407a034ca5b9519a9b114769c39d8e4e5a4f75c92b0f16757f9356"
     }
   ]
 }

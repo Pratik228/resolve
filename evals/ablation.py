@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import statistics
 import time
 
 from evals.meta import write_results
 from resolve.config import get_settings
+from resolve.retrieval.hybrid import HybridIndex
 from resolve.retrieval.ingest import load_index
 from resolve.retrieval.rerank import rerank
 from resolve.retrieval.rewrite import rewrite
@@ -48,84 +50,117 @@ def _percentile(values: list[float], p: float) -> float:
     return float(statistics.quantiles(values, n=100, method="inclusive")[p - 1])
 
 
-def _search(index, ticket: str, search_mode: str, rewrite_mode: str, do_rerank: bool) -> list[dict]:
+def split_of(case_id: str) -> str:
+    """Stable 50/50 dev/test split. Configs are *chosen* on dev and *reported* on test."""
+    return "dev" if int(hashlib.sha256(case_id.encode()).hexdigest(), 16) % 2 == 0 else "test"
+
+
+# name, embedder, mode, bm25_weight, rewrite, reranker
+CONFIGS = [
+    ("bm25", "hash-384", "bm25", 1.0, "off", "identity"),
+    ("dense:hash", "hash-384", "dense", 1.0, "off", "identity"),
+    ("dense:bge", "bge-small", "dense", 1.0, "off", "identity"),
+    ("hybrid:hash 2:1", "hash-384", "hybrid", 2.0, "off", "identity"),
+    ("hybrid:bge 1:1", "bge-small", "hybrid", 1.0, "off", "identity"),
+    ("hybrid:bge 2:1", "bge-small", "hybrid", 2.0, "off", "identity"),
+    ("hybrid:bge 2:1 +rewrite", "bge-small", "hybrid", 2.0, "rules", "identity"),
+    ("hybrid:bge 2:1 +rerank", "bge-small", "hybrid", 2.0, "off", "minilm"),
+    ("hybrid:bge 2:1 +rewrite +rerank", "bge-small", "hybrid", 2.0, "rules", "minilm"),
+    ("hybrid:hash 2:1 +rewrite", "hash-384", "hybrid", 2.0, "rules", "identity"),
+]
+
+
+def _search(index, ticket: str, search_mode: str, rewrite_mode: str, reranker: str) -> list[dict]:
     rewritten = rewrite(ticket, rewrite_mode)
-    k = 20 if do_rerank else 4
+    k = 20 if reranker != "identity" else 4
     hits = index.search_multi(rewritten.queries, k=k, mode=search_mode, filter_query=ticket)
-    if do_rerank:
-        hits = rerank(ticket, hits, top_n=4)
+    if reranker != "identity":
+        hits = rerank(ticket, hits, top_n=4, reranker=reranker)
     return hits
 
 
+def _score(cases: list[dict], results: dict[str, list[str]]) -> tuple[float, float]:
+    if not cases:
+        return 0.0, 0.0
+    rec = [recall_at_k(c.get("expected_doc_ids") or [], results[c["id"]], 4) for c in cases]
+    rr = [mrr(c.get("expected_doc_ids") or [], results[c["id"]]) for c in cases]
+    return round(sum(rec) / len(rec), 4), round(sum(rr) / len(rr), 4)
+
+
 def run() -> dict:
-    index = load_index()
+    base = load_index()
+    chunks = list(base.chunks.values())
     cases = load_golden()
-    configs = [
-        ("dense", "dense", "off", False),
-        ("bm25", "bm25", "off", False),
-        ("hybrid", "hybrid", "off", False),
-        ("hybrid+rerank", "hybrid", "off", True),
-        ("hybrid+rewrite_rules", "hybrid", "rules", False),
-        ("hybrid+rewrite_llm", "hybrid", "llm", False),
-        ("hybrid+rewrite_rules+rerank", "hybrid", "rules", True),
-    ]
+    dev = [c for c in cases if split_of(c["id"]) == "dev"]
+    test = [c for c in cases if split_of(c["id"]) == "test"]
+    indexes: dict[tuple[str, float], HybridIndex] = {}
     table = []
-    for name, search_mode, rewrite_mode, do_rerank in configs:
-        recs = []
-        mrrs = []
+    for name, embedder, mode, weight, rewrite_mode, reranker in CONFIGS:
+        index = indexes.setdefault((embedder, weight), HybridIndex(chunks, embedder, weight))
+        _search(index, "warm-up query", mode, rewrite_mode, reranker)  # load models outside timing
+        if hasattr(index.embedder, "_qcache"):
+            index.embedder._qcache.clear()  # no cross-config cache hits in the latency columns
+        results: dict[str, list[str]] = {}
         latencies = []
         for case in cases:
             t0 = time.perf_counter()
-            hits = _search(index, case["ticket"], search_mode, rewrite_mode, do_rerank)
+            hits = _search(index, case["ticket"], mode, rewrite_mode, reranker)
             latencies.append((time.perf_counter() - t0) * 1000)
-            docs = _docs(hits)
-            recs.append(recall_at_k(case.get("expected_doc_ids") or [], docs, 4))
-            mrrs.append(mrr(case.get("expected_doc_ids") or [], docs))
-        row = {
-            "config": name,
-            "rewrite": rewrite_mode,
-            "recall_at_4": round(sum(recs) / len(recs), 4),
-            "mrr": round(sum(mrrs) / len(mrrs), 4),
-            "p50_ms": round(_percentile(latencies, 50), 2),
-            "p95_ms": round(_percentile(latencies, 95), 2),
-            "p95_ms_per_query": round(_percentile(latencies, 95), 2),
-            "n": len(cases),
-            "cost_usd_per_ticket": 0.0,
-        }
-        table.append(row)
+            results[case["id"]] = _docs(hits)
+        r_all, m_all = _score(cases, results)
+        r_dev, m_dev = _score(dev, results)
+        r_test, m_test = _score(test, results)
+        table.append(
+            {
+                "config": name,
+                "embedding": embedder,
+                "mode": mode,
+                "bm25_weight": weight,
+                "rewrite": rewrite_mode,
+                "reranker": reranker,
+                "recall_at_4": r_all,
+                "mrr": m_all,
+                "dev_recall_at_4": r_dev,
+                "dev_mrr": m_dev,
+                "test_recall_at_4": r_test,
+                "test_mrr": m_test,
+                "p50_ms": round(_percentile(latencies, 50), 2),
+                "p95_ms": round(_percentile(latencies, 95), 2),
+                "n": len(cases),
+                "cost_usd_per_ticket": 0.0,
+            }
+        )
 
-    baseline = next(r for r in table if r["config"] == "hybrid")
-    rules = next(r for r in table if r["config"] == "hybrid+rewrite_rules")
-    keep_rules = (rules["recall_at_4"], rules["mrr"]) > (baseline["recall_at_4"], baseline["mrr"])
+    # Selection uses dev only; ties go to the cheaper (lower p95) config.
+    chosen = max(table, key=lambda r: (r["dev_recall_at_4"], r["dev_mrr"], -r["p95_ms"]))
+    baseline = next(r for r in table if r["config"] == "hybrid:hash 2:1")
     decision = {
-        "keep_query_rewrite_rules": keep_rules,
-        "reason": (
-            "rules wins on (Recall@4, MRR) vs hybrid"
-            if keep_rules
-            else "rules does not beat hybrid; QUERY_REWRITE stays off"
-        ),
-        "hybrid_recall_at_4": baseline["recall_at_4"],
-        "rules_recall_at_4": rules["recall_at_4"],
-        "hybrid_mrr": baseline["mrr"],
-        "rules_mrr": rules["mrr"],
+        "chosen_config": chosen["config"],
+        "selected_on": f"dev (n={len(dev)})",
+        "reported_on": f"test (n={len(test)})",
+        "chosen_test_recall_at_4": chosen["test_recall_at_4"],
+        "chosen_test_mrr": chosen["test_mrr"],
+        "baseline_config": baseline["config"],
+        "baseline_test_recall_at_4": baseline["test_recall_at_4"],
+        "baseline_test_mrr": baseline["test_mrr"],
     }
 
     dest = get_settings().evals_dir / "results" / "ablation.json"
     write_results(
         dest,
-        {"rows": table, "query_rewrite_decision": decision},
+        {"rows": table, "decision": decision},
         n=len(cases),
-        retrieval_config=",".join(c[0] for c in configs),
+        retrieval_config=",".join(c[0] for c in CONFIGS),
     )
-    print("| config | rewrite | Recall@4 | MRR | p50 ms | p95 ms |")
+    print("| config | R@4 dev | R@4 test | MRR test | R@4 all | p95 ms |")
     print("|---|---|---|---|---|---|")
     for row in table:
         print(
-            f"| {row['config']} | {row['rewrite']} | {row['recall_at_4']} | "
-            f"{row['mrr']} | {row['p50_ms']} | {row['p95_ms']} |"
+            f"| {row['config']} | {row['dev_recall_at_4']} | {row['test_recall_at_4']} | "
+            f"{row['test_mrr']} | {row['recall_at_4']} | {row['p95_ms']} |"
         )
     print("decision:", decision)
-    return {"rows": table, "query_rewrite_decision": decision}
+    return {"rows": table, "decision": decision}
 
 
 if __name__ == "__main__":

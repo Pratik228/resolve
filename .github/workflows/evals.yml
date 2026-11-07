@@ -20,8 +20,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Cache embedding models
+        uses: actions/cache@v4
+        with:
+          path: /tmp/fastembed_cache
+          key: fastembed-bge-small-minilm-v1
       - name: Install
-        run: pip install -e ".[dev]"
+        run: pip install -e ".[dev,retrieve]"
       - name: Fast evals
         run: pytest evals/ -m fast -q --tb=short
       - name: Policy tests
@@ -54,6 +59,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install -e ".[dev]"
+      - run: pip install -e ".[dev,retrieve]"
       - run: pytest evals/ tests/ -q --tb=short
       - run: python -m evals.ablation

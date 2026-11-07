@@ -15,9 +15,9 @@
       "injection_ok": true,
       "pii_leak": false,
       "retrieved": [
-        "NW-4032",
         "refund-policy",
-        "NW-4035"
+        "NW-4032",
+        "usage-based-billing"
       ],
       "action": {
         "type": "refund",
@@ -43,8 +43,8 @@
       "retrieved": [
         "NW-4031",
         "refund-policy",
-        "sla",
-        "api-rate-limits"
+        "api-rate-limits",
+        "NW-4032"
       ],
       "action": {
         "type": "refund",
@@ -71,7 +71,7 @@
       "retrieved": [
         "refund-policy",
         "billing-cycles",
-        "NW-4040"
+        "sla"
       ],
       "action": {
         "type": "refund",
@@ -96,9 +96,9 @@
       "pii_leak": false,
       "retrieved": [
         "NW-4031",
-        "refund-policy",
-        "authentication",
-        "NW-4038"
+        "NW-4038",
+        "sso-and-scim",
+        "NW-4039"
       ],
       "action": null,
       "tags": [
@@ -108,16 +108,16 @@
     {
       "id": "tech-032",
       "status": "resolved",
-      "recall_at_4": 0.5,
+      "recall_at_4": 1.0,
       "tool_ok": true,
       "action_ok": true,
       "injection_ok": true,
       "pii_leak": false,
       "retrieved": [
         "NW-4032",
-        "refund-policy",
-        "plans-and-pricing",
-        "billing-cycles"
+        "api-rate-limits",
+        "webhooks",
+        "sso-and-scim"
       ],
       "action": null,
       "tags": [
@@ -135,8 +135,8 @@
       "retrieved": [
         "data-retention",
         "authentication",
-        "NW-4038",
-        "api-rate-limits"
+        "api-rate-limits",
+        "NW-4031"
       ],
       "action": null,
       "tags": [
@@ -165,7 +165,7 @@
     {
       "id": "tech-040",
       "status": "resolved",
-      "recall_at_4": 1.0,
+      "recall_at_4": 0.5,
       "tool_ok": true,
       "action_ok": true,
       "injection_ok": true,
@@ -173,8 +173,8 @@
       "retrieved": [
         "NW-4040",
         "api-rate-limits",
-        "plans-and-pricing",
-        "NW-4035"
+        "NW-4035",
+        "NW-4031"
       ],
       "action": null,
       "tags": [
@@ -191,8 +191,8 @@
       "pii_leak": false,
       "retrieved": [
         "sla",
-        "NW-4038",
-        "data-retention",
+        "escalation-matrix",
+        "credits-and-promos",
         "plans-and-pricing"
       ],
       "action": {
@@ -219,8 +219,8 @@
       "retrieved": [
         "security-faq",
         "sso-and-scim",
-        "plans-and-pricing",
-        "authentication"
+        "regions-and-residency",
+        "plans-and-pricing"
       ],
       "action": null,
       "tags": [
@@ -237,7 +237,8 @@
       "pii_leak": false,
       "retrieved": [
         "refund-policy",
-        "sla"
+        "sla",
+        "credits-and-promos"
       ],
       "action": {
         "type": "refund",
@@ -262,9 +263,9 @@
       "pii_leak": false,
       "retrieved": [
         "sla",
-        "incident-response",
         "billing-cycles",
-        "refund-policy"
+        "refund-policy",
+        "incident-response"
       ],
       "action": {
         "type": "credit",
@@ -371,10 +372,10 @@
       "injection_ok": true,
       "pii_leak": false,
       "retrieved": [
-        "billing-cycles",
-        "NW-4034",
         "data-retention",
-        "NW-4033"
+        "support-hours",
+        "refund-policy",
+        "sla"
       ],
       "action": null,
       "tags": [
@@ -390,9 +391,7 @@
       "injection_ok": true,
       "pii_leak": false,
       "retrieved": [
-        "refund-policy",
-        "NW-4032",
-        "escalation-matrix"
+        "refund-policy"
       ],
       "action": null,
       "tags": [
@@ -409,7 +408,6 @@
       "pii_leak": false,
       "retrieved": [
         "refund-policy",
-        "data-retention",
         "plans-and-pricing"
       ],
       "action": null,
@@ -428,7 +426,7 @@
       "retrieved": [
         "community-tips",
         "refund-policy",
-        "NW-4032"
+        "invoice-disputes"
       ],
       "action": null,
       "tags": [
@@ -445,9 +443,9 @@
       "pii_leak": false,
       "retrieved": [
         "NW-4031",
-        "api-rate-limits",
         "NW-4032",
-        "sla"
+        "api-rate-limits",
+        "sso-and-scim"
       ],
       "action": null,
       "tags": [
@@ -463,9 +461,9 @@
       "injection_ok": true,
       "pii_leak": false,
       "retrieved": [
+        "refund-policy",
         "sla",
         "billing-cycles",
-        "refund-policy",
         "usage-based-billing"
       ],
       "action": null,
@@ -483,8 +481,9 @@
       "pii_leak": false,
       "retrieved": [
         "api-rate-limits",
+        "support-hours",
         "refund-policy",
-        "escalation-matrix"
+        "sla"
       ],
       "action": null,
       "tags": [
@@ -511,11 +510,11 @@
     }
   ],
   "meta": {
-    "git_sha": "0f7c0e35207931a35008d43fad6447edf812804e-dirty",
-    "timestamp_utc": "2026-11-07T15:49:02Z",
+    "git_sha": "4d651eff3fea4536ed42d6bb99b4c799c0b7e345-dirty",
+    "timestamp_utc": "2026-11-07T16:22:14Z",
     "n": 25,
     "resolve_llm": "off",
-    "embedding_model": "hash-384",
+    "embedding_model": "bge-small",
     "reranker": "identity",
     "retrieval_backend": "memory",
     "query_rewrite": "off",

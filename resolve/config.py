@@ -42,8 +42,9 @@ class Settings(BaseSettings):
     # "off" is the frozen deterministic path (no LLM calls). "on" is unused until Phase 3.
     resolve_llm: str = "off"
     retrieval_backend: str = "memory"
-    embedding_model: str = "hash-384"
-    reranker: str = "identity"
+    embedding_model: str = "bge-small"  # bge-small | hash-384 (no-download fallback)
+    hybrid_bm25_weight: float = 1.0  # RRF weight of BM25 vs dense; 1.0 chosen on the dev split
+    reranker: str = "identity"  # identity | minilm (cross-encoder, fastembed)
     query_rewrite: str = "off"  # off | rules | llm
 
     data_dir: Path = Field(default=ROOT / "data")

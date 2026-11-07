@@ -49,27 +49,30 @@ def render() -> str:
 
     rows = ablation.get("rows") or []
     if rows:
+        decision = ablation.get("decision") or {}
         n = ablation.get("meta", {}).get("n") or rows[0].get("n")
-        lines.append(f"### Retrieval ablation (n={n})")
+        lines.append(f"### Retrieval ablation (n={n}; chosen on dev, reported on held-out test)")
         lines.append("")
-        lines.append("| Config | Rewrite | Recall@4 | MRR | p50 ms | p95 ms | $ / ticket |")
-        lines.append("|---|---|---|---|---|---|---|")
+        lines.append("| Config | Recall@4 dev | Recall@4 **test** | MRR **test** | p50 ms | p95 ms |")
+        lines.append("|---|---|---|---|---|---|")
         for row in rows:
-            p50 = row.get("p50_ms", "—")
-            p95 = row.get("p95_ms", row.get("p95_ms_per_query", "—"))
-            cost = row.get("cost_usd_per_ticket", "—")
+            name = row.get("config")
+            if name == decision.get("chosen_config"):
+                name = f"**{name}** ← default"
             lines.append(
-                f"| {row.get('config')} | {row.get('rewrite', 'off')} | {row.get('recall_at_4')} | "
-                f"{row.get('mrr')} | {p50} | {p95} | {cost} |"
+                f"| {name} | {row.get('dev_recall_at_4')} | {row.get('test_recall_at_4')} | "
+                f"{row.get('test_mrr')} | {row.get('p50_ms')} | {row.get('p95_ms')} |"
             )
         lines.append("")
-        decision = ablation.get("query_rewrite_decision")
         if decision:
             lines.append(
-                f"Query rewrite (rules) vs hybrid: keep=`{decision.get('keep_query_rewrite_rules')}` "
-                f"— {decision.get('reason')} "
-                f"(hybrid R@4 {decision.get('hybrid_recall_at_4')} / MRR {decision.get('hybrid_mrr')}; "
-                f"rules R@4 {decision.get('rules_recall_at_4')} / MRR {decision.get('rules_mrr')})."
+                f"Selection: highest dev Recall@4 → `{decision.get('chosen_config')}` "
+                f"({decision.get('selected_on')}). On held-out {decision.get('reported_on')} it scores "
+                f"Recall@4 {decision.get('chosen_test_recall_at_4')} / MRR {decision.get('chosen_test_mrr')} "
+                f"vs the old `{decision.get('baseline_config')}` default at "
+                f"{decision.get('baseline_test_recall_at_4')} / {decision.get('baseline_test_mrr')}. "
+                "Embeddings: `hash` = md5 feature hashing, `bge` = BAAI/bge-small-en-v1.5 (fastembed, CPU). "
+                "`rerank` = ms-marco-MiniLM-L-6 cross-encoder, rejected: lower test recall at ~1 s p95 on CPU."
             )
             lines.append("")
     else:
