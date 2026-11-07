@@ -2,10 +2,58 @@ import time
 
 from resolve.graph.nodes.common import bump
 from resolve.graph.state import TicketState
+from resolve.llm.provider import get_provider
+
+
+def draft_context(state: TicketState) -> dict:
+    """Everything the drafting model may see. Redacted ticket, ledger facts, policy output, KB excerpts.
+    Deterministic so it can key a recording."""
+    tools = state.get("tool_results") or {}
+    action = state.get("proposed_action")
+    account = []
+    for inv in tools.get("get_invoices") or []:
+        if inv.get("duplicate_of"):
+            account.append(f"duplicate invoice {inv['id']} for ${inv['amount_usd']:.2f} on {inv['issued_at'][:10]}")
+            break
+    codes: dict[str, int] = {}
+    for row in tools.get("get_usage") or []:
+        for code, n in (row.get("errors_by_code") or {}).items():
+            codes[code] = codes.get(code, 0) + n
+    if codes:
+        account.append("recent error counts: " + ", ".join(f"{k} x{v}" for k, v in sorted(codes.items())))
+    sub = tools.get("get_subscription")
+    if sub:
+        account.append(f"plan {sub.get('plan')} ({sub.get('billing_period')})")
+    seen, evidence = set(), []
+    for c in state.get("retrieved") or []:
+        if c["doc_id"] in seen:
+            continue
+        seen.add(c["doc_id"])
+        evidence.append({"doc_id": c["doc_id"], "text": c["text"][:1200]})
+    return {
+        "ticket": state.get("redacted_text") or "",
+        "category": (state.get("classification") or {}).get("category"),
+        "decision": (
+            {k: action[k] for k in ("type", "amount_usd", "needs_approval", "reason")} if action else None
+        ),
+        "injection_flags": sorted(state.get("injection_flags") or []),
+        "account": account,
+        "evidence": evidence,
+    }
 
 
 def draft_node(state: TicketState) -> TicketState:
     started = time.perf_counter()
+    provider = get_provider()
+    # First attempt only: a model draft that fails validation is replaced by the template, not re-prompted
+    # (replay mode would return the same draft anyway).
+    if provider is not None and not int(state.get("retries") or 0):
+        result = provider.draft(draft_context(state))
+        if result is not None:
+            out = result.output
+            state["draft"] = {"text": out.reply, "cited_doc_ids": out.cited_doc_ids, "model": result.model, "source": result.source}
+            state["cost_usd"] = float(state.get("cost_usd") or 0) + result.cost_usd
+            return bump(state, "draft", "drafted", {"citations": out.cited_doc_ids, "model": result.model, "source": result.source}, started)
     chunks = state.get("retrieved") or []
     citations = []
     seen = []
@@ -18,8 +66,6 @@ def draft_node(state: TicketState) -> TicketState:
     classification = state.get("classification") or {}
     action = state.get("proposed_action")
     tools = state.get("tool_results") or {}
-    reasons = (state.get("validation") or {}).get("reasons") or []
-    retry_note = f" Revise to address: {'; '.join(reasons)}." if reasons else ""
 
     lines = [
         f"Northwind Cloud support — {classification.get('category', 'general')} ticket.",
@@ -64,7 +110,9 @@ def draft_node(state: TicketState) -> TicketState:
         lines.append("I cannot disclose another customer's email or account data.")
 
     lines.append("Citations: " + ", ".join(f"`{c}`" for c in citations) + ".")
-    text = " ".join(lines) + retry_note
+    # Validator reasons stay in state["validation"]; echoing them into the reply leaked the very
+    # ungrounded amount being rejected ("Revise to address: ungrounded amount $500.00").
+    text = " ".join(lines)
     draft = {"text": text, "cited_doc_ids": citations}
     state["draft"] = draft
     return bump(state, "draft", "drafted", {"citations": citations}, started)

@@ -20,9 +20,6 @@ class Settings(BaseSettings):
     qdrant_url: str = "http://localhost:6333"
     qdrant_collection: str = "northwind_kb"
 
-    openai_api_key: str = ""
-    openai_fast_model: str = "gpt-4o-mini"
-    openai_judge_model: str = "gpt-4o"
     anthropic_api_key: str = ""
 
     langfuse_public_key: str = ""
@@ -39,8 +36,10 @@ class Settings(BaseSettings):
     rerank_top_n: int = 4
     retrieve_k: int = 20
 
-    # "off" is the frozen deterministic path (no LLM calls). "on" is unused until Phase 3.
+    # off = deterministic rules (CI). replay = recorded Claude outputs, $0. live = Anthropic API, capped.
     resolve_llm: str = "off"
+    llm_model: str = "claude-opus-5-5"
+    record_llm: bool = False
     retrieval_backend: str = "memory"
     embedding_model: str = "bge-small"  # bge-small | hash-384 (no-download fallback)
     hybrid_bm25_weight: float = 1.0  # RRF weight of BM25 vs dense; 1.0 chosen on the dev split
@@ -52,9 +51,7 @@ class Settings(BaseSettings):
 
     @property
     def llm_enabled(self) -> bool:
-        return self.resolve_llm.strip().lower() == "on" and bool(
-            self.openai_api_key or self.anthropic_api_key
-        )
+        return self.resolve_llm.strip().lower() in {"replay", "live"}
 
 
 @lru_cache

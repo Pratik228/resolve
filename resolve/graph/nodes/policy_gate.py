@@ -29,11 +29,13 @@ def policy_gate_node(state: TicketState) -> TicketState:
         inc_ns,
         category,
         state.get("raw_text") or "",
+        intents=set((state.get("triage") or {}).get("intents") or []),
+        month=(state.get("triage") or {}).get("month"),
     )
     flags = state.get("injection_flags") or []
     if flags and decision.allowed:
         # Writes cannot originate from injected instructions
-        hostile = {"ignore-previous", "forced-approve", "forced-refund", "jailbreak", "xml-override", "system-role"}
+        hostile = {"ignore-previous", "forced-approve", "forced-refund", "jailbreak", "xml-override", "system-role", "llm-injection"}
         if set(flags) & hostile:
             decision_dict = None
             payload = {"blocked": True, "flags": flags}

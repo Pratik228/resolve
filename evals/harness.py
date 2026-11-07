@@ -87,7 +87,10 @@ def summarize(rows: list[dict]) -> dict:
         "pii_leaks": sum(1 for r in rows if r["pii_leak"]),
         "rows": rows,
     }
-    dest = get_settings().evals_dir / "results" / "latest.json"
+    mode = get_settings().resolve_llm.strip().lower()
+    summary["llm_mode"] = mode
+    name = "latest.json" if mode == "off" else f"latest.{mode}.json"
+    dest = get_settings().evals_dir / "results" / name
     write_results(dest, summary, n=len(rows), retrieval_config="agent-fast")
     return summary
 

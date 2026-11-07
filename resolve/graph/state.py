@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 
 
 class Classification(BaseModel):
-    category: Literal["billing", "technical", "account", "sla", "legal", "deletion", "contract"]
+    category: Literal["billing", "technical", "account", "sla", "legal", "deletion", "contract", "chargeback", "out_of_scope"]
     urgency: Literal["low", "normal", "high"] = "normal"
     needs_account_data: bool = True
     needs_kb: bool = True
@@ -44,6 +44,7 @@ class TicketState(TypedDict, total=False):
     plan: list[str]
     retrieved: list[dict[str, Any]]
     rewrite: dict[str, Any]
+    triage: dict[str, Any]
     tool_results: dict[str, Any]
     proposed_action: dict[str, Any] | None
     draft: dict[str, Any]

@@ -231,11 +231,29 @@ def decide(
     incidents: Iterable[Any],
     ticket_category: str,
     ticket_text: str,
+    intents: set[str] | None = None,
+    month: int | None = None,
 ) -> Decision:
-    """Refunds beat SLA credits on the same ticket (KB: credits never stack with duplicate refunds)."""
-    refund = refund_eligibility(customer, subscription, invoices, ticket_category, ticket_text)
+    """Refunds beat SLA credits on the same ticket (KB: credits never stack with duplicate refunds).
+
+    ``intents`` / ``month`` come from LLM triage. They only say *what was asked*; eligibility and every
+    amount are still computed here from ledger rows. A wrong intent can at most route to the other rule
+    set, which then checks the ledger on its own terms.
+    """
+    intents = intents or set()
+    text = ticket_text
+    if "refund_duplicate" in intents:
+        text += " [intent: duplicate]"
+    refund = refund_eligibility(customer, subscription, invoices, ticket_category, text)
     if refund.allowed:
         return refund
-    if ticket_category in {"sla"} or "credit" in ticket_text.lower() or "uptime" in ticket_text.lower() or "incident" in ticket_text.lower():
-        return sla_credit(subscription, incidents, month=mentioned_month(ticket_text))
+    low = ticket_text.lower()
+    if (
+        ticket_category in {"sla"}
+        or "sla_credit" in intents
+        or "credit" in low
+        or "uptime" in low
+        or "incident" in low
+    ):
+        return sla_credit(subscription, incidents, month=mentioned_month(ticket_text) or month)
     return refund

@@ -150,7 +150,9 @@ def run(k: int = K) -> dict:
         },
         "cases_detail": per_case,
     }
-    dest = get_settings().evals_dir / "results" / "reliability.json"
+    mode = get_settings().resolve_llm.strip().lower()
+    summary["llm_mode"] = mode
+    dest = get_settings().evals_dir / "results" / f"reliability.{mode}.json"
     write_results(dest, summary, n=trials_total, retrieval_config="reliability")
     return summary
 

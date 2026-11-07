@@ -22,7 +22,7 @@ from resolve.graph.nodes.validate import validate_node
 from resolve.graph.state import TicketState
 from resolve.config import get_settings
 
-ESCALATE_CATEGORIES = {"legal", "deletion", "contract"}
+ESCALATE_CATEGORIES = {"legal", "deletion", "contract", "chargeback", "out_of_scope"}
 
 
 def new_ticket(raw_text: str, customer_id: str | None, auto_approve: bool = False) -> TicketState:
