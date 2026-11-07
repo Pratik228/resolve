@@ -511,13 +511,14 @@
     }
   ],
   "meta": {
-    "git_sha": "aa572ebcad4c009e01ec0781a6b4a00b1f029298-dirty",
-    "timestamp_utc": "2026-11-04T14:33:54Z",
+    "git_sha": "bf0e164c605b227d8b3130a2181a861737c8fefd-dirty",
+    "timestamp_utc": "2026-11-06T13:50:20Z",
     "n": 25,
     "resolve_llm": "off",
     "embedding_model": "hash-384",
     "reranker": "identity",
     "retrieval_backend": "memory",
+    "query_rewrite": "off",
     "retrieval_config": "agent-fast",
     "versions": {
       "python": "3.12.3",

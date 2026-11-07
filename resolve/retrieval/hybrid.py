@@ -106,3 +106,35 @@ class HybridIndex:
             scored.append((score, self._docs[i].chunk_id))
         scored.sort(reverse=True)
         return [cid for _, cid in scored]
+
+    def search_multi(
+        self,
+        queries: list[str],
+        k: int = 20,
+        mode: str = "hybrid",
+        status: str = "active",
+        filter_query: str | None = None,
+    ) -> list[dict]:
+        """Run each rewritten query, fuse chunk ranks with RRF, then unique-doc cut."""
+        if not queries:
+            return []
+        rank_lists: list[list[str]] = []
+        by_id: dict[str, dict] = {}
+        for q in queries:
+            hits = self.search(q, k=k, mode=mode, status=status)
+            rank_lists.append([h["chunk_id"] for h in hits])
+            for h in hits:
+                by_id.setdefault(h["chunk_id"], h)
+        fused = rrf(rank_lists)
+        qlow = (filter_query or queries[0]).lower()
+        out: list[dict] = []
+        for cid, score in fused:
+            chunk = by_id.get(cid) or {**asdict(self.chunks[cid]), "score": score}
+            if chunk.get("doc_id") == "community-tips" and "community" not in qlow:
+                continue
+            item = dict(chunk)
+            item["score"] = score
+            out.append(item)
+            if len(out) >= k:
+                break
+        return out

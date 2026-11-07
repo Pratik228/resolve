@@ -52,15 +52,26 @@ def render() -> str:
         n = ablation.get("meta", {}).get("n") or rows[0].get("n")
         lines.append(f"### Retrieval ablation (n={n})")
         lines.append("")
-        lines.append("| Config | Recall@4 | MRR | ms / query | $ / ticket |")
-        lines.append("|---|---|---|---|---|")
+        lines.append("| Config | Rewrite | Recall@4 | MRR | p50 ms | p95 ms | $ / ticket |")
+        lines.append("|---|---|---|---|---|---|---|")
         for row in rows:
-            ms = row.get("p95_ms_per_query", row.get("p95_ms", "—"))
+            p50 = row.get("p50_ms", "—")
+            p95 = row.get("p95_ms", row.get("p95_ms_per_query", "—"))
             cost = row.get("cost_usd_per_ticket", "—")
             lines.append(
-                f"| {row.get('config')} | {row.get('recall_at_4')} | {row.get('mrr')} | {ms} | {cost} |"
+                f"| {row.get('config')} | {row.get('rewrite', 'off')} | {row.get('recall_at_4')} | "
+                f"{row.get('mrr')} | {p50} | {p95} | {cost} |"
             )
         lines.append("")
+        decision = ablation.get("query_rewrite_decision")
+        if decision:
+            lines.append(
+                f"Query rewrite (rules) vs hybrid: keep=`{decision.get('keep_query_rewrite_rules')}` "
+                f"— {decision.get('reason')} "
+                f"(hybrid R@4 {decision.get('hybrid_recall_at_4')} / MRR {decision.get('hybrid_mrr')}; "
+                f"rules R@4 {decision.get('rules_recall_at_4')} / MRR {decision.get('rules_mrr')})."
+            )
+            lines.append("")
     else:
         lines.append("_No `evals/results/ablation.json`. Run `make ablate`._")
         lines.append("")

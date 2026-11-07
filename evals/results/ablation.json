@@ -2,46 +2,100 @@
   "rows": [
     {
       "config": "dense",
+      "rewrite": "off",
       "recall_at_4": 0.6722,
       "mrr": 0.5472,
-      "p95_ms_per_query": 0.19,
+      "p50_ms": 0.19,
+      "p95_ms": 0.25,
+      "p95_ms_per_query": 0.25,
       "n": 60,
       "cost_usd_per_ticket": 0.0
     },
     {
       "config": "bm25",
+      "rewrite": "off",
       "recall_at_4": 0.8,
       "mrr": 0.7917,
-      "p95_ms_per_query": 0.19,
+      "p50_ms": 0.18,
+      "p95_ms": 0.23,
+      "p95_ms_per_query": 0.23,
       "n": 60,
       "cost_usd_per_ticket": 0.0
     },
     {
       "config": "hybrid",
+      "rewrite": "off",
       "recall_at_4": 0.775,
       "mrr": 0.7667,
-      "p95_ms_per_query": 0.21,
+      "p50_ms": 0.2,
+      "p95_ms": 0.26,
+      "p95_ms_per_query": 0.26,
       "n": 60,
       "cost_usd_per_ticket": 0.0
     },
     {
       "config": "hybrid+rerank",
+      "rewrite": "off",
       "recall_at_4": 0.775,
       "mrr": 0.7667,
-      "p95_ms_per_query": 0.31,
+      "p50_ms": 0.3,
+      "p95_ms": 0.36,
+      "p95_ms_per_query": 0.36,
+      "n": 60,
+      "cost_usd_per_ticket": 0.0
+    },
+    {
+      "config": "hybrid+rewrite_rules",
+      "rewrite": "rules",
+      "recall_at_4": 0.7917,
+      "mrr": 0.7667,
+      "p50_ms": 0.47,
+      "p95_ms": 0.88,
+      "p95_ms_per_query": 0.88,
+      "n": 60,
+      "cost_usd_per_ticket": 0.0
+    },
+    {
+      "config": "hybrid+rewrite_llm",
+      "rewrite": "llm",
+      "recall_at_4": 0.775,
+      "mrr": 0.7667,
+      "p50_ms": 0.22,
+      "p95_ms": 0.26,
+      "p95_ms_per_query": 0.26,
+      "n": 60,
+      "cost_usd_per_ticket": 0.0
+    },
+    {
+      "config": "hybrid+rewrite_rules+rerank",
+      "rewrite": "rules",
+      "recall_at_4": 0.8028,
+      "mrr": 0.7875,
+      "p50_ms": 0.65,
+      "p95_ms": 1.33,
+      "p95_ms_per_query": 1.33,
       "n": 60,
       "cost_usd_per_ticket": 0.0
     }
   ],
+  "query_rewrite_decision": {
+    "keep_query_rewrite_rules": true,
+    "reason": "rules wins on (Recall@4, MRR) vs hybrid",
+    "hybrid_recall_at_4": 0.775,
+    "rules_recall_at_4": 0.7917,
+    "hybrid_mrr": 0.7667,
+    "rules_mrr": 0.7667
+  },
   "meta": {
-    "git_sha": "aa572ebcad4c009e01ec0781a6b4a00b1f029298-dirty",
-    "timestamp_utc": "2026-11-04T14:33:50Z",
+    "git_sha": "bf0e164c605b227d8b3130a2181a861737c8fefd-dirty",
+    "timestamp_utc": "2026-11-06T13:50:06Z",
     "n": 60,
     "resolve_llm": "off",
     "embedding_model": "hash-384",
     "reranker": "identity",
     "retrieval_backend": "memory",
-    "retrieval_config": "dense,bm25,hybrid,hybrid+rerank",
+    "query_rewrite": "off",
+    "retrieval_config": "dense,bm25,hybrid,hybrid+rerank,hybrid+rewrite_rules,hybrid+rewrite_llm,hybrid+rewrite_rules+rerank",
     "versions": {
       "python": "3.12.3",
       "fastapi": "0.115.6",

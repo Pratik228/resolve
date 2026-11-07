@@ -43,6 +43,7 @@ class TicketState(TypedDict, total=False):
     classification: dict[str, Any]
     plan: list[str]
     retrieved: list[dict[str, Any]]
+    rewrite: dict[str, Any]
     tool_results: dict[str, Any]
     proposed_action: dict[str, Any] | None
     draft: dict[str, Any]

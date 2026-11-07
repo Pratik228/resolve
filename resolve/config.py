@@ -44,6 +44,7 @@ class Settings(BaseSettings):
     retrieval_backend: str = "memory"
     embedding_model: str = "hash-384"
     reranker: str = "identity"
+    query_rewrite: str = "off"  # off | rules | llm
 
     data_dir: Path = Field(default=ROOT / "data")
     evals_dir: Path = Field(default=ROOT / "evals")
