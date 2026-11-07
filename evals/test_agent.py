@@ -67,8 +67,10 @@ def test_demo_duplicate_refund():
 @pytest.mark.eval
 def test_demo_approval_threshold():
     case = next(c for c in load_golden() if c["id"] == "multi-900")
+    from resolve.db.seed import reset_ledger
     from resolve.graph.runner import run_ticket
 
+    reset_ledger(case["customer_id"])
     state = run_ticket(case["ticket"], case["customer_id"], auto_approve=False)
     assert state["status"] == "awaiting_approval"
     assert state["proposed_action"]["amount_usd"] == 900

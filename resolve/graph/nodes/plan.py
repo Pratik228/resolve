@@ -25,6 +25,8 @@ def plan_node(state: TicketState) -> TicketState:
             tools.extend(["get_invoices", "get_subscription"])
         if "sla_credit" in intents:
             tools.extend(["get_incidents", "get_subscription", "get_invoices"])
+    if "get_invoices" in tools or "get_incidents" in tools:
+        tools.append("get_payouts")
     # de-dupe, allow-list
     seen = []
     for name in tools:

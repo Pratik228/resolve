@@ -81,7 +81,11 @@ def draft_node(state: TicketState) -> TicketState:
         else:
             lines.append("This write is within the auto-approve limit and will be executed with an idempotency key.")
     else:
-        lines.append("No refund or credit will be executed on this ticket.")
+        note = state.get("policy_note") or {}
+        if any(r.endswith("already-refunded") or r.endswith("already-credited") for r in note.get("rule_ids") or []):
+            lines.append(f"{note['reason']}; it will not be paid again.")
+        else:
+            lines.append("No refund or credit will be executed on this ticket.")
 
     if "get_invoices" in tools:
         dupes = [i for i in tools["get_invoices"] if i.get("duplicate_of")]

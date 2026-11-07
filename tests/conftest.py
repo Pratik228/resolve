@@ -8,3 +8,11 @@ from resolve.retrieval.ingest import ingest
 def northwind():
     seed()
     ingest()
+
+
+@pytest.fixture(autouse=True)
+def clean_ledger():
+    from resolve.db.seed import reset_ledger
+
+    reset_ledger()
+    yield

@@ -121,8 +121,8 @@ def test_enterprise_sla_approval():
 def test_idempotency_stable():
     from resolve.graph.nodes.finalize import idempotency_key
 
-    a = idempotency_key("tkt_1", "refund", 49)
-    b = idempotency_key("tkt_1", "refund", 49.0)
+    a = idempotency_key("cus_1", "refund", "inv_1")
+    b = idempotency_key("cus_1", "refund", "inv_1")
     assert a == b
 
 

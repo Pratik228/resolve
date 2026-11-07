@@ -45,6 +45,7 @@ class TicketState(TypedDict, total=False):
     retrieved: list[dict[str, Any]]
     rewrite: dict[str, Any]
     triage: dict[str, Any]
+    policy_note: dict[str, Any] | None
     tool_results: dict[str, Any]
     proposed_action: dict[str, Any] | None
     draft: dict[str, Any]

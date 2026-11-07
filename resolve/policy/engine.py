@@ -25,6 +25,7 @@ class Decision:
     needs_approval: bool
     rule_ids: list[str] = field(default_factory=list)
     reason: str = ""
+    target_ref: str = ""  # what is being paid for: an invoice id or "sla:<plan>:<YYYY-MM>"
 
 
 def _needs_approval(amount: float, plan: str) -> bool:
@@ -70,6 +71,7 @@ def refund_eligibility(
     ticket_category: str,
     ticket_text: str = "",
     now: datetime | None = None,
+    paid_refs: frozenset[str] | set[str] = frozenset(),
 ) -> Decision:
     """KB: refund-policy.md — duplicates always; Enterprise annual never (except dupes); 14-day full."""
     now = now or datetime(2026, 11, 3)
@@ -80,8 +82,15 @@ def refund_eligibility(
     if "chargeback" in text:
         return Decision(False, None, 0.0, False, ["chargeback-finance"], "Chargebacks are owned by finance")
 
-    dupes = find_duplicate_invoices(invoices)
-    if dupes and any(k in text for k in ("refund", "charged twice", "duplicate", "double", "extra")):
+    all_dupes = find_duplicate_invoices(invoices)
+    dupes = [d for d in all_dupes if d.id not in paid_refs]
+    wants = any(k in text for k in ("refund", "charged twice", "duplicate", "double", "extra"))
+    if all_dupes and not dupes and wants:
+        return Decision(
+            False, None, 0.0, False, ["refund-policy:already-refunded"],
+            f"Duplicate invoice {all_dupes[0].id} was already refunded", all_dupes[0].id,
+        )
+    if dupes and wants:
         amount = round(float(dupes[0].amount_usd), 2)
         return Decision(
             True,
@@ -90,6 +99,7 @@ def refund_eligibility(
             _needs_approval(amount, plan),
             ["refund-policy:duplicate"],
             f"Duplicate invoice {dupes[0].id} for ${amount:.2f}",
+            dupes[0].id,
         )
 
     if ticket_category not in {"billing", "account"} and "refund" not in text:
@@ -115,6 +125,9 @@ def refund_eligibility(
     started = _as_dt(subscription.started_at)
     last = max(paid, key=lambda i: _as_dt(i.issued_at))
     days = (now.date() - started.date()).days
+    if last.id in paid_refs and "refund" in text:
+        return Decision(False, None, 0.0, False, ["refund-policy:already-refunded"],
+                        f"Invoice {last.id} was already refunded", last.id)
     if days <= 14 and "refund" in text:
         amount = round(float(last.amount_usd), 2)
         return Decision(
@@ -124,6 +137,7 @@ def refund_eligibility(
             _needs_approval(amount, plan),
             ["refund-policy:14-day"],
             f"Full refund within 14 days (day {days})",
+            last.id,
         )
 
     if days == 15 and "refund" in text:
@@ -138,6 +152,7 @@ def refund_eligibility(
             _needs_approval(amount, plan),
             ["refund-policy:prorate"],
             f"Prorated {remaining}/30 days",
+            last.id,
         )
 
     return Decision(False, None, 0.0, False, ["refund-policy:ineligible"], "No eligible refund")
@@ -177,7 +192,12 @@ def _incident_month(inc: Any) -> tuple[int, int] | None:
     return (started.year, started.month)
 
 
-def sla_credit(subscription: Any, incidents: Iterable[Any], month: int | None = None) -> Decision:
+def sla_credit(
+    subscription: Any,
+    incidents: Iterable[Any],
+    month: int | None = None,
+    paid_refs: frozenset[str] | set[str] = frozenset(),
+) -> Decision:
     """SLA is measured per calendar month. Credit only the month the customer asked about
     (or the most recent month with an incident), never the worst incident on record."""
     plan = subscription.plan
@@ -204,6 +224,12 @@ def sla_credit(subscription: Any, incidents: Iterable[Any], month: int | None = 
         else:
             target = max(m for m, _ in dated)
         relevant = [inc for m, inc in dated if m == target]
+        ref = f"sla:{plan}:{target[0]}-{target[1]:02d}"
+        if ref in paid_refs:
+            return Decision(False, None, 0.0, False, ["sla:already-credited"],
+                            f"{plan} SLA credit for {target[0]}-{target[1]:02d} was already issued", ref)
+    else:
+        ref = f"sla:{plan}:undated"
 
     uptime = min(float(inc.uptime_pct) for inc in relevant)
     below = rules["target"] - uptime
@@ -221,6 +247,7 @@ def sla_credit(subscription: Any, incidents: Iterable[Any], month: int | None = 
         _needs_approval(amount, plan),
         ["sla:credit"],
         f"{plan} uptime {uptime}% vs {rules['target']}% → {steps} step(s) = ${amount:.2f}",
+        ref,
     )
 
 
@@ -233,6 +260,7 @@ def decide(
     ticket_text: str,
     intents: set[str] | None = None,
     month: int | None = None,
+    paid_refs: frozenset[str] | set[str] = frozenset(),
 ) -> Decision:
     """Refunds beat SLA credits on the same ticket (KB: credits never stack with duplicate refunds).
 
@@ -244,7 +272,7 @@ def decide(
     text = ticket_text
     if "refund_duplicate" in intents:
         text += " [intent: duplicate]"
-    refund = refund_eligibility(customer, subscription, invoices, ticket_category, text)
+    refund = refund_eligibility(customer, subscription, invoices, ticket_category, text, paid_refs=paid_refs)
     if refund.allowed:
         return refund
     low = ticket_text.lower()
@@ -255,5 +283,5 @@ def decide(
         or "uptime" in low
         or "incident" in low
     ):
-        return sla_credit(subscription, incidents, month=mentioned_month(ticket_text) or month)
+        return sla_credit(subscription, incidents, month=mentioned_month(ticket_text) or month, paid_refs=paid_refs)
     return refund

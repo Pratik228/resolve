@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any, Callable
 
-from resolve.db.models import Customer, Incident, Invoice, Subscription, Usage
+from resolve.db.models import Action, Customer, Incident, Invoice, Subscription, Usage
 from resolve.db.session import get_session
 
 ToolFn = Callable[[str], Any]
@@ -104,7 +104,20 @@ def get_subscription(customer_id: str) -> dict | None:
         }
 
 
+def get_payouts(customer_id: str) -> list[dict]:
+    """Refunds/credits already executed for this customer. Read-only; the policy engine uses it so the
+    same invoice or SLA month is never paid twice across tickets."""
+    with get_session() as session:
+        rows = session.query(Action).filter(Action.customer_id == customer_id).all()
+        return [
+            {"type": r.type, "amount_usd": r.amount_usd, "target_ref": r.target_ref, "status": r.status,
+             "ticket_id": r.ticket_id}
+            for r in rows
+        ]
+
+
 REGISTRY: dict[str, ToolFn] = {
+    "get_payouts": get_payouts,
     "get_customer": get_customer,
     "get_invoices": get_invoices,
     "get_usage": get_usage,

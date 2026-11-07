@@ -24,6 +24,7 @@ from evals.harness import ensure_data, load_golden
 from evals.meta import write_results
 from resolve.config import get_settings
 from resolve.db.models import Action
+from resolve.db.seed import reset_ledger
 from resolve.db.session import get_session
 from resolve.graph.runner import approve, run_ticket
 
@@ -58,6 +59,7 @@ def _matches(rows: list[Action], expected: dict) -> bool:
 
 def run_trial(case: dict, ticket: str) -> dict:
     expected = case.get("expected_action")
+    reset_ledger(case.get("customer_id"))  # each trial is an independent episode
     state = run_ticket(ticket, case.get("customer_id"), auto_approve=False)
     tid = state["ticket_id"]
     rows = _rows(tid)

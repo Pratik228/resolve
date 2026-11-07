@@ -28,6 +28,7 @@ class Settings(BaseSettings):
 
     demo_spend_cap_usd: float = 5.0
     rate_limit_per_minute: int = 30
+    ip_hash_salt: str = "change-me"
     api_cors_origins: str = "http://localhost:3000"
 
     auto_approve_usd: float = 100.0

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "git_sha": "474b2d919badc09c22047b5689a211b2a1d58b70-dirty",
-    "timestamp_utc": "2026-11-07T16:30:24Z",
+    "git_sha": "b6c2db52416ccb6a80e9e5a7a8ee62a058788d2c-dirty",
+    "timestamp_utc": "2026-11-07T16:53:00Z",
     "n": 60,
     "resolve_llm": "off",
     "embedding_model": "bge-small",
@@ -26,7 +26,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": {
         "type": "refund",
@@ -50,7 +51,8 @@
         "get_customer",
         "get_invoices",
         "get_subscription",
-        "get_usage"
+        "get_usage",
+        "get_payouts"
       ],
       "action": {
         "type": "refund",
@@ -74,7 +76,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": {
         "type": "refund",
@@ -256,7 +259,8 @@
         "get_customer",
         "get_incidents",
         "get_subscription",
-        "get_invoices"
+        "get_invoices",
+        "get_payouts"
       ],
       "action": {
         "type": "credit",
@@ -280,7 +284,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -376,7 +381,8 @@
         "get_customer",
         "get_invoices",
         "get_subscription",
-        "get_incidents"
+        "get_incidents",
+        "get_payouts"
       ],
       "action": {
         "type": "refund",
@@ -400,7 +406,8 @@
         "get_customer",
         "get_invoices",
         "get_subscription",
-        "get_incidents"
+        "get_incidents",
+        "get_payouts"
       ],
       "action": {
         "type": "credit",
@@ -426,7 +433,8 @@
         "get_incidents",
         "get_subscription",
         "get_invoices",
-        "get_usage"
+        "get_usage",
+        "get_payouts"
       ],
       "action": {
         "type": "credit",
@@ -451,7 +459,8 @@
         "get_customer",
         "get_invoices",
         "get_subscription",
-        "get_usage"
+        "get_usage",
+        "get_payouts"
       ],
       "action": {
         "type": "refund",
@@ -475,7 +484,8 @@
         "get_customer",
         "get_incidents",
         "get_subscription",
-        "get_invoices"
+        "get_invoices",
+        "get_payouts"
       ],
       "action": {
         "type": "credit",
@@ -530,7 +540,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": {
         "type": "refund",
@@ -553,7 +564,8 @@
         "get_customer",
         "get_invoices",
         "get_subscription",
-        "get_usage"
+        "get_usage",
+        "get_payouts"
       ],
       "action": null,
       "status": "escalated",
@@ -666,7 +678,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -681,7 +694,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -711,7 +725,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -725,7 +740,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -740,7 +756,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -756,7 +773,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -771,7 +789,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -802,7 +821,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -880,7 +900,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -898,7 +919,8 @@
         "get_customer",
         "get_incidents",
         "get_subscription",
-        "get_invoices"
+        "get_invoices",
+        "get_payouts"
       ],
       "action": {
         "type": "credit",
@@ -937,7 +959,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",
@@ -969,7 +992,8 @@
       "tools_called": [
         "get_customer",
         "get_invoices",
-        "get_subscription"
+        "get_subscription",
+        "get_payouts"
       ],
       "action": null,
       "status": "resolved",

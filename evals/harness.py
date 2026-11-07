@@ -7,7 +7,7 @@ import yaml
 
 from evals.meta import write_results
 from resolve.config import get_settings
-from resolve.db.seed import seed
+from resolve.db.seed import reset_ledger, seed
 from resolve.graph.runner import run_ticket
 from resolve.retrieval.ingest import ingest
 
@@ -30,6 +30,7 @@ def ensure_data() -> None:
 
 
 def run_case(case: dict, auto_approve: bool = True) -> dict:
+    reset_ledger(case.get("customer_id"))
     state = run_ticket(case["ticket"], case.get("customer_id"), auto_approve=auto_approve)
     retrieved = [h["doc_id"] for h in state.get("retrieved") or []]
     uniq = []

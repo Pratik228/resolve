@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from fastapi import APIRouter, HTTPException, Request
+from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
+from apps.api.ratelimit import limit
 from apps.api.sse import iter_ticket_events
 from resolve.db.models import Ticket
 from resolve.db.session import get_session
@@ -13,14 +14,15 @@ router = APIRouter()
 
 
 class TicketIn(BaseModel):
-    text: str
+    text: str = Field(min_length=3, max_length=4000)
     customer_id: str | None = "cus_014"
     # No auto_approve here on purpose: the public API must never let a caller skip the
     # human approval step. Only the offline eval harness calls run_ticket(auto_approve=True).
 
 
 @router.post("/tickets")
-def create_ticket(body: TicketIn):
+def create_ticket(body: TicketIn, request: Request):
+    limit(request)
     state = run_ticket(body.text, body.customer_id, auto_approve=False)
     return {
         "id": state["ticket_id"],
