@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-09: Hardening, Claude layer, reliability evals, redesign
+
+- Fixed: SLA credits scoped to the requested month; every eval threshold now asserted in CI; public `auto_approve` removed and CORS tightened; "sue" matched inside "issue"; chargebacks escalate; draft retries no longer echo rejected amounts into replies; idempotency is per customer + item, not per ticket (453 duplicate refunds found in dev); one golden label corrected (claim vs ledger).
+- Added: Claude triage + drafting (`RESOLVE_LLM=off|replay|live`, structured outputs, spend cap) with recorded outputs that are not blind; pass^k reliability on ledger end-state (108 variants); bge-small hybrid retrieval chosen on a dev split; load test (7.3 → ~97 tickets/s); Break the refund red-team API; demo reset; production compose behind a Cloudflare Tunnel.
+- Web: redesigned as security-printed cheques (explainer, console, trace, approvals, evals, red-team).
+
 ## 2026-11-06 — Query rewrite (optional)
 
 Added `QUERY_REWRITE=off|rules|llm` before retrieval. `rules` expands `NW-****` codes and abbreviations, strips greetings/signatures, splits multi-question tickets, and fuses sub-queries with RRF. `llm` is wired but skipped while `RESOLVE_LLM=off` (redacted text only, max 3 JSON queries). Original + rewritten queries are logged on the retrieve audit event. Ablation now reports hybrid with and without rewrite (Recall@4, MRR, p50/p95). Default stays `off` unless the measured decision says rules wins; the deterministic snapshot is not regenerated.

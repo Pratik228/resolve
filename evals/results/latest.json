@@ -521,8 +521,8 @@
   ],
   "llm_mode": "off",
   "meta": {
-    "git_sha": "a170ea9fcb1bee854147a4711886024c0f2eb476-dirty",
-    "timestamp_utc": "2026-11-09T04:26:28Z",
+    "git_sha": "dd50efe494e6ca72f42f068fb0840a3130bd4dae-dirty",
+    "timestamp_utc": "2026-11-09T04:34:08Z",
     "n": 25,
     "resolve_llm": "off",
     "embedding_model": "bge-small",

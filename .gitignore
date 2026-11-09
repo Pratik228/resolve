@@ -32,3 +32,4 @@ loadtest.db*
 # impeccable runtime captures
 .impeccable/review/
 .impeccable/questions/
+deploy/.env.prod

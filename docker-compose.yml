@@ -49,7 +49,8 @@ services:
       CHECKPOINT_DATABASE_URL: postgresql://resolve:${POSTGRES_PASSWORD}@postgres:5432/resolve
       REDIS_URL: redis://redis:6379/0
       QDRANT_URL: http://qdrant:6333
-      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      RESOLVE_LLM: ${RESOLVE_LLM:-off}
     ports:
       - "127.0.0.1:8000:8000"
     depends_on:
