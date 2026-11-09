@@ -49,18 +49,32 @@ def render() -> str:
 
     rows = ablation.get("rows") or []
     if rows:
+        decision = ablation.get("decision") or {}
         n = ablation.get("meta", {}).get("n") or rows[0].get("n")
-        lines.append(f"### Retrieval ablation (n={n})")
+        lines.append(f"### Retrieval ablation (n={n}; chosen on dev, reported on held-out test)")
         lines.append("")
-        lines.append("| Config | Recall@4 | MRR | ms / query | $ / ticket |")
-        lines.append("|---|---|---|---|---|")
+        lines.append("| Config | Recall@4 dev | Recall@4 **test** | MRR **test** | p50 ms | p95 ms |")
+        lines.append("|---|---|---|---|---|---|")
         for row in rows:
-            ms = row.get("p95_ms_per_query", row.get("p95_ms", "—"))
-            cost = row.get("cost_usd_per_ticket", "—")
+            name = row.get("config")
+            if name == decision.get("chosen_config"):
+                name = f"**{name}** ← default"
             lines.append(
-                f"| {row.get('config')} | {row.get('recall_at_4')} | {row.get('mrr')} | {ms} | {cost} |"
+                f"| {name} | {row.get('dev_recall_at_4')} | {row.get('test_recall_at_4')} | "
+                f"{row.get('test_mrr')} | {row.get('p50_ms')} | {row.get('p95_ms')} |"
             )
         lines.append("")
+        if decision:
+            lines.append(
+                f"Selection: highest dev Recall@4 → `{decision.get('chosen_config')}` "
+                f"({decision.get('selected_on')}). On held-out {decision.get('reported_on')} it scores "
+                f"Recall@4 {decision.get('chosen_test_recall_at_4')} / MRR {decision.get('chosen_test_mrr')} "
+                f"vs the old `{decision.get('baseline_config')}` default at "
+                f"{decision.get('baseline_test_recall_at_4')} / {decision.get('baseline_test_mrr')}. "
+                "Embeddings: `hash` = md5 feature hashing, `bge` = BAAI/bge-small-en-v1.5 (fastembed, CPU). "
+                "`rerank` = ms-marco-MiniLM-L-6 cross-encoder, rejected: lower test recall at ~1 s p95 on CPU."
+            )
+            lines.append("")
     else:
         lines.append("_No `evals/results/ablation.json`. Run `make ablate`._")
         lines.append("")
@@ -97,10 +111,40 @@ def render() -> str:
         lines.append("_No `evals/results/latest.json`. Run `make eval-fast`._")
         lines.append("")
 
-    lines.append(
-        "`$ / ticket` is only meaningful after a paid-model run. "
-        "Faithfulness is not in these files yet."
-    )
+    off = _load("reliability.off.json") or {}
+    rep = _load("reliability.replay.json") or {}
+    if off.get("trials"):
+        lines.append(f"### pass^k on ledger end-state ({off['cases']} cases × k={off['k']}, {off['trials']} trials)")
+        lines.append("")
+        lines.append("A trial passes only if the `actions` table ends in the expected state. Variants: original, paraphrase, typo, greeting/signature noise, request buried mid-paragraph.")
+        lines.append("")
+        lines.append("| Triage | pass^1 | pass^k | Unsafe writes |")
+        lines.append("|---|---|---|---|")
+        lines.append(f"| Rules (deterministic) | {off['pass_1']} | {off['pass_k']} | {off['unsafe_writes']} |")
+        if rep.get("trials"):
+            lines.append(f"| Recorded Claude triage* | {rep['pass_1']} | {rep['pass_k']} | {rep['unsafe_writes']} |")
+        lines.append("")
+        fr = off.get("fail_rate_by_variant") or {}
+        if fr:
+            lines.append("Rules failure rate by variant: " + ", ".join(f"{k} {round(v * 100)}%" for k, v in fr.items()) + ".")
+            lines.append("")
+        lines.append("*Recorded by Claude Opus 5.5 in a dev session that had seen the labels: a ceiling check on the plumbing, not a blind model measurement. `RESOLVE_LLM=live RECORD_LLM=1` produces the blind number.")
+        lines.append("")
+
+    load = _load("loadtest.json") or {}
+    if load.get("rows"):
+        lines.append("### Load test")
+        lines.append("")
+        lines.append(f"{load.get('method')}. Host: {load.get('host')}.")
+        lines.append("")
+        lines.append("| Run | Workers | Concurrency | Tickets/s | p50 ms | p95 ms | p99 ms |")
+        lines.append("|---|---|---|---|---|---|---|")
+        for r in load["rows"]:
+            if r["concurrency"] in (1, 4, 16):
+                lines.append(f"| {r['label']} | {r['workers']} | {r['concurrency']} | {r['rps']} | {r['p50_ms']} | {r['p95_ms']} | {r['p99_ms']} |")
+        lines.append("")
+
+    lines.append("`$ / ticket` is only meaningful after a live paid-model run.")
     lines.append("")
     return "\n".join(lines)
 

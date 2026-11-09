@@ -7,7 +7,7 @@ import yaml
 
 from evals.meta import write_results
 from resolve.config import get_settings
-from resolve.db.seed import seed
+from resolve.db.seed import reset_ledger, seed
 from resolve.graph.runner import run_ticket
 from resolve.retrieval.ingest import ingest
 
@@ -30,6 +30,7 @@ def ensure_data() -> None:
 
 
 def run_case(case: dict, auto_approve: bool = True) -> dict:
+    reset_ledger(case.get("customer_id"))
     state = run_ticket(case["ticket"], case.get("customer_id"), auto_approve=auto_approve)
     retrieved = [h["doc_id"] for h in state.get("retrieved") or []]
     uniq = []
@@ -87,7 +88,10 @@ def summarize(rows: list[dict]) -> dict:
         "pii_leaks": sum(1 for r in rows if r["pii_leak"]),
         "rows": rows,
     }
-    dest = get_settings().evals_dir / "results" / "latest.json"
+    mode = get_settings().resolve_llm.strip().lower()
+    summary["llm_mode"] = mode
+    name = "latest.json" if mode == "off" else f"latest.{mode}.json"
+    dest = get_settings().evals_dir / "results" / name
     write_results(dest, summary, n=len(rows), retrieval_config="agent-fast")
     return summary
 

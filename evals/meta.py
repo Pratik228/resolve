@@ -60,6 +60,7 @@ def build_meta(*, n: int, retrieval_config: str | None = None) -> dict[str, Any]
         "embedding_model": settings.embedding_model,
         "reranker": settings.reranker,
         "retrieval_backend": settings.retrieval_backend,
+        "query_rewrite": settings.query_rewrite,
         "retrieval_config": retrieval_config,
         "versions": package_versions(),
     }
