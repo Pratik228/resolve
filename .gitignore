@@ -25,3 +25,10 @@ postgres_data/
 .coverage
 htmlcov/
 .python-version
+
+# SQLite WAL sidecars and local load-test DBs
+resolve.db-*
+loadtest.db*
+# impeccable runtime captures
+.impeccable/review/
+.impeccable/questions/

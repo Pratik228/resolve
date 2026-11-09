@@ -77,3 +77,27 @@ def get_ticket(ticket_id: str):
 @router.get("/tickets/{ticket_id}/stream")
 def stream_ticket(ticket_id: str):
     return EventSourceResponse(iter_ticket_events(ticket_id))
+
+
+DEMO_CUSTOMERS = ("cus_014", "cus_008", "cus_001")
+
+
+@router.post("/demo/reset")
+def demo_reset(request: Request):
+    """Sandbox only: clear payouts for the three landing-page demo customers and expire their paused
+    approvals, so every visitor sees the same first run. Real idempotency still applies within a run."""
+    limit(request, per_minute=6, bucket="demo-reset")
+    from resolve.db.models import Action
+
+    with get_session() as session:
+        removed = (
+            session.query(Action)
+            .filter(Action.customer_id.in_(DEMO_CUSTOMERS))
+            .delete(synchronize_session=False)
+        )
+        expired = (
+            session.query(Ticket)
+            .filter(Ticket.customer_id.in_(DEMO_CUSTOMERS), Ticket.status == "awaiting_approval")
+            .update({Ticket.status: "expired"}, synchronize_session=False)
+        )
+    return {"payouts_cleared": removed, "approvals_expired": expired}

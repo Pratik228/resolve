@@ -25,3 +25,19 @@ def latest():
 @router.get("/evals/ablation")
 def ablation():
     return _read("ablation.json") or {"status": "not_run"}
+
+
+PUBLIC_RESULTS = {"latest", "latest.replay", "ablation", "reliability.off", "reliability.replay", "loadtest"}
+
+
+@router.get("/evals/results/{name}")
+def result(name: str, detail: bool = False):
+    """Whitelisted results files for the web app. Per-trial detail is dropped unless asked for."""
+    if name not in PUBLIC_RESULTS:
+        return {"status": "unknown"}
+    data = _read(f"{name}.json")
+    if data is None:
+        return {"status": "not_run"}
+    if isinstance(data, dict) and not detail:
+        data = {k: v for k, v in data.items() if k not in {"cases_detail", "rows"} or name in {"ablation", "loadtest"}}
+    return data

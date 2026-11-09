@@ -1,8 +1,23 @@
+import re
 import time
 
 from resolve.graph.nodes.common import bump
 from resolve.graph.state import TicketState
 from resolve.llm.provider import get_provider
+
+
+def kb_sentences(text: str, n: int = 2) -> str:
+    """First n plain sentences of a KB chunk: no markdown headings, tables, emphasis or code ticks.
+    The template used to paste 280 raw characters, table pipes and all, into customer replies."""
+    body = []
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or line.startswith("|") or line.startswith("<!--"):
+            continue
+        body.append(line.lstrip("-* ").strip())
+    plain = re.sub(r"[*`]", "", " ".join(body))
+    sentences = re.split(r"(?<=[.!?])\s+", plain)
+    return " ".join(s for s in sentences[:n] if s).strip()
 
 
 def draft_context(state: TicketState) -> dict:
@@ -103,9 +118,14 @@ def draft_node(state: TicketState) -> TicketState:
     if codes:
         lines.append("Recent error counts: " + ", ".join(f"{k}×{v}" for k, v in codes.items()) + ".")
 
+    quoted = []
     for chunk in chunks:
-        snippet = chunk["text"].replace("\n", " ")[:280]
-        lines.append(f"From {chunk['doc_id']}: {snippet}")
+        if chunk["doc_id"] in quoted or len(quoted) >= 2:
+            continue
+        snippet = kb_sentences(chunk["text"])
+        if snippet:
+            quoted.append(chunk["doc_id"])
+            lines.append(f"From {chunk.get('title') or chunk['doc_id']}: {snippet}")
 
     if state.get("injection_flags"):
         lines.append("Security: the ticket or KB contained injection patterns. Those instructions were ignored.")
