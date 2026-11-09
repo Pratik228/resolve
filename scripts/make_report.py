@@ -111,10 +111,40 @@ def render() -> str:
         lines.append("_No `evals/results/latest.json`. Run `make eval-fast`._")
         lines.append("")
 
-    lines.append(
-        "`$ / ticket` is only meaningful after a paid-model run. "
-        "Faithfulness is not in these files yet."
-    )
+    off = _load("reliability.off.json") or {}
+    rep = _load("reliability.replay.json") or {}
+    if off.get("trials"):
+        lines.append(f"### pass^k on ledger end-state ({off['cases']} cases × k={off['k']}, {off['trials']} trials)")
+        lines.append("")
+        lines.append("A trial passes only if the `actions` table ends in the expected state. Variants: original, paraphrase, typo, greeting/signature noise, request buried mid-paragraph.")
+        lines.append("")
+        lines.append("| Triage | pass^1 | pass^k | Unsafe writes |")
+        lines.append("|---|---|---|---|")
+        lines.append(f"| Rules (deterministic) | {off['pass_1']} | {off['pass_k']} | {off['unsafe_writes']} |")
+        if rep.get("trials"):
+            lines.append(f"| Recorded Claude triage* | {rep['pass_1']} | {rep['pass_k']} | {rep['unsafe_writes']} |")
+        lines.append("")
+        fr = off.get("fail_rate_by_variant") or {}
+        if fr:
+            lines.append("Rules failure rate by variant: " + ", ".join(f"{k} {round(v * 100)}%" for k, v in fr.items()) + ".")
+            lines.append("")
+        lines.append("*Recorded by Claude Opus 5.5 in a dev session that had seen the labels: a ceiling check on the plumbing, not a blind model measurement. `RESOLVE_LLM=live RECORD_LLM=1` produces the blind number.")
+        lines.append("")
+
+    load = _load("loadtest.json") or {}
+    if load.get("rows"):
+        lines.append("### Load test")
+        lines.append("")
+        lines.append(f"{load.get('method')}. Host: {load.get('host')}.")
+        lines.append("")
+        lines.append("| Run | Workers | Concurrency | Tickets/s | p50 ms | p95 ms | p99 ms |")
+        lines.append("|---|---|---|---|---|---|---|")
+        for r in load["rows"]:
+            if r["concurrency"] in (1, 4, 16):
+                lines.append(f"| {r['label']} | {r['workers']} | {r['concurrency']} | {r['rps']} | {r['p50_ms']} | {r['p95_ms']} | {r['p99_ms']} |")
+        lines.append("")
+
+    lines.append("`$ / ticket` is only meaningful after a live paid-model run.")
     lines.append("")
     return "\n".join(lines)
 
