@@ -62,13 +62,29 @@ def finalize_node(state: TicketState) -> TicketState:
     return bump(state, "finalize", "finalized", {"action": action}, started)
 
 
+# Customer-facing text per escalation reason. The internal reason stays in the audit event, never in the reply.
+ESCALATION_REPLY = {
+    "legal": "Thanks for letting us know. Because this involves a legal matter, our legal team will handle it "
+    "directly and will contact you. No changes have been made to your account in the meantime.",
+    "deletion": "We've received your deletion request. Our privacy team handles account and data erasure and will "
+    "confirm the scope and timing with you directly. Nothing has been deleted yet.",
+    "contract": "Contract and custom-terms changes are handled by your account team, so I've passed this to them. "
+    "They'll follow up with you; nothing on your plan has changed.",
+    "chargeback": "Since a chargeback is open with your bank, our finance team owns this charge now and will follow "
+    "up with you. We can't issue a separate refund while the dispute is open.",
+    "out_of_scope": "I can't share or act on another customer's account or personal details. If this is about your "
+    "own account, reply from the account owner's address and a teammate will help.",
+}
+DEFAULT_ESCALATION_REPLY = (
+    "I've passed this ticket to a teammate, who will follow up with you. No changes have been made to your account."
+)
+
+
 def escalate_node(state: TicketState) -> TicketState:
     started = time.perf_counter()
     state["status"] = "escalated"
     category = (state.get("classification") or {}).get("category")
-    state["reply"] = (
-        f"Escalated to a human queue ({category}). The agent will not execute writes on this ticket."
-    )
+    state["reply"] = ESCALATION_REPLY.get(category or "", DEFAULT_ESCALATION_REPLY)
     with get_session() as session:
         row = session.get(Ticket, state.get("ticket_id"))
         if row:
