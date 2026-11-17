@@ -82,8 +82,9 @@ def render() -> str:
     if latest.get("n"):
         lines.append(f"### Fast agent suite (n={latest['n']})")
         lines.append("")
-        lines.append("| Metric | Value | Gate |")
-        lines.append("|---|---|---|")
+        latest_rep = _load("latest.replay.json") or {}
+        lines.append("| Metric | Rules | Blind Claude | Gate |")
+        lines.append("|---|---|---|---|")
         gates = {
             "recall_at_4": thresholds.get("recall_at_4"),
             "tool_call_accuracy": thresholds.get("tool_call_accuracy"),
@@ -102,7 +103,7 @@ def render() -> str:
             val = latest.get(key, "—")
             gate = gates.get(key)
             gate_s = f"≤ {gate}" if key == "pii_leaks" else f"≥ {gate}"
-            lines.append(f"| {label} | {val} | {gate_s} |")
+            lines.append(f"| {label} | {val} | {latest_rep.get(key, '—')} | {gate_s} |")
         lines.append("")
         if latest.get("meta"):
             lines.append(_meta_line(latest["meta"]))
@@ -122,13 +123,33 @@ def render() -> str:
         lines.append("|---|---|---|---|")
         lines.append(f"| Rules (deterministic) | {off['pass_1']} | {off['pass_k']} | {off['unsafe_writes']} |")
         if rep.get("trials"):
-            lines.append(f"| Recorded Claude triage* | {rep['pass_1']} | {rep['pass_k']} | {rep['unsafe_writes']} |")
+            lines.append(f"| Blind Claude triage* | {rep['pass_1']} | {rep['pass_k']} | {rep['unsafe_writes']} |")
         lines.append("")
         fr = off.get("fail_rate_by_variant") or {}
         if fr:
             lines.append("Rules failure rate by variant: " + ", ".join(f"{k} {round(v * 100)}%" for k, v in fr.items()) + ".")
             lines.append("")
-        lines.append("*Recorded by Claude Opus 5.5 in a dev session that had seen the labels: a ceiling check on the plumbing, not a blind model measurement. `RESOLVE_LLM=live RECORD_LLM=1` produces the blind number.")
+        lines.append("*Claude Opus 5.5 in fresh agent contexts that saw only the system prompt, the schema and the ticket, never the labels or the repo (`scripts/capture_inputs.py` queues the inputs; `evals/recordings/*.blind.jsonl` holds the outputs). Replayed for $0. Caveat: the variants were also written by Claude, so their phrasing is not adversarial to it.")
+        lines.append("")
+
+    tri = _load("triage_analysis.replay.json") or {}
+    if tri.get("n"):
+        lines.append(f"### Triage error analysis (n={tri['n']}: golden + variants)")
+        lines.append("")
+        lines.append("| Source | Category acc. | Escalation recall | Escalation precision | Injection recall | Injection FPR |")
+        lines.append("|---|---|---|---|---|---|")
+        names = {"rules": "Rules", "llm": "Blind Claude", "merged": "**Merged (what the graph acts on)**"}
+        for src, name in names.items():
+            e, i = tri["escalation"][src], tri["injection"][src]
+            lines.append(f"| {name} | {tri['category_accuracy'][src]} | {e['recall']} | {e['precision']} | {i['recall']} | {i['false_positive_rate']} |")
+        lines.append("")
+        md = tri.get("model_drafts") or {}
+        rej = "; ".join(f"`{r['id']}`: {', '.join(r['reasons'])}" for r in md.get("rejected_detail", []))
+        lines.append(f"Grounding validator on blind Claude replies: {md.get('accepted', 0)} accepted, {md.get('rejected', 0)} rejected{f' ({rej})' if rej else ''}. A rejected reply is replaced by a template, never sent.")
+        lines.append("")
+        tax = sum(1 for d in tri.get("disagreements", []) if d["merged"] in {"chargeback", "out_of_scope"} and d["merged"] != d["gold"])
+        miss = sum(1 for d in tri.get("disagreements", []) if d["merged"] != d["gold"])
+        lines.append(f"Of {miss} merged-category misses, {tax} are taxonomy (the gold set predates the `chargeback` and `out_of_scope` categories); the rest are real confusions, mostly account vs technical and tickets mixing an error code with a refund. Labels were not edited after seeing model output. Full list: `evals/results/triage_analysis.replay.json`.")
         lines.append("")
 
     load = _load("loadtest.json") or {}

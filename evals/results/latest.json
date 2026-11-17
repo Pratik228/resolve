@@ -520,9 +520,10 @@
     }
   ],
   "llm_mode": "off",
+  "llm_recordings": "blind",
   "meta": {
-    "git_sha": "dd50efe494e6ca72f42f068fb0840a3130bd4dae-dirty",
-    "timestamp_utc": "2026-11-09T04:34:08Z",
+    "git_sha": "f25a8bd092530218b45983bab6890fea1a206d4c-dirty",
+    "timestamp_utc": "2026-11-09T11:19:46Z",
     "n": 25,
     "resolve_llm": "off",
     "embedding_model": "bge-small",

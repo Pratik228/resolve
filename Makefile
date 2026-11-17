@@ -1,4 +1,4 @@
-.PHONY: up down seed ingest eval eval-fast ablate api web test policy install snapshot report
+.PHONY: traces api-traced triage-analysis capture up down seed ingest eval eval-fast ablate api web test policy install snapshot report
 
 up:
 	docker compose up -d postgres qdrant redis
@@ -30,6 +30,19 @@ ablate:
 
 snapshot:
 	PYTHONHASHSEED=0 python -m evals.snapshot
+
+traces:
+	docker compose up -d jaeger
+	@echo "Jaeger UI: http://127.0.0.1:16686  (run the API with OTEL_EXPORTER=otlp)"
+
+api-traced:
+	OTEL_EXPORTER=otlp PYTHONPATH=. uvicorn apps.api.main:app --host 127.0.0.1 --port 8000
+
+triage-analysis:
+	RESOLVE_LLM=replay PYTHONHASHSEED=0 python -m evals.triage_analysis
+
+capture:
+	RESOLVE_LLM=capture PYTHONHASHSEED=0 python scripts/capture_inputs.py
 
 report:
 	python scripts/make_report.py

@@ -267,8 +267,8 @@ export default function Home() {
               <strong>
                 {fixed(off.pass_k)} → {fixed(rep.pass_k)}
               </strong>
-              pass^5 on ledger end-state: rules alone, then with recorded Claude triage (written with labels in view, not
-              blind).
+              pass^5 on ledger end-state: rules alone, then with blind Claude triage (fresh agent context, labels
+              withheld).
             </div>
             <div>
               <strong>
