@@ -39,6 +39,10 @@ retrieve = [
 eval = [
     "deepeval==2.3.0",
 ]
+otel = [
+    "opentelemetry-sdk==1.29.0",
+    "opentelemetry-exporter-otlp-proto-http==1.29.0",
+]
 postgres = [
     "psycopg[binary]==3.2.3",
     "psycopg2-binary==2.9.10",

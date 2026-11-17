@@ -6,6 +6,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import Any
 
+from resolve.obs.tracing import ticket_span
 from resolve.db.models import Ticket
 from resolve.db.session import get_session, init_db
 from resolve.graph.nodes.approval import approval_node
@@ -78,6 +79,15 @@ def _save(state: TicketState) -> None:
 
 
 def run(state: TicketState) -> TicketState:
+    """Run or resume, inside one OpenTelemetry trace (a no-op unless OTEL_EXPORTER is set)."""
+    resuming = state.get("status") == "awaiting_approval"
+    with ticket_span(state, "resume_agent" if resuming else "invoke_agent") as span:
+        out = _run(state)
+        span.state = out
+    return out
+
+
+def _run(state: TicketState) -> TicketState:
     """Run or resume. If status is awaiting_approval, jump to approval → finalize."""
     if state.get("status") == "awaiting_approval":
         state["status"] = "running"

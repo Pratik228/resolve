@@ -6,6 +6,7 @@ from typing import Any
 from resolve.config import get_settings
 from resolve.db.models import AuditLog
 from resolve.graph.state import TicketState
+from resolve.obs.tracing import node_span
 
 
 def bump(state: TicketState, node: str, event: str, payload: dict[str, Any], started: float) -> TicketState:
@@ -27,6 +28,7 @@ def bump(state: TicketState, node: str, event: str, payload: dict[str, Any], sta
     pending = list(state.get("pending_audit") or [])
     pending.append({"node": node, "event": event, "payload": payload, "duration_ms": duration})
     state["pending_audit"] = pending
+    node_span(node, event, payload, duration, state)
     if state["step_count"] >= get_settings().max_steps and state.get("status") == "running":
         state["status"] = "escalated"
         state["reply"] = "Escalated: step cap reached. A human will take this ticket."
