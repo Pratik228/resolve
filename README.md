@@ -10,9 +10,6 @@ Northwind Cloud is fictional on purpose: full control of the ledger, no IP issue
 
 > LLMs decide what to say. Code decides what’s allowed.
 
-## Why this exists
-
-By late 2026 a support agent with RAG is the new “chat with your PDF”. Hiring managers have seen dozens. They have not seen as many candidates who treat an LLM system like a production system: hard limits on what the model may do, measured quality, CI that fails on regressions, an audit trail, and cost per request.
 
 ## Demo path (90 seconds)
 
@@ -97,7 +94,7 @@ flowchart LR
 
 ## What broke (and what we’d change)
 
-- **Hashed dense vectors lost exact error codes.** BM25 Recall@4 was 0.80; dense was 0.67. Hybrid without BM25 bias sat in between. That is the interview example for “why hybrid search,” and also a warning: a weak dense model can *hurt* RRF until you weight sparse matches.
+- **Hashed dense vectors lost exact error codes.** BM25 Recall@4 was 0.80; dense was 0.67. Hybrid without BM25 bias sat in between.
 - **Rerank is identity in the default path.** `RERANKER=identity`. Do not call this a cross-encoder until weights actually load.
 - **`community-tips.md` is a planted injection.** Early drafts cited it on refund tickets because “refund” overlaps. Retrieval now skips that doc unless the query mentions the community forum.
 
