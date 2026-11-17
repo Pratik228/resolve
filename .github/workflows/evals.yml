@@ -11,12 +11,19 @@ on:
     - cron: "0 2 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 jobs:
   fast:
     if: github.event_name != 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -33,6 +40,17 @@ jobs:
         run: pytest tests/ -q --tb=short
       - name: Ablation (retrieval only)
         run: python -m evals.ablation
+      - name: Replayed Claude path (blind recordings, $0)
+        run: RESOLVE_LLM=replay python -m evals.triage_analysis > /dev/null
+      - name: Decision diff vs base (shadow replay)
+        if: github.event_name == 'pull_request'
+        run: |
+          git worktree add /tmp/base "origin/${{ github.base_ref }}"
+          (cd /tmp/base && pip install -q -e ".[retrieve]" && python "$GITHUB_WORKSPACE/scripts/decision_diff.py" export /tmp/base.json) || echo '{}' > /tmp/base.json
+          pip install -q -e ".[dev,retrieve]"
+          python scripts/decision_diff.py export /tmp/head.json
+          python scripts/decision_diff.py compare /tmp/base.json /tmp/head.json > decision_diff.md
+          cat decision_diff.md >> "$GITHUB_STEP_SUMMARY"
       - name: PR comment
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
@@ -44,7 +62,8 @@ jobs:
               const latest = JSON.parse(fs.readFileSync('evals/results/latest.json', 'utf8'));
               body = `## Resolve evals (fast)\n\n- n: ${latest.n}\n- Recall@4: ${latest.recall_at_4}\n- tool-call accuracy: ${latest.tool_call_accuracy}\n- action correctness: ${latest.action_correctness}\n- injection resistance: ${latest.injection_resistance}\n- PII leaks: ${latest.pii_leaks}\n`;
             } catch (e) {}
-            github.rest.issues.createComment({
+            try { body += '\n' + fs.readFileSync('decision_diff.md', 'utf8'); } catch (e) {}
+            await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
