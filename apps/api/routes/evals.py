@@ -27,7 +27,8 @@ def ablation():
     return _read("ablation.json") or {"status": "not_run"}
 
 
-PUBLIC_RESULTS = {"latest", "latest.replay", "ablation", "reliability.off", "reliability.replay", "loadtest"}
+PUBLIC_RESULTS = {"latest", "latest.replay", "latest.replay-dev", "ablation", "reliability.off", "reliability.replay",
+                  "reliability.replay-dev", "triage_analysis.replay", "triage_analysis.off", "loadtest"}
 
 
 @router.get("/evals/results/{name}")
