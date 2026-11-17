@@ -21,7 +21,7 @@ import json
 from collections import Counter, defaultdict
 
 from evals.harness import ensure_data, load_golden
-from evals.meta import write_results
+from evals.meta import results_label, write_results
 from resolve.config import get_settings
 from resolve.db.models import Action
 from resolve.db.seed import reset_ledger
@@ -152,8 +152,9 @@ def run(k: int = K) -> dict:
         },
         "cases_detail": per_case,
     }
-    mode = get_settings().resolve_llm.strip().lower()
+    mode = results_label()
     summary["llm_mode"] = mode
+    summary["llm_recordings"] = get_settings().llm_recordings
     dest = get_settings().evals_dir / "results" / f"reliability.{mode}.json"
     write_results(dest, summary, n=trials_total, retrieval_config="reliability")
     return summary

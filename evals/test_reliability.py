@@ -15,8 +15,9 @@ def test_pass_k_and_no_unsafe_writes():
 
 @pytest.mark.fast
 def test_replay_llm_path_end_to_end(monkeypatch):
-    """Recorded Claude triage + drafts through the real graph. Catches plumbing regressions in the LLM
-    path for $0. Not a model-quality measurement: the recordings were written with the labels in view."""
+    """Blind recorded Claude triage + drafts through the real graph, for $0. The recordings came from fresh
+    agent contexts that never saw the labels (evals/recordings/*.blind.jsonl), so this is a model measurement
+    for these exact inputs; any prompt or input change is a replay miss and falls back to rules."""
     import resolve.llm.provider as provider
     from resolve.config import get_settings
 

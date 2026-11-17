@@ -38,9 +38,12 @@ class Settings(BaseSettings):
     retrieve_k: int = 20
 
     # off = deterministic rules (CI). replay = recorded Claude outputs, $0. live = Anthropic API, capped.
+    # capture = replay, and every miss is queued in evals/recordings/pending/ for an offline model pass.
     resolve_llm: str = "off"
     llm_model: str = "claude-opus-5-5"
     record_llm: bool = False
+    # Which recorded outputs replay serves: blind (fresh Claude context, no labels) | dev (written with labels in view)
+    llm_recordings: str = "blind"
     retrieval_backend: str = "memory"
     embedding_model: str = "bge-small"  # bge-small | hash-384 (no-download fallback)
     hybrid_bm25_weight: float = 1.0  # RRF weight of BM25 vs dense; 1.0 chosen on the dev split
@@ -52,7 +55,7 @@ class Settings(BaseSettings):
 
     @property
     def llm_enabled(self) -> bool:
-        return self.resolve_llm.strip().lower() in {"replay", "live"}
+        return self.resolve_llm.strip().lower() in {"replay", "live", "capture"}
 
 
 @lru_cache

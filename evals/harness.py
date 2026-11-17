@@ -5,7 +5,7 @@ from pathlib import Path
 
 import yaml
 
-from evals.meta import write_results
+from evals.meta import results_label, write_results
 from resolve.config import get_settings
 from resolve.db.seed import reset_ledger, seed
 from resolve.graph.runner import run_ticket
@@ -88,8 +88,9 @@ def summarize(rows: list[dict]) -> dict:
         "pii_leaks": sum(1 for r in rows if r["pii_leak"]),
         "rows": rows,
     }
-    mode = get_settings().resolve_llm.strip().lower()
+    mode = results_label()
     summary["llm_mode"] = mode
+    summary["llm_recordings"] = get_settings().llm_recordings
     name = "latest.json" if mode == "off" else f"latest.{mode}.json"
     dest = get_settings().evals_dir / "results" / name
     write_results(dest, summary, n=len(rows), retrieval_config="agent-fast")

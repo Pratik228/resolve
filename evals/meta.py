@@ -78,3 +78,14 @@ def write_results(path: Path, payload: dict[str, Any], *, n: int, retrieval_conf
     path.parent.mkdir(parents=True, exist_ok=True)
     body = json.dumps(with_meta(payload, n=n, retrieval_config=retrieval_config), indent=2, default=str)
     path.write_text(body + "\n")
+
+
+def results_label() -> str:
+    """'off', 'replay' (blind recordings), 'replay-dev' (label-aware recordings), 'live', 'capture'."""
+    from resolve.config import get_settings
+
+    st = get_settings()
+    mode = st.resolve_llm.strip().lower()
+    if mode in {"replay", "capture"} and st.llm_recordings != "blind":
+        return f"{mode}-{st.llm_recordings}"
+    return mode

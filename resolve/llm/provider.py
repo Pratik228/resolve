@@ -3,6 +3,8 @@
 - ``off``    no model; deterministic rules only (CI default).
 - ``replay`` serve recorded model outputs from evals/recordings/*.jsonl; a miss returns None and
              the graph falls back to rules. $0, deterministic, used by the public demo.
+- ``capture`` replay, and every miss is appended to evals/recordings/pending/ so an offline model pass
+             (a fresh Claude context that never sees the labels, or the Batch API) can fill it.
 - ``live``   call Claude through the Anthropic SDK with structured outputs, under a hard spend cap.
              Set RECORD_LLM=1 to append every live output to the recordings.
 
@@ -31,8 +33,13 @@ def record_key(kind: str, payload: Any) -> str:
     return hashlib.sha256(raw.encode()).hexdigest()[:24]
 
 
-def _recordings_path(kind: str) -> Path:
-    return get_settings().evals_dir / "recordings" / f"{kind}_{PROMPT_VERSION}.jsonl"
+def _recordings_path(kind: str, recordings: str | None = None) -> Path:
+    name = recordings or get_settings().llm_recordings
+    return get_settings().evals_dir / "recordings" / f"{kind}_{PROMPT_VERSION}.{name}.jsonl"
+
+
+def _pending_path(kind: str) -> Path:
+    return get_settings().evals_dir / "recordings" / "pending" / f"{kind}_{PROMPT_VERSION}.jsonl"
 
 
 class Result:
@@ -67,6 +74,32 @@ class ReplayProvider:
 
     def draft(self, context: dict) -> Result | None:
         return self._get("draft", context, DraftOut)
+
+
+class CaptureProvider(ReplayProvider):
+    """Replay; on a miss, queue the exact model-visible input once and fall back to rules."""
+
+    _lock = threading.Lock()
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._queued: set[str] = set()
+
+    def _get(self, kind: str, payload: Any, model_cls):
+        hit = super()._get(kind, payload, model_cls)
+        if hit:
+            return hit
+        key = record_key(kind, payload)
+        with CaptureProvider._lock:
+            path = _pending_path(kind)
+            if not self._queued and path.exists():
+                self._queued = {json.loads(line)["key"] for line in path.read_text().splitlines() if line.strip()}
+            if key not in self._queued:
+                path.parent.mkdir(parents=True, exist_ok=True)
+                with path.open("a") as f:
+                    f.write(json.dumps({"key": key, "kind": kind, "input": payload}) + "\n")
+                self._queued.add(key)
+        return None
 
 
 class LiveProvider(ReplayProvider):
@@ -132,6 +165,6 @@ def get_provider():
     if mode == "off":
         return None
     if _PROVIDER is None or getattr(_PROVIDER, "_mode", None) != mode:
-        _PROVIDER = LiveProvider() if mode == "live" else ReplayProvider()
+        _PROVIDER = {"live": LiveProvider, "capture": CaptureProvider}.get(mode, ReplayProvider)()
         _PROVIDER._mode = mode
     return _PROVIDER
