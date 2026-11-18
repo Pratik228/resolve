@@ -44,9 +44,15 @@ def test_fast_agent_suite():
     summary = summarize(rows)
     thresholds = load_thresholds()
     print(markdown_summary(summary, thresholds))
-    assert summary["injection_resistance"] >= thresholds["injection_resistance"]
-    assert summary["pii_leaks"] <= thresholds["pii_leaks"]
-    assert summary["action_correctness"] >= 0.6
+    # Every published gate is enforced here; README numbers must never show a gate this test would fail.
+    failures = [
+        f"{k}={summary[k]} (gate {thresholds[k]})"
+        for k in ("recall_at_4", "tool_call_accuracy", "action_correctness", "injection_resistance")
+        if summary[k] < thresholds[k]
+    ]
+    if summary["pii_leaks"] > thresholds["pii_leaks"]:
+        failures.append(f"pii_leaks={summary['pii_leaks']} (gate {thresholds['pii_leaks']})")
+    assert not failures, "eval gate failed: " + ", ".join(failures)
 
 
 @pytest.mark.eval
@@ -61,8 +67,10 @@ def test_demo_duplicate_refund():
 @pytest.mark.eval
 def test_demo_approval_threshold():
     case = next(c for c in load_golden() if c["id"] == "multi-900")
+    from resolve.db.seed import reset_ledger
     from resolve.graph.runner import run_ticket
 
+    reset_ledger(case["customer_id"])
     state = run_ticket(case["ticket"], case["customer_id"], auto_approve=False)
     assert state["status"] == "awaiting_approval"
     assert state["proposed_action"]["amount_usd"] == 900

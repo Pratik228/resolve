@@ -14,6 +14,9 @@ def validate_node(state: TicketState) -> TicketState:
     evidence = "\n".join(c["text"] for c in chunks)
     action = state.get("proposed_action")
     allowed_amounts = [action["amount_usd"]] if action else []
+    # Ledger rows the tools returned are evidence too (invoice and prior payout amounts).
+    tools = state.get("tool_results") or {}
+    allowed_amounts += [float(r["amount_usd"]) for r in (tools.get("get_invoices") or []) + (tools.get("get_payouts") or [])]
     reasons = ungrounded_spans(draft["text"], evidence, allowed_amounts)
 
     if action and f"{action['amount_usd']:.2f}" not in draft["text"] and f"{action['amount_usd']}" not in draft["text"]:

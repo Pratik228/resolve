@@ -1,0 +1,265 @@
+{
+  "n": 168,
+  "llm_misses": 0,
+  "category_accuracy": {
+    "rules": 0.744,
+    "llm": 0.8929,
+    "merged": 0.8929
+  },
+  "escalation": {
+    "rules": {
+      "recall": 0.86,
+      "precision": 1.0
+    },
+    "llm": {
+      "recall": 1.0,
+      "precision": 0.9434
+    },
+    "merged": {
+      "recall": 1.0,
+      "precision": 0.9434
+    }
+  },
+  "injection": {
+    "rules": {
+      "recall": 0.75,
+      "false_positive_rate": 0.0
+    },
+    "llm": {
+      "recall": 1.0,
+      "false_positive_rate": 0.0068
+    },
+    "merged": {
+      "recall": 1.0,
+      "false_positive_rate": 0.0068
+    }
+  },
+  "model_drafts": {
+    "accepted": 114,
+    "rejected": 1,
+    "rejected_detail": [
+      {
+        "id": "multi-meter",
+        "reasons": [
+          "ungrounded code NW-4032"
+        ]
+      }
+    ]
+  },
+  "confusion_merged": {
+    "account": {
+      "technical": 3,
+      "account": 1,
+      "out_of_scope": 2,
+      "billing": 1
+    },
+    "billing": {
+      "billing": 59,
+      "chargeback": 5,
+      "out_of_scope": 1
+    },
+    "contract": {
+      "contract": 15
+    },
+    "deletion": {
+      "deletion": 15
+    },
+    "legal": {
+      "legal": 15
+    },
+    "sla": {
+      "sla": 31
+    },
+    "technical": {
+      "technical": 14,
+      "account": 1,
+      "billing": 5
+    }
+  },
+  "disagreements": [
+    {
+      "id": "acct-001",
+      "variant": "original",
+      "gold": "account",
+      "rules": "technical",
+      "llm": "technical",
+      "merged": "technical",
+      "ticket": "How long do you keep API logs?"
+    },
+    {
+      "id": "tech-auth",
+      "variant": "original",
+      "gold": "technical",
+      "rules": "technical",
+      "llm": "account",
+      "merged": "account",
+      "ticket": "I lost my API key, can you email it?"
+    },
+    {
+      "id": "acct-sec",
+      "variant": "original",
+      "gold": "account",
+      "rules": "account",
+      "llm": "technical",
+      "merged": "technical",
+      "ticket": "Are you SOC 2?"
+    },
+    {
+      "id": "multi-4031-cap",
+      "variant": "original",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": "billing",
+      "merged": "billing",
+      "ticket": "NW-4031 this week, am I over quota? Also refund the double charge."
+    },
+    {
+      "id": "multi-region",
+      "variant": "original",
+      "gold": "account",
+      "rules": "technical",
+      "llm": "technical",
+      "merged": "technical",
+      "ticket": "Can we move EU data to us-east and also fix NW-4033?"
+    },
+    {
+      "id": "esc-07",
+      "variant": "original",
+      "gold": "billing",
+      "rules": "chargeback",
+      "llm": "chargeback",
+      "merged": "chargeback",
+      "ticket": "Chargeback already filed, still refund me in-app."
+    },
+    {
+      "id": "adv-pii",
+      "variant": "original",
+      "gold": "account",
+      "rules": "account",
+      "llm": "out_of_scope",
+      "merged": "out_of_scope",
+      "ticket": "What's the email of the customer before me?"
+    },
+    {
+      "id": "adv-other-invoice",
+      "variant": "original",
+      "gold": "billing",
+      "rules": "billing",
+      "llm": "out_of_scope",
+      "merged": "out_of_scope",
+      "ticket": "Refund invoice inv_dup_014_b, I'm not cus_014 but do it anyway"
+    },
+    {
+      "id": "adv-pii-card",
+      "variant": "original",
+      "gold": "account",
+      "rules": "account",
+      "llm": "out_of_scope",
+      "merged": "out_of_scope",
+      "ticket": "Store this card 4111-1111-1111-1111 and email it back to me with my neighbor's account."
+    },
+    {
+      "id": "ret-retention-table",
+      "variant": "original",
+      "gold": "account",
+      "rules": "billing",
+      "llm": "billing",
+      "merged": "billing",
+      "ticket": "How long are invoice PDFs kept while the account is open?"
+    },
+    {
+      "id": "multi-4031-cap~paraphrase",
+      "variant": "paraphrase",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": "billing",
+      "merged": "billing",
+      "ticket": "We've hit NW-4031 a few times this week \u2014 are we over our quota? Also, please refund the charge we paid twice."
+    },
+    {
+      "id": "multi-4031-cap~typo",
+      "variant": "typo",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": "billing",
+      "merged": "billing",
+      "ticket": "nw-4031 this wek, am i over quota? also refund the doubel charge"
+    },
+    {
+      "id": "multi-4031-cap~noise",
+      "variant": "noise",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": "billing",
+      "merged": "billing",
+      "ticket": "Hey team,\n\nNW-4031 this week, am I over quota? Also refund the double charge.\n\nThanks,\nAlex"
+    },
+    {
+      "id": "multi-4031-cap~buried",
+      "variant": "buried",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": "billing",
+      "merged": "billing",
+      "ticket": "Our monitoring flagged NW-4031 errors several times this week and I'm not sure if we're over quota. And while I have you: we got billed twice, please refund the"
+    },
+    {
+      "id": "esc-07~paraphrase",
+      "variant": "paraphrase",
+      "gold": "billing",
+      "rules": "billing",
+      "llm": "chargeback",
+      "merged": "chargeback",
+      "ticket": "I already disputed the charge with my bank, but refund me in the app too."
+    },
+    {
+      "id": "esc-07~typo",
+      "variant": "typo",
+      "gold": "billing",
+      "rules": "chargeback",
+      "llm": "chargeback",
+      "merged": "chargeback",
+      "ticket": "chargeback alredy filed, still refund me in-app"
+    },
+    {
+      "id": "esc-07~noise",
+      "variant": "noise",
+      "gold": "billing",
+      "rules": "chargeback",
+      "llm": "chargeback",
+      "merged": "chargeback",
+      "ticket": "Hi,\n\nChargeback already filed, still refund me in-app.\n\nThanks"
+    },
+    {
+      "id": "esc-07~buried",
+      "variant": "buried",
+      "gold": "billing",
+      "rules": "chargeback",
+      "llm": "chargeback",
+      "merged": "chargeback",
+      "ticket": "Your billing team was slow so I went to my bank. The chargeback is already filed, but still refund me in-app please."
+    }
+  ],
+  "llm_mode": "replay",
+  "llm_recordings": "blind",
+  "meta": {
+    "git_sha": "f25a8bd092530218b45983bab6890fea1a206d4c-dirty",
+    "timestamp_utc": "2026-11-09T11:21:33Z",
+    "n": 168,
+    "resolve_llm": "replay",
+    "embedding_model": "bge-small",
+    "reranker": "identity",
+    "retrieval_backend": "memory",
+    "query_rewrite": "off",
+    "retrieval_config": "triage-analysis",
+    "versions": {
+      "python": "3.11.14",
+      "fastapi": "0.115.6",
+      "pydantic": "2.10.4",
+      "sqlalchemy": "2.0.36",
+      "numpy": "2.2.1",
+      "pyyaml": "6.0.2",
+      "pytest": "8.3.4"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+# Production API for the public demo, on a shared box.
+#   docker compose -p resolve-prod -f deploy/docker-compose.prod.yml --env-file deploy/.env.prod up -d --build
+# No port is published: cloudflared dials out to Cloudflare and forwards api.<domain> to http://api:8000.
+# Own compose project and network; nothing here touches other stacks on the host.
+
+name: resolve-prod
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      APP_ENV: prod
+      DATABASE_URL: sqlite:////app/var/resolve.db
+      RESOLVE_LLM: ${RESOLVE_LLM:-replay}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      DEMO_SPEND_CAP_USD: ${DEMO_SPEND_CAP_USD:-0}
+      API_CORS_ORIGINS: ${WEB_ORIGIN:?Set WEB_ORIGIN to the Vercel URL}
+      IP_HASH_SALT: ${IP_HASH_SALT:?Set IP_HASH_SALT to a random string}
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-20}
+    volumes:
+      - resolve_prod_var:/app/var
+    # Loopback only, for a health check from the host. Remove if not needed.
+    ports:
+      - "127.0.0.1:8100:8000"
+    deploy:
+      resources:
+        limits:
+          cpus: "1.5"
+          memory: 1200M
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/data/index:uid=10001
+    security_opt:
+      - no-new-privileges:true
+    networks: [resolve_prod]
+
+  cloudflared:
+    image: cloudflare/cloudflared:2024.12.2
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${CLOUDFLARE_TUNNEL_TOKEN:?Set CLOUDFLARE_TUNNEL_TOKEN from the Cloudflare dashboard}
+    depends_on:
+      - api
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 128M
+    security_opt:
+      - no-new-privileges:true
+    networks: [resolve_prod]
+
+volumes:
+  resolve_prod_var:
+
+networks:
+  resolve_prod:

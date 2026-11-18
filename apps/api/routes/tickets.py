@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
+from fastapi import APIRouter, HTTPException, Request
+from pydantic import BaseModel, Field
 from sse_starlette.sse import EventSourceResponse
 
+from apps.api.ratelimit import limit
 from apps.api.sse import iter_ticket_events
 from resolve.db.models import Ticket
 from resolve.db.session import get_session
@@ -13,14 +14,16 @@ router = APIRouter()
 
 
 class TicketIn(BaseModel):
-    text: str
+    text: str = Field(min_length=3, max_length=4000)
     customer_id: str | None = "cus_014"
-    auto_approve: bool = False
+    # No auto_approve here on purpose: the public API must never let a caller skip the
+    # human approval step. Only the offline eval harness calls run_ticket(auto_approve=True).
 
 
 @router.post("/tickets")
-def create_ticket(body: TicketIn):
-    state = run_ticket(body.text, body.customer_id, auto_approve=body.auto_approve)
+def create_ticket(body: TicketIn, request: Request):
+    limit(request)
+    state = run_ticket(body.text, body.customer_id, auto_approve=False)
     return {
         "id": state["ticket_id"],
         "status": state["status"],
@@ -74,3 +77,27 @@ def get_ticket(ticket_id: str):
 @router.get("/tickets/{ticket_id}/stream")
 def stream_ticket(ticket_id: str):
     return EventSourceResponse(iter_ticket_events(ticket_id))
+
+
+DEMO_CUSTOMERS = ("cus_014", "cus_008", "cus_001")
+
+
+@router.post("/demo/reset")
+def demo_reset(request: Request):
+    """Sandbox only: clear payouts for the three landing-page demo customers and expire their paused
+    approvals, so every visitor sees the same first run. Real idempotency still applies within a run."""
+    limit(request, per_minute=6, bucket="demo-reset")
+    from resolve.db.models import Action
+
+    with get_session() as session:
+        removed = (
+            session.query(Action)
+            .filter(Action.customer_id.in_(DEMO_CUSTOMERS))
+            .delete(synchronize_session=False)
+        )
+        expired = (
+            session.query(Ticket)
+            .filter(Ticket.customer_id.in_(DEMO_CUSTOMERS), Ticket.status == "awaiting_approval")
+            .update({Ticket.status: "expired"}, synchronize_session=False)
+        )
+    return {"payouts_cleared": removed, "approvals_expired": expired}

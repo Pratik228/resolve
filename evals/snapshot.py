@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 
 from evals.harness import ensure_data, load_golden
+from resolve.db.seed import reset_ledger
 from evals.meta import build_meta
 from resolve.config import get_settings
 from resolve.graph.runner import run_ticket
@@ -45,6 +46,7 @@ def run_all(auto_approve: bool = False) -> list[dict]:
     ensure_data()
     rows = []
     for case in load_golden():
+        reset_ledger(case.get("customer_id"))
         state = run_ticket(case["ticket"], case.get("customer_id"), auto_approve=auto_approve)
         rows.append(record_from_state(case["id"], state))
     return rows

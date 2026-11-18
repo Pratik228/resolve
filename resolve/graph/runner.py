@@ -6,9 +6,11 @@ import uuid
 from datetime import datetime, timezone
 from typing import Any
 
+from resolve.obs.tracing import ticket_span
 from resolve.db.models import Ticket
 from resolve.db.session import get_session, init_db
 from resolve.graph.nodes.approval import approval_node
+from resolve.graph.nodes.common import flush_audit
 from resolve.graph.nodes.classify import classify_node
 from resolve.graph.nodes.draft import draft_node
 from resolve.graph.nodes.finalize import escalate_node, finalize_node
@@ -22,7 +24,7 @@ from resolve.graph.nodes.validate import validate_node
 from resolve.graph.state import TicketState
 from resolve.config import get_settings
 
-ESCALATE_CATEGORIES = {"legal", "deletion", "contract"}
+ESCALATE_CATEGORIES = {"legal", "deletion", "contract", "chargeback", "out_of_scope"}
 
 
 def new_ticket(raw_text: str, customer_id: str | None, auto_approve: bool = False) -> TicketState:
@@ -67,6 +69,7 @@ def new_ticket(raw_text: str, customer_id: str | None, auto_approve: bool = Fals
 
 def _save(state: TicketState) -> None:
     with get_session() as session:
+        flush_audit(state, session)
         row = session.get(Ticket, state["ticket_id"])
         if row:
             row.status = state.get("status") or row.status
@@ -76,6 +79,15 @@ def _save(state: TicketState) -> None:
 
 
 def run(state: TicketState) -> TicketState:
+    """Run or resume, inside one OpenTelemetry trace (a no-op unless OTEL_EXPORTER is set)."""
+    resuming = state.get("status") == "awaiting_approval"
+    with ticket_span(state, "resume_agent" if resuming else "invoke_agent") as span:
+        out = _run(state)
+        span.state = out
+    return out
+
+
+def _run(state: TicketState) -> TicketState:
     """Run or resume. If status is awaiting_approval, jump to approval → finalize."""
     if state.get("status") == "awaiting_approval":
         state["status"] = "running"

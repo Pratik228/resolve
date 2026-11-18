@@ -85,3 +85,15 @@ def seed() -> None:
 
 if __name__ == "__main__":
     seed()
+
+
+def reset_ledger(customer_id: str | None = None) -> int:
+    """Delete executed payouts so an eval episode starts from a clean ledger (tau-bench resets DB state
+    per task). Never called by the API; evals and tests only."""
+    from resolve.db.models import Action
+
+    with get_session() as session:
+        q = session.query(Action)
+        if customer_id:
+            q = q.filter(Action.customer_id == customer_id)
+        return q.delete(synchronize_session=False)

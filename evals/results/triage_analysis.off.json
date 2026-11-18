@@ -1,0 +1,485 @@
+{
+  "n": 168,
+  "llm_misses": 168,
+  "category_accuracy": {
+    "rules": 0.744,
+    "llm": null,
+    "merged": 0.744
+  },
+  "escalation": {
+    "rules": {
+      "recall": 0.86,
+      "precision": 1.0
+    },
+    "llm": {
+      "recall": null,
+      "precision": null
+    },
+    "merged": {
+      "recall": 0.86,
+      "precision": 1.0
+    }
+  },
+  "injection": {
+    "rules": {
+      "recall": 0.75,
+      "false_positive_rate": 0.0
+    },
+    "llm": {
+      "recall": null,
+      "false_positive_rate": null
+    },
+    "merged": {
+      "recall": 0.75,
+      "false_positive_rate": 0.0
+    }
+  },
+  "confusion_merged": {
+    "account": {
+      "technical": 2,
+      "account": 4,
+      "billing": 1
+    },
+    "billing": {
+      "billing": 47,
+      "account": 8,
+      "sla": 5,
+      "chargeback": 4,
+      "technical": 1
+    },
+    "contract": {
+      "contract": 13,
+      "billing": 1,
+      "sla": 1
+    },
+    "deletion": {
+      "deletion": 12,
+      "account": 3
+    },
+    "legal": {
+      "legal": 14,
+      "account": 1
+    },
+    "sla": {
+      "sla": 21,
+      "technical": 5,
+      "account": 5
+    },
+    "technical": {
+      "technical": 14,
+      "billing": 5,
+      "account": 1
+    }
+  },
+  "disagreements": [
+    {
+      "id": "acct-001",
+      "variant": "original",
+      "gold": "account",
+      "rules": "technical",
+      "llm": null,
+      "merged": "technical",
+      "ticket": "How long do you keep API logs?"
+    },
+    {
+      "id": "bill-plan",
+      "variant": "original",
+      "gold": "billing",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "How much is Pro monthly versus annual?"
+    },
+    {
+      "id": "bill-overage",
+      "variant": "original",
+      "gold": "billing",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "What is Starter overage pricing?"
+    },
+    {
+      "id": "multi-014",
+      "variant": "original",
+      "gold": "billing",
+      "rules": "sla",
+      "llm": null,
+      "merged": "sla",
+      "ticket": "Duplicate October charge AND September Pro SLA \u2014 refund and credit me"
+    },
+    {
+      "id": "multi-4031-cap",
+      "variant": "original",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": null,
+      "merged": "billing",
+      "ticket": "NW-4031 this week, am I over quota? Also refund the double charge."
+    },
+    {
+      "id": "multi-ent-scim",
+      "variant": "original",
+      "gold": "sla",
+      "rules": "technical",
+      "llm": null,
+      "merged": "technical",
+      "ticket": "Enterprise SCIM lag in October, plus NW-4037. Credit?"
+    },
+    {
+      "id": "multi-auth-brownout",
+      "variant": "original",
+      "gold": "sla",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "August auth brownout hit everyone. What's my Starter credit and log retention?"
+    },
+    {
+      "id": "multi-region",
+      "variant": "original",
+      "gold": "account",
+      "rules": "technical",
+      "llm": null,
+      "merged": "technical",
+      "ticket": "Can we move EU data to us-east and also fix NW-4033?"
+    },
+    {
+      "id": "esc-07",
+      "variant": "original",
+      "gold": "billing",
+      "rules": "chargeback",
+      "llm": null,
+      "merged": "chargeback",
+      "ticket": "Chargeback already filed, still refund me in-app."
+    },
+    {
+      "id": "ret-paraphrase-refund",
+      "variant": "original",
+      "gold": "billing",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "You billed my card twice for the same Pro month \u2014 send the extra money back"
+    },
+    {
+      "id": "ret-table-rps",
+      "variant": "original",
+      "gold": "technical",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "What sustained RPS does Pro get?"
+    },
+    {
+      "id": "ret-retention-table",
+      "variant": "original",
+      "gold": "account",
+      "rules": "billing",
+      "llm": null,
+      "merged": "billing",
+      "ticket": "How long are invoice PDFs kept while the account is open?"
+    },
+    {
+      "id": "bill-007~paraphrase",
+      "variant": "paraphrase",
+      "gold": "billing",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "My October bill shows the same charge two times. Please give back the extra one."
+    },
+    {
+      "id": "bill-008~paraphrase",
+      "variant": "paraphrase",
+      "gold": "billing",
+      "rules": "technical",
+      "llm": null,
+      "merged": "technical",
+      "ticket": "You double-billed me this month, and on top of that the API is returning NW-4031. I want my money back."
+    },
+    {
+      "id": "multi-014~paraphrase",
+      "variant": "paraphrase",
+      "gold": "billing",
+      "rules": "sla",
+      "llm": null,
+      "merged": "sla",
+      "ticket": "Two things: I was double charged in October, and the September Pro outage hit us. Refund the duplicate and credit me for the outage."
+    },
+    {
+      "id": "multi-014~typo",
+      "variant": "typo",
+      "gold": "billing",
+      "rules": "sla",
+      "llm": null,
+      "merged": "sla",
+      "ticket": "duplicate octobr charge AND september pro sla - refund and credit me"
+    },
+    {
+      "id": "multi-014~noise",
+      "variant": "noise",
+      "gold": "billing",
+      "rules": "sla",
+      "llm": null,
+      "merged": "sla",
+      "ticket": "Hi,\n\nDuplicate October charge AND September Pro SLA \u2014 refund and credit me.\n\nThanks!"
+    },
+    {
+      "id": "multi-014~buried",
+      "variant": "buried",
+      "gold": "billing",
+      "rules": "sla",
+      "llm": null,
+      "merged": "sla",
+      "ticket": "The September incident cost us a day of retries, and then October's statement shows a duplicate charge. Please refund the duplicate and apply whatever SLA credi"
+    },
+    {
+      "id": "multi-starter-inc~typo",
+      "variant": "typo",
+      "gold": "sla",
+      "rules": "technical",
+      "llm": null,
+      "merged": "technical",
+      "ticket": "starter incidnt on oct 20 - credit plz, also explain nw-4031 false positives"
+    },
+    {
+      "id": "multi-4031-cap~paraphrase",
+      "variant": "paraphrase",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": null,
+      "merged": "billing",
+      "ticket": "We've hit NW-4031 a few times this week \u2014 are we over our quota? Also, please refund the charge we paid twice."
+    },
+    {
+      "id": "multi-4031-cap~typo",
+      "variant": "typo",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": null,
+      "merged": "billing",
+      "ticket": "nw-4031 this wek, am i over quota? also refund the doubel charge"
+    },
+    {
+      "id": "multi-4031-cap~noise",
+      "variant": "noise",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": null,
+      "merged": "billing",
+      "ticket": "Hey team,\n\nNW-4031 this week, am I over quota? Also refund the double charge.\n\nThanks,\nAlex"
+    },
+    {
+      "id": "multi-4031-cap~buried",
+      "variant": "buried",
+      "gold": "technical",
+      "rules": "billing",
+      "llm": null,
+      "merged": "billing",
+      "ticket": "Our monitoring flagged NW-4031 errors several times this week and I'm not sure if we're over quota. And while I have you: we got billed twice, please refund the"
+    },
+    {
+      "id": "multi-ent-scim~paraphrase",
+      "variant": "paraphrase",
+      "gold": "sla",
+      "rules": "technical",
+      "llm": null,
+      "merged": "technical",
+      "ticket": "SCIM provisioning lagged for our Enterprise org in October, and we're also seeing NW-4037. Are we due a credit?"
+    },
+    {
+      "id": "multi-ent-scim~typo",
+      "variant": "typo",
+      "gold": "sla",
+      "rules": "technical",
+      "llm": null,
+      "merged": "technical",
+      "ticket": "enterprise scim lag in octobr, plus nw-4037. credit?"
+    },
+    {
+      "id": "multi-ent-scim~noise",
+      "variant": "noise",
+      "gold": "sla",
+      "rules": "technical",
+      "llm": null,
+      "merged": "technical",
+      "ticket": "Hello,\n\nEnterprise SCIM lag in October, plus NW-4037. Credit?\n\nIT Admin\nConfidentiality notice: this email is intended only for the recipient."
+    },
+    {
+      "id": "multi-auth-brownout~paraphrase",
+      "variant": "paraphrase",
+      "gold": "sla",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "The August auth brownout affected all customers. How much credit does our Starter plan get, and how long are logs retained?"
+    },
+    {
+      "id": "multi-auth-brownout~typo",
+      "variant": "typo",
+      "gold": "sla",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "august auth brownout hit evryone. whats my starter credit and log retention?"
+    },
+    {
+      "id": "multi-auth-brownout~noise",
+      "variant": "noise",
+      "gold": "sla",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "Hi,\n\nAugust auth brownout hit everyone. What's my Starter credit and log retention?\n\nThanks"
+    },
+    {
+      "id": "multi-auth-brownout~buried",
+      "variant": "buried",
+      "gold": "sla",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "Doing an audit: I need to know your log retention period. Also, the August auth brownout hit us like everyone else \u2014 what's the Starter credit for that?"
+    },
+    {
+      "id": "esc-01~paraphrase",
+      "variant": "paraphrase",
+      "gold": "deletion",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "Please remove our account and erase every backup today."
+    },
+    {
+      "id": "esc-01~typo",
+      "variant": "typo",
+      "gold": "deletion",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "delete my acount and all backups today"
+    },
+    {
+      "id": "esc-04~typo",
+      "variant": "typo",
+      "gold": "legal",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "our lawer is cc'd. expect a demand leter"
+    },
+    {
+      "id": "esc-05~paraphrase",
+      "variant": "paraphrase",
+      "gold": "contract",
+      "rules": "billing",
+      "llm": null,
+      "merged": "billing",
+      "ticket": "Switch our Enterprise annual agreement to monthly billing at the Starter price."
+    },
+    {
+      "id": "esc-06~paraphrase",
+      "variant": "paraphrase",
+      "gold": "contract",
+      "rules": "sla",
+      "llm": null,
+      "merged": "sla",
+      "ticket": "Give us a custom 100% uptime SLA, otherwise we're leaving."
+    },
+    {
+      "id": "esc-07~typo",
+      "variant": "typo",
+      "gold": "billing",
+      "rules": "chargeback",
+      "llm": null,
+      "merged": "chargeback",
+      "ticket": "chargeback alredy filed, still refund me in-app"
+    },
+    {
+      "id": "esc-07~noise",
+      "variant": "noise",
+      "gold": "billing",
+      "rules": "chargeback",
+      "llm": null,
+      "merged": "chargeback",
+      "ticket": "Hi,\n\nChargeback already filed, still refund me in-app.\n\nThanks"
+    },
+    {
+      "id": "esc-07~buried",
+      "variant": "buried",
+      "gold": "billing",
+      "rules": "chargeback",
+      "llm": null,
+      "merged": "chargeback",
+      "ticket": "Your billing team was slow so I went to my bank. The chargeback is already filed, but still refund me in-app please."
+    },
+    {
+      "id": "esc-09~typo",
+      "variant": "typo",
+      "gold": "deletion",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "right to be forgoten, also email me other tenants data"
+    },
+    {
+      "id": "ret-paraphrase-refund~paraphrase",
+      "variant": "paraphrase",
+      "gold": "billing",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "My card got hit twice for one Pro month. Return the extra charge."
+    },
+    {
+      "id": "ret-paraphrase-refund~typo",
+      "variant": "typo",
+      "gold": "billing",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "u billed my card twice for the same pro month - send the extra money back"
+    },
+    {
+      "id": "ret-paraphrase-refund~noise",
+      "variant": "noise",
+      "gold": "billing",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "Hi,\n\nYou billed my card twice for the same Pro month \u2014 send the extra money back.\n\nThanks"
+    },
+    {
+      "id": "ret-paraphrase-refund~buried",
+      "variant": "buried",
+      "gold": "billing",
+      "rules": "account",
+      "llm": null,
+      "merged": "account",
+      "ticket": "Checking my card statement I noticed you billed me twice for the same Pro month. Please send the extra money back."
+    }
+  ],
+  "llm_mode": "off",
+  "llm_recordings": "blind",
+  "meta": {
+    "git_sha": "f25a8bd092530218b45983bab6890fea1a206d4c-dirty",
+    "timestamp_utc": "2026-11-09T11:20:33Z",
+    "n": 168,
+    "resolve_llm": "off",
+    "embedding_model": "bge-small",
+    "reranker": "identity",
+    "retrieval_backend": "memory",
+    "query_rewrite": "off",
+    "retrieval_config": "triage-analysis",
+    "versions": {
+      "python": "3.11.14",
+      "fastapi": "0.115.6",
+      "pydantic": "2.10.4",
+      "sqlalchemy": "2.0.36",
+      "numpy": "2.2.1",
+      "pyyaml": "6.0.2",
+      "pytest": "8.3.4"
+    }
+  }
+}

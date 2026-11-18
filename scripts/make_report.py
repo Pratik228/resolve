@@ -49,18 +49,32 @@ def render() -> str:
 
     rows = ablation.get("rows") or []
     if rows:
+        decision = ablation.get("decision") or {}
         n = ablation.get("meta", {}).get("n") or rows[0].get("n")
-        lines.append(f"### Retrieval ablation (n={n})")
+        lines.append(f"### Retrieval ablation (n={n}; chosen on dev, reported on held-out test)")
         lines.append("")
-        lines.append("| Config | Recall@4 | MRR | ms / query | $ / ticket |")
-        lines.append("|---|---|---|---|---|")
+        lines.append("| Config | Recall@4 dev | Recall@4 **test** | MRR **test** | p50 ms | p95 ms |")
+        lines.append("|---|---|---|---|---|---|")
         for row in rows:
-            ms = row.get("p95_ms_per_query", row.get("p95_ms", "—"))
-            cost = row.get("cost_usd_per_ticket", "—")
+            name = row.get("config")
+            if name == decision.get("chosen_config"):
+                name = f"**{name}** ← default"
             lines.append(
-                f"| {row.get('config')} | {row.get('recall_at_4')} | {row.get('mrr')} | {ms} | {cost} |"
+                f"| {name} | {row.get('dev_recall_at_4')} | {row.get('test_recall_at_4')} | "
+                f"{row.get('test_mrr')} | {row.get('p50_ms')} | {row.get('p95_ms')} |"
             )
         lines.append("")
+        if decision:
+            lines.append(
+                f"Selection: highest dev Recall@4 → `{decision.get('chosen_config')}` "
+                f"({decision.get('selected_on')}). On held-out {decision.get('reported_on')} it scores "
+                f"Recall@4 {decision.get('chosen_test_recall_at_4')} / MRR {decision.get('chosen_test_mrr')} "
+                f"vs the old `{decision.get('baseline_config')}` default at "
+                f"{decision.get('baseline_test_recall_at_4')} / {decision.get('baseline_test_mrr')}. "
+                "Embeddings: `hash` = md5 feature hashing, `bge` = BAAI/bge-small-en-v1.5 (fastembed, CPU). "
+                "`rerank` = ms-marco-MiniLM-L-6 cross-encoder, rejected: lower test recall at ~1 s p95 on CPU."
+            )
+            lines.append("")
     else:
         lines.append("_No `evals/results/ablation.json`. Run `make ablate`._")
         lines.append("")
@@ -68,8 +82,9 @@ def render() -> str:
     if latest.get("n"):
         lines.append(f"### Fast agent suite (n={latest['n']})")
         lines.append("")
-        lines.append("| Metric | Value | Gate |")
-        lines.append("|---|---|---|")
+        latest_rep = _load("latest.replay.json") or {}
+        lines.append("| Metric | Rules | Blind Claude | Gate |")
+        lines.append("|---|---|---|---|")
         gates = {
             "recall_at_4": thresholds.get("recall_at_4"),
             "tool_call_accuracy": thresholds.get("tool_call_accuracy"),
@@ -88,7 +103,7 @@ def render() -> str:
             val = latest.get(key, "—")
             gate = gates.get(key)
             gate_s = f"≤ {gate}" if key == "pii_leaks" else f"≥ {gate}"
-            lines.append(f"| {label} | {val} | {gate_s} |")
+            lines.append(f"| {label} | {val} | {latest_rep.get(key, '—')} | {gate_s} |")
         lines.append("")
         if latest.get("meta"):
             lines.append(_meta_line(latest["meta"]))
@@ -97,10 +112,60 @@ def render() -> str:
         lines.append("_No `evals/results/latest.json`. Run `make eval-fast`._")
         lines.append("")
 
-    lines.append(
-        "`$ / ticket` is only meaningful after a paid-model run. "
-        "Faithfulness is not in these files yet."
-    )
+    off = _load("reliability.off.json") or {}
+    rep = _load("reliability.replay.json") or {}
+    if off.get("trials"):
+        lines.append(f"### pass^k on ledger end-state ({off['cases']} cases × k={off['k']}, {off['trials']} trials)")
+        lines.append("")
+        lines.append("A trial passes only if the `actions` table ends in the expected state. Variants: original, paraphrase, typo, greeting/signature noise, request buried mid-paragraph.")
+        lines.append("")
+        lines.append("| Triage | pass^1 | pass^k | Unsafe writes |")
+        lines.append("|---|---|---|---|")
+        lines.append(f"| Rules (deterministic) | {off['pass_1']} | {off['pass_k']} | {off['unsafe_writes']} |")
+        if rep.get("trials"):
+            lines.append(f"| Blind Claude triage* | {rep['pass_1']} | {rep['pass_k']} | {rep['unsafe_writes']} |")
+        lines.append("")
+        fr = off.get("fail_rate_by_variant") or {}
+        if fr:
+            lines.append("Rules failure rate by variant: " + ", ".join(f"{k} {round(v * 100)}%" for k, v in fr.items()) + ".")
+            lines.append("")
+        lines.append("*Claude Opus 5.5 in fresh agent contexts that saw only the system prompt, the schema and the ticket, never the labels or the repo (`scripts/capture_inputs.py` queues the inputs; `evals/recordings/*.blind.jsonl` holds the outputs). Replayed for $0. Caveat: the variants were also written by Claude, so their phrasing is not adversarial to it.")
+        lines.append("")
+
+    tri = _load("triage_analysis.replay.json") or {}
+    if tri.get("n"):
+        lines.append(f"### Triage error analysis (n={tri['n']}: golden + variants)")
+        lines.append("")
+        lines.append("| Source | Category acc. | Escalation recall | Escalation precision | Injection recall | Injection FPR |")
+        lines.append("|---|---|---|---|---|---|")
+        names = {"rules": "Rules", "llm": "Blind Claude", "merged": "**Merged (what the graph acts on)**"}
+        for src, name in names.items():
+            e, i = tri["escalation"][src], tri["injection"][src]
+            lines.append(f"| {name} | {tri['category_accuracy'][src]} | {e['recall']} | {e['precision']} | {i['recall']} | {i['false_positive_rate']} |")
+        lines.append("")
+        md = tri.get("model_drafts") or {}
+        rej = "; ".join(f"`{r['id']}`: {', '.join(r['reasons'])}" for r in md.get("rejected_detail", []))
+        lines.append(f"Grounding validator on blind Claude replies: {md.get('accepted', 0)} accepted, {md.get('rejected', 0)} rejected{f' ({rej})' if rej else ''}. A rejected reply is replaced by a template, never sent.")
+        lines.append("")
+        tax = sum(1 for d in tri.get("disagreements", []) if d["merged"] in {"chargeback", "out_of_scope"} and d["merged"] != d["gold"])
+        miss = sum(1 for d in tri.get("disagreements", []) if d["merged"] != d["gold"])
+        lines.append(f"Of {miss} merged-category misses, {tax} are taxonomy (the gold set predates the `chargeback` and `out_of_scope` categories); the rest are real confusions, mostly account vs technical and tickets mixing an error code with a refund. Labels were not edited after seeing model output. Full list: `evals/results/triage_analysis.replay.json`.")
+        lines.append("")
+
+    load = _load("loadtest.json") or {}
+    if load.get("rows"):
+        lines.append("### Load test")
+        lines.append("")
+        lines.append(f"{load.get('method')}. Host: {load.get('host')}.")
+        lines.append("")
+        lines.append("| Run | Workers | Concurrency | Tickets/s | p50 ms | p95 ms | p99 ms |")
+        lines.append("|---|---|---|---|---|---|---|")
+        for r in load["rows"]:
+            if r["concurrency"] in (1, 4, 16):
+                lines.append(f"| {r['label']} | {r['workers']} | {r['concurrency']} | {r['rps']} | {r['p50_ms']} | {r['p95_ms']} | {r['p99_ms']} |")
+        lines.append("")
+
+    lines.append("`$ / ticket` is only meaningful after a live paid-model run.")
     lines.append("")
     return "\n".join(lines)
 
